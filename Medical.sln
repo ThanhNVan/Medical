@@ -1,0 +1,99 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.34009.444
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "01 Docs", "01 Docs", "{4F339D6B-279D-4DFC-9E7A-92C26ACE5C0F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "02 Libraries", "02 Libraries", "{9D2EF201-8FEF-4189-AC3F-AB9132F8D675}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "03 Databases", "03 Databases", "{1165F4F9-53F6-4DD2-B106-3094CB5CEDD2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "04 Codes", "04 Codes", "{8A64D56C-EDF1-417B-9887-C41667E4268A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "05 Hosts", "05 Hosts", "{F9C3F063-9754-42A0-AEB5-20309A025FBE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "06 Apps", "06 Apps", "{E20C2BD7-EFB6-4339-9B12-A1A4E87A9E6B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "07 Tests", "07 Tests", "{1C0C3A37-07A7-4C4D-8A34-6E4C092DCDE2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "01 Entity Providers", "01 Entity Providers", "{5A33F5A0-578A-4BC1-B848-367FF41E96D5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "02 Data Providers", "02 Data Providers", "{235C6343-8FA5-4447-873A-D9B94D08ABF9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "03 Logic Providers", "03 Logic Providers", "{A47C52EB-6F70-4FC5-AE86-5A451C8D82E4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "04 Controller Providers", "04 Controller Providers", "{C6EB5624-2490-4879-987E-8DE6A7268865}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "05 HttpClient Providers", "05 HttpClient Providers", "{29B22E18-FB64-4A86-A14B-FCF6114DA766}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Medical.EntityProviders", "04 Codes\01 Entity Providers\Medical.EntityProviders\Medical.EntityProviders.csproj", "{66CB54B5-7809-4210-8C3B-D0903DACB630}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Medical.DataProviders", "04 Codes\02 Data Providers\Medical.DataProviders\Medical.DataProviders.csproj", "{0B7FC89E-3D7C-4789-8AF1-5A865F51EBE1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Medical.LogicProviders", "04 Codes\03 Logic Providers\Medical.LogicProviders\Medical.LogicProviders.csproj", "{CFB7CC69-0FB1-44FC-8665-8FF4799CC31E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Medical.ApiControllerProviders", "04 Codes\04 Controller Providers\Medical.ApiControllerProviders\Medical.ApiControllerProviders.csproj", "{6688BB03-2586-4037-98C9-1B555CD4BBF7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Medical.HttpClientProviders", "04 Codes\05 HttpClient Providers\Medical.HttpClientProviders\Medical.HttpClientProviders.csproj", "{A73C3B8A-CC1B-4D30-9883-979761349C48}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Medical.Host", "05 Hosts\Medical.Host\Medical.Host.csproj", "{6A88BD2B-D1C5-4034-AEBC-C1A170FF1B7D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Medical.BlazorWebAssembly", "06 Apps\Medical.BlazorWebAssembly\Medical.BlazorWebAssembly.csproj", "{D2A7C8E7-A3ED-4254-8ED3-893FD68F20FF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{66CB54B5-7809-4210-8C3B-D0903DACB630}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{66CB54B5-7809-4210-8C3B-D0903DACB630}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{66CB54B5-7809-4210-8C3B-D0903DACB630}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{66CB54B5-7809-4210-8C3B-D0903DACB630}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0B7FC89E-3D7C-4789-8AF1-5A865F51EBE1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0B7FC89E-3D7C-4789-8AF1-5A865F51EBE1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0B7FC89E-3D7C-4789-8AF1-5A865F51EBE1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0B7FC89E-3D7C-4789-8AF1-5A865F51EBE1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CFB7CC69-0FB1-44FC-8665-8FF4799CC31E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CFB7CC69-0FB1-44FC-8665-8FF4799CC31E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CFB7CC69-0FB1-44FC-8665-8FF4799CC31E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CFB7CC69-0FB1-44FC-8665-8FF4799CC31E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6688BB03-2586-4037-98C9-1B555CD4BBF7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6688BB03-2586-4037-98C9-1B555CD4BBF7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6688BB03-2586-4037-98C9-1B555CD4BBF7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6688BB03-2586-4037-98C9-1B555CD4BBF7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A73C3B8A-CC1B-4D30-9883-979761349C48}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A73C3B8A-CC1B-4D30-9883-979761349C48}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A73C3B8A-CC1B-4D30-9883-979761349C48}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A73C3B8A-CC1B-4D30-9883-979761349C48}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6A88BD2B-D1C5-4034-AEBC-C1A170FF1B7D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6A88BD2B-D1C5-4034-AEBC-C1A170FF1B7D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6A88BD2B-D1C5-4034-AEBC-C1A170FF1B7D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6A88BD2B-D1C5-4034-AEBC-C1A170FF1B7D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D2A7C8E7-A3ED-4254-8ED3-893FD68F20FF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D2A7C8E7-A3ED-4254-8ED3-893FD68F20FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D2A7C8E7-A3ED-4254-8ED3-893FD68F20FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D2A7C8E7-A3ED-4254-8ED3-893FD68F20FF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{5A33F5A0-578A-4BC1-B848-367FF41E96D5} = {8A64D56C-EDF1-417B-9887-C41667E4268A}
+		{235C6343-8FA5-4447-873A-D9B94D08ABF9} = {8A64D56C-EDF1-417B-9887-C41667E4268A}
+		{A47C52EB-6F70-4FC5-AE86-5A451C8D82E4} = {8A64D56C-EDF1-417B-9887-C41667E4268A}
+		{C6EB5624-2490-4879-987E-8DE6A7268865} = {8A64D56C-EDF1-417B-9887-C41667E4268A}
+		{29B22E18-FB64-4A86-A14B-FCF6114DA766} = {8A64D56C-EDF1-417B-9887-C41667E4268A}
+		{66CB54B5-7809-4210-8C3B-D0903DACB630} = {5A33F5A0-578A-4BC1-B848-367FF41E96D5}
+		{0B7FC89E-3D7C-4789-8AF1-5A865F51EBE1} = {235C6343-8FA5-4447-873A-D9B94D08ABF9}
+		{CFB7CC69-0FB1-44FC-8665-8FF4799CC31E} = {A47C52EB-6F70-4FC5-AE86-5A451C8D82E4}
+		{6688BB03-2586-4037-98C9-1B555CD4BBF7} = {C6EB5624-2490-4879-987E-8DE6A7268865}
+		{A73C3B8A-CC1B-4D30-9883-979761349C48} = {29B22E18-FB64-4A86-A14B-FCF6114DA766}
+		{6A88BD2B-D1C5-4034-AEBC-C1A170FF1B7D} = {F9C3F063-9754-42A0-AEB5-20309A025FBE}
+		{D2A7C8E7-A3ED-4254-8ED3-893FD68F20FF} = {E20C2BD7-EFB6-4339-9B12-A1A4E87A9E6B}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4D265B2E-482B-427F-A27B-5F1706D2184D}
+	EndGlobalSection
+EndGlobal
