@@ -3,6 +3,7 @@ using Medical.Identity.EntityProviders;
 using Microsoft.Extensions.Logging;
 using ShareLibrary.DataProviders;
 using ShareLibrary.LogicProviders;
+using System.Threading.Tasks;
 
 namespace Medical.Identity.LogicProviders;
 

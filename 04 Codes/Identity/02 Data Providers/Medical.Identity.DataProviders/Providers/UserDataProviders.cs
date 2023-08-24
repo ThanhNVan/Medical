@@ -12,4 +12,20 @@ public class UserDataProviders : BaseDataProvider<User, IdentityDbContext>, IUse
     {
     }
     #endregion
+
+    #region [ Methods -  ]
+    public async Task<User> GetSingleByEmailAsync(string email)
+    {
+        try
+        {
+            using var context = await this.GetContextAsync();
+            var dbResult = await context.Users.AsNoTracking().FirstOrDefaultAsync(x => x.Email == email);
+            return dbResult;
+        } catch (Exception ex)
+        {
+            this._logger.LogError(ex.Message);
+            return null;
+        }
+    }
+    #endregion
 }
