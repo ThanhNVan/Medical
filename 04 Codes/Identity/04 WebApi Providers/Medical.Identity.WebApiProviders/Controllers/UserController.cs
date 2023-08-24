@@ -49,4 +49,25 @@ public class UserController : BaseIdentityWebApiController<User, IUserLogicProvi
         }
     }
     #endregion
+
+    #region [ Methods -  ]
+    [HttpPost(nameof(IdentityMethodUrl.RenewToken))]
+    public async Task<IActionResult> RenewTokenAsync([FromBody] TokenModel TokenModel)
+    {
+        try
+        {
+            var result = await this._logicProvider.RenewTokenAsync(TokenModel);
+            if (result == null)
+            {
+                return BadRequest("Something Is wrong, please try again");
+            }
+            return Ok(result);
+
+        } catch (Exception ex)
+        {
+            this._logger.LogError(ex.Message);
+            return new StatusCodeResult(StatusCodes.Status500InternalServerError);
+        }
+    }
+    #endregion
 }

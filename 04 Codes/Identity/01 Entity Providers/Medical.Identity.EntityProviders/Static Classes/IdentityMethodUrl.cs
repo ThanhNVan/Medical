@@ -8,5 +8,7 @@ public static class IdentityMethodUrl
     public static string GetSingleByEmail = "/GetSingleByEmail/";
 
     public static string GetListByUserId = "/GetListByUserId/";
+
+    public static string RenewToken = "/RenewToken/";
     #endregion
 }
