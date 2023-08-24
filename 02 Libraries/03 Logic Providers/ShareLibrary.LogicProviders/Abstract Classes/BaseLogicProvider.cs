@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ShareLibrary.LogicProviders;
 
-public abstract class BaseLogicProvider<TEntity, TDataProvider, TContext> : IBaseProvider<TEntity>
+public abstract class BaseLogicProvider<TEntity, TDataProvider, TContext> : IBaseLogicProvider<TEntity>
     where TEntity : BaseEntity
     where TContext : DbContext
     where TDataProvider : IBaseDataProvider<TEntity, TContext>
@@ -15,13 +15,15 @@ public abstract class BaseLogicProvider<TEntity, TDataProvider, TContext> : IBas
     #region [ Fields ]
     protected readonly ILogger<BaseLogicProvider<TEntity, TDataProvider, TContext>> _logger;
     protected readonly TDataProvider _dataProvider;
+    protected readonly IEncriptionProvider _encriptionProvider;
     #endregion
 
     #region [ CTor ]
-    public BaseLogicProvider(ILogger<BaseLogicProvider<TEntity, TDataProvider, TContext>> logger, TDataProvider dataProvider)
+    public BaseLogicProvider(ILogger<BaseLogicProvider<TEntity, TDataProvider, TContext>> logger, TDataProvider dataProvider, IEncriptionProvider encriptionProvider)
     {
         this._logger = logger;
         this._dataProvider = dataProvider;
+        this._encriptionProvider = encriptionProvider;
     }
     #endregion
 

@@ -4,8 +4,7 @@ using ShareLibrary.EntityProviders;
 
 namespace ShareLibrary.LogicProviders;
 
-public interface IBaseLogicProvider<TEntity, TContext> : IBaseDataProvider<TEntity, TContext>
+public interface IBaseLogicProvider<TEntity> : IBaseProvider<TEntity>
     where TEntity : BaseEntity
-    where TContext : DbContext
 {
 }

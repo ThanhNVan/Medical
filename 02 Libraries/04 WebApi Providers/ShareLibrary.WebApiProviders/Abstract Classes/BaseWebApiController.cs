@@ -15,7 +15,7 @@ namespace ShareLibrary.WebApiProviders;
 public abstract class BaseWebApiController<TEntity, TLogicProvider, TContext> : ControllerBase
     where TEntity : BaseEntity
     where TContext : DbContext
-    where TLogicProvider : IBaseLogicProvider<TEntity, TContext>
+    where TLogicProvider : IBaseLogicProvider<TEntity>
 {
     #region [ Fields ]
     protected readonly ILogger<BaseWebApiController<TEntity, TLogicProvider, TContext>> _logger;
