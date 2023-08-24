@@ -1,4 +1,4 @@
-﻿using SharedLibrary.EntityProviders;
+﻿using ShareLibrary.EntityProviders;
 
 namespace Medical.Identity.EntityProviders;
 

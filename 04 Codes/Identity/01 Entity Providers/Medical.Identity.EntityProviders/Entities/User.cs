@@ -1,4 +1,4 @@
-﻿using SharedLibrary.EntityProviders;
+﻿using ShareLibrary.EntityProviders;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Medical.Identity.EntityProviders;

@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
-using SharedLibrary.EntityProviders;
+using ShareLibrary.EntityProviders;
 using ShareLibrary.DataProviders;
 using System;
 using System.Collections.Generic;
@@ -8,7 +8,7 @@ using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace SharedLibrary.DataProviders;
+namespace ShareLibrary.DataProviders;
 
 public abstract class BaseDataProvider<TEntity, TContext> : IBaseDataProvider<TEntity, TContext>
     where TEntity : BaseEntity

@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using SharedLibrary.DataProviders;
-using SharedLibrary.EntityProviders;
+using ShareLibrary.DataProviders;
+using ShareLibrary.EntityProviders;
 
-namespace SharedLibrary.LogicProviders;
+namespace ShareLibrary.LogicProviders;
 
 public interface IBaseLogicProvider<TEntity, TContext> : IBaseDataProvider<TEntity, TContext>
     where TEntity : BaseEntity

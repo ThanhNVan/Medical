@@ -1,13 +1,9 @@
-﻿using SharedLibrary.EntityProviders;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace ShareLibrary.EntityProviders;
 
-public interface IBaseProvider<TEntity> 
+public interface IBaseProvider<TEntity>
     where TEntity : BaseEntity
 {
     #region [ Public Methods - CRUD ]

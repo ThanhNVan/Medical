@@ -1,12 +1,11 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
-using SharedLibrary.DataProviders;
-using SharedLibrary.EntityProviders;
+using ShareLibrary.DataProviders;
 using ShareLibrary.EntityProviders;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace SharedLibrary.LogicProviders;
+namespace ShareLibrary.LogicProviders;
 
 public abstract class BaseLogicProvider<TEntity, TDataProvider, TContext> : IBaseProvider<TEntity>
     where TEntity : BaseEntity

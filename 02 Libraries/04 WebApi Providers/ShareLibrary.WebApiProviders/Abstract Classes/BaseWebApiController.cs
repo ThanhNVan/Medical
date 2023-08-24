@@ -2,13 +2,13 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
-using SharedLibrary.EntityProviders;
-using SharedLibrary.LogicProviders;
+using ShareLibrary.EntityProviders;
+using ShareLibrary.LogicProviders;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace SharedLibrary.WebApiProviders;
+namespace ShareLibrary.WebApiProviders;
 
 [ApiController]
 [Route("Api/V1/[controller]")]
@@ -33,7 +33,7 @@ public abstract class BaseWebApiController<TEntity, TLogicProvider, TContext> : 
     #endregion
 
     #region [ Public Methods - CRUD ]
-    [HttpPost(nameof(MethodUrl.Add))]
+    [HttpPost(nameof(BaseMethodUrl.Add))]
     public virtual async Task<IActionResult> AddAsync([FromBody] TEntity entity)
     {
         try
@@ -68,7 +68,7 @@ public abstract class BaseWebApiController<TEntity, TLogicProvider, TContext> : 
         }
     }
 
-    [HttpGet(nameof(MethodUrl.GetSingleById) + "/{id}")]
+    [HttpGet(nameof(BaseMethodUrl.GetSingleById) + "/{id}")]
     public virtual async Task<IActionResult> GetSingleByIdAsync(string id)
     {
         try
@@ -93,7 +93,7 @@ public abstract class BaseWebApiController<TEntity, TLogicProvider, TContext> : 
         }
     }
 
-    [HttpPut(nameof(MethodUrl.Update))]
+    [HttpPut(nameof(BaseMethodUrl.Update))]
     public virtual async Task<IActionResult> UpdateAsync([FromBody] TEntity entity)
     {
         try
@@ -123,7 +123,7 @@ public abstract class BaseWebApiController<TEntity, TLogicProvider, TContext> : 
         }
     }
 
-    [HttpDelete(nameof(MethodUrl.SoftDelete) + "/{id}")]
+    [HttpDelete(nameof(BaseMethodUrl.SoftDelete) + "/{id}")]
     public virtual async Task<IActionResult> SoftDeleteAsync(string id)
     {
         try
@@ -156,7 +156,7 @@ public abstract class BaseWebApiController<TEntity, TLogicProvider, TContext> : 
         }
     }
 
-    [HttpPut(nameof(MethodUrl.Recover))]
+    [HttpPut(nameof(BaseMethodUrl.Recover))]
     public virtual async Task<IActionResult> RecoverAsync([FromBody] string id)
     {
         try
@@ -187,7 +187,7 @@ public abstract class BaseWebApiController<TEntity, TLogicProvider, TContext> : 
         }
     }
 
-    [HttpDelete(nameof(MethodUrl.Destroy) + "/{id}")]
+    [HttpDelete(nameof(BaseMethodUrl.Destroy) + "/{id}")]
     public virtual async Task<IActionResult> DestroyAsync(string id)
     {
         try
@@ -218,7 +218,7 @@ public abstract class BaseWebApiController<TEntity, TLogicProvider, TContext> : 
         }
     }
 
-    [HttpGet(nameof(MethodUrl.GetListAll))]
+    [HttpGet(nameof(BaseMethodUrl.GetListAll))]
     public virtual async Task<IActionResult> GetListAllAsync()
     {
         try
@@ -241,7 +241,7 @@ public abstract class BaseWebApiController<TEntity, TLogicProvider, TContext> : 
         }
     }
 
-    [HttpGet(nameof(MethodUrl.GetListIsDeleted))]
+    [HttpGet(nameof(BaseMethodUrl.GetListIsDeleted))]
     public virtual async Task<IActionResult> GetListIsDeletedAsync()
     {
         try
@@ -264,7 +264,7 @@ public abstract class BaseWebApiController<TEntity, TLogicProvider, TContext> : 
         }
     }
 
-    [HttpGet(nameof(MethodUrl.GetListIsNotDeleted))]
+    [HttpGet(nameof(BaseMethodUrl.GetListIsNotDeleted))]
     public virtual async Task<IActionResult> GetListIsNotDeletedAsync()
     {
         try
@@ -287,7 +287,7 @@ public abstract class BaseWebApiController<TEntity, TLogicProvider, TContext> : 
         }
     }
 
-    [HttpGet(nameof(MethodUrl.CountAll))]
+    [HttpGet(nameof(BaseMethodUrl.CountAll))]
     public virtual async Task<IActionResult> CountAllAsync()
     {
         try
@@ -306,7 +306,7 @@ public abstract class BaseWebApiController<TEntity, TLogicProvider, TContext> : 
         }
     }
 
-    [HttpGet(nameof(MethodUrl.CountIsDeleted))]
+    [HttpGet(nameof(BaseMethodUrl.CountIsDeleted))]
     public virtual async Task<IActionResult> CountIsDeletedAsync()
     {
         try
@@ -325,7 +325,7 @@ public abstract class BaseWebApiController<TEntity, TLogicProvider, TContext> : 
         }
     }
 
-    [HttpGet(nameof(MethodUrl.CountIsNotDeleted))]
+    [HttpGet(nameof(BaseMethodUrl.CountIsNotDeleted))]
     public virtual async Task<IActionResult> CountIsNotDeletedAsync()
     {
         try

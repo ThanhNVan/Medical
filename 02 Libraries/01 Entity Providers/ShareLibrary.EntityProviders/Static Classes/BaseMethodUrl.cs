@@ -1,6 +1,6 @@
-﻿namespace SharedLibrary.EntityProviders;
+﻿namespace ShareLibrary.EntityProviders;
 
-public static class MethodUrl
+public static class BaseMethodUrl
 {
     #region [ Properties ]
     public static string Add = "/Add/";
@@ -26,11 +26,5 @@ public static class MethodUrl
     public static string CountIsDeleted = "/CountIsDeleted/";
 
     public static string CountIsNotDeleted = "/CountIsNotDeleted/";
-
-    public static string SignIn = "/SignIn/";
-
-    public static string GetSingleByEmail = "/GetSingleByEmail/";
-
-    public static string GetListByUserId = "/GetListByUserId/";
     #endregion
 }

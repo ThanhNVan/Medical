@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace SharedLibrary.EntityProviders;
+namespace ShareLibrary.EntityProviders;
 
 public abstract class BaseEntity
 {

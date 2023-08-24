@@ -10,4 +10,8 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\04 Codes\Platform\04 WebApi Providers\Medical.Platform.WebApiProviders\Medical.Platform.WebApiProviders.csproj" />
+  </ItemGroup>
+
 </Project>

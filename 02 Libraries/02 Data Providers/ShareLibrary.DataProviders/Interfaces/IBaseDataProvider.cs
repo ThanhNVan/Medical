@@ -1,9 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using SharedLibrary.EntityProviders;
 using ShareLibrary.EntityProviders;
 using System.Threading.Tasks;
 
-namespace SharedLibrary.DataProviders;
+namespace ShareLibrary.DataProviders;
 
 public interface IBaseDataProvider<TEntity, TContext> : IBaseProvider<TEntity>
     where TEntity : BaseEntity
