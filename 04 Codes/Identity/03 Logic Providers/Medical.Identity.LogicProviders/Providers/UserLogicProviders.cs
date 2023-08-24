@@ -18,7 +18,7 @@ public class UserLogicProviders : BaseLogicProvider<User, IUserDataProviders, Id
     #region [ Methods - Override ]
     public async override Task<bool> AddAsync(User entity)
     {
-        var passwordHash = this._encriptionProvider.Encrypt(entity.PasswordHash, entity.Id);
+        var passwordHash = this._encriptionProvider.HashWithSalt(entity.PasswordHash, entity.Id);
 
         entity.PasswordHash = passwordHash;
 

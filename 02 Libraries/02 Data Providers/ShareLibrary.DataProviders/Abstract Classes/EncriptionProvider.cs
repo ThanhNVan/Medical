@@ -14,7 +14,7 @@ public class EncriptionProvider : IEncriptionProvider
     }
     #endregion
 
-    #region [ Methods -  ]
+    #region [ Methods - Encrypt ]
     public string Encrypt(string text, string salt)
     {
         var result = string.Empty;
@@ -69,6 +69,33 @@ public class EncriptionProvider : IEncriptionProvider
             }
         }
 
+        return result;
+    }
+    #endregion
+
+    #region [ Methods - Hash ]
+    public string HashWithSalt(string textString, string saltString)
+    {
+        var result = string.Empty;
+
+        var algorithm = SHA512.Create();
+        var plainText = Encoding.UTF8.GetBytes(textString);
+        var salt = Encoding.UTF8.GetBytes(saltString);
+
+        byte[] plainTextWithSaltBytes = new byte[plainText.Length + salt.Length];
+
+        for (int i = 0; i < plainText.Length; i++)
+        {
+            plainTextWithSaltBytes[i] = plainText[i];
+        }
+        for (int i = 0; i < salt.Length; i++)
+        {
+            plainTextWithSaltBytes[plainText.Length + i] = salt[i];
+        }
+
+        var resultByte = algorithm.ComputeHash(plainTextWithSaltBytes);
+
+        result = Convert.ToBase64String(resultByte);
         return result;
     }
     #endregion
