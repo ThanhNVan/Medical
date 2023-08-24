@@ -28,6 +28,9 @@ public static class ServiceExtensions
             options.UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking);
         });
 
+        var appSettingModel = new AppSettingModel();
+        configuration.GetSection("AppSettingModel").Bind(appSettingModel);
 
+        services.AddSingleton(appSettingModel);
     }
 }

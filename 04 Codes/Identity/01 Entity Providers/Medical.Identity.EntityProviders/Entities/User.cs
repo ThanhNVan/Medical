@@ -17,7 +17,7 @@ public class User : BaseEntity
     public string Email { get; set; }
 
     [Required]
-    [DataType(DataType.Text)]
+    [DataType(DataType.Password)]
     public string PasswordHash { get; set; }
 
     [Required]
