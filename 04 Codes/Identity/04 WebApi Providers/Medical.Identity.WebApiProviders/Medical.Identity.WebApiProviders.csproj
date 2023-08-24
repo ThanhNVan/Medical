@@ -6,4 +6,13 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\03 Logic Providers\Medical.Identity.LogicProviders\Medical.Identity.LogicProviders.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Extensions\" />
+    <Folder Include="Controllers\" />
+  </ItemGroup>
+
 </Project>

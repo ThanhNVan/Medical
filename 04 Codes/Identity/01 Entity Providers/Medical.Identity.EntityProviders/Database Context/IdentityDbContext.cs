@@ -1,9 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Medical.Identity.EntityProviders;
 
@@ -14,5 +9,15 @@ public class IdentityDbContext : DbContext
     {
 
     }
+    #endregion
+
+    #region [ Properties - DbSet ]
+    public DbSet<RefreshToken> RefreshTokens { get; set; }
+
+    public DbSet<Role> Roles { get; set; }
+
+    public DbSet<User> Users { get; set; }
+
+    public DbSet<UserRole> UserRoles { get; set; }
     #endregion
 }

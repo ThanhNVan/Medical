@@ -6,4 +6,15 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\02 Data Providers\Medical.Identity.DataProviders\Medical.Identity.DataProviders.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="LogicContext\" />
+    <Folder Include="Extensions\" />
+    <Folder Include="Interfaces\" />
+    <Folder Include="Providers\" />
+  </ItemGroup>
+
 </Project>

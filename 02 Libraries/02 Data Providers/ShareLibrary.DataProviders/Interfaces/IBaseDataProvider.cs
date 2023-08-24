@@ -8,8 +8,7 @@ public interface IBaseDataProvider<TEntity, TContext> : IBaseProvider<TEntity>
     where TEntity : BaseEntity
     where TContext : DbContext
 {
-
-    #region [ Methods - Wtihout TContext ]
+    #region [ Methods - Without TContext ]
     Task<bool> AddAsync(TEntity entity, TContext context);
 
     Task<bool> UpdateAsync(TEntity entity, TContext context);
