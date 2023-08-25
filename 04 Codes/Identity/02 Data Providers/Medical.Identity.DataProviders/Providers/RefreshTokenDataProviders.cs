@@ -12,4 +12,20 @@ public class RefreshTokenDataProviders : BaseDataProvider<RefreshToken, Identity
     {
     }
     #endregion
+
+    #region [ Methods - Get Single ]
+    public async Task<RefreshToken> GetSingleByTokenAsync(string token)
+    {
+        try
+        {
+            using var context = await this.GetContextAsync();
+            var result = await context.RefreshTokens.AsNoTracking().FirstOrDefaultAsync(t => t.Token == token);
+            return result;
+        } catch (Exception ex)
+        {
+            this._logger.LogError(ex.Message);
+            return null;
+        }
+    }
+    #endregion
 }

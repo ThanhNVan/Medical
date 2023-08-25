@@ -128,8 +128,8 @@ public class UserLogicProviders : BaseLogicProvider<User, IUserDataProviders, Id
             }
 
             // Check 4: Check refreshToken is existed in the db
-            var context = await this.GetContextAsync();
-            var dbToken = await context.RefreshTokens.FirstOrDefaultAsync(x => x.Token == model.RefreshToken);
+            
+            var dbToken = await this._dataContext.RefreshToken.GetSingleByTokenAsync(model.RefreshToken);
             if (dbToken == null)
             {
                 return null; // "Refresh token is not exist"
