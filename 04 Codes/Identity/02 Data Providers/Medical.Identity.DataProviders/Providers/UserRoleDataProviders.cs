@@ -14,7 +14,7 @@ public class UserRoleDataProviders : BaseDataProvider<UserRole, IdentityDbContex
     #endregion
 
     #region [ Methods -  ]
-    public async Task<string> GetStringRoleByUserIdAsync(string userId)
+    public async Task<string> GetStringDepartmentAndRoleByUserIdAsync(string userId)
     {
         var result = string.Empty;
         try
@@ -22,22 +22,23 @@ public class UserRoleDataProviders : BaseDataProvider<UserRole, IdentityDbContex
             using var context = await this.GetContextAsync();
             var dbResults = await (from userRole in context.UserRoles.AsNoTracking()
                                    join role in context.Roles.AsNoTracking() on userRole.RoleId equals role.Id
+                                   join department in context.Departments.AsNoTracking() on userRole.DepartmentId equals department.Id
                                    where userRole.UserId == userId
-                                   select role).ToListAsync();
+                                   select new DepartmentRoleModel { Role = role.Name, Department = department.Name }).ToListAsync();
 
             if (dbResults.Count <= 0 )
             {
-                return "Staff";
+                return string.Empty;
             }
 
             for (int i = 0; i < dbResults.Count; i++)
             {
                 if (i == 0)
                 {
-                    result += dbResults[i].Name;
+                    result += dbResults[i].Role + " " + dbResults[i].Department;
                 } else
                 {
-                    result += ", " + dbResults[i].Name;
+                    result += ", " + dbResults[i].Role + " " + dbResults[i].Department;
                 }
             }
 

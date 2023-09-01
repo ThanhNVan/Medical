@@ -65,7 +65,7 @@ public class UserLogicProviders : BaseLogicProvider<User, IUserDataProviders, Id
             }
 
             result = new SignInSuccessModel();
-            var roleString = await this._dataContext.UserRole.GetStringRoleByUserIdAsync(dbResult.Id);
+            var roleString = await this._dataContext.UserRole.GetStringDepartmentAndRoleByUserIdAsync(dbResult.Id);
             var token = await this.GenerateTokenAsync(dbResult, roleString);
 
             result.Email = dbResult.Email;
@@ -159,7 +159,7 @@ public class UserLogicProviders : BaseLogicProvider<User, IUserDataProviders, Id
             await this._dataContext.RefreshToken.UpdateAsync(dbToken);
 
             var dbUser = await this._dataContext.User.GetSingleByIdAsync(dbToken.UserId);
-            var roleString = await this._dataContext.UserRole.GetStringRoleByUserIdAsync(dbUser.Id);
+            var roleString = await this._dataContext.UserRole.GetStringDepartmentAndRoleByUserIdAsync(dbUser.Id);
             var token = await this.GenerateTokenAsync(dbUser, roleString);
 
             return token; //"Renew token success",

@@ -23,13 +23,13 @@ public class IdentityDbContext : DbContext
     public DbSet<Department> Departments { get; set; }
     #endregion
 
-   // #region [ Methods - Protected ]
-    //protected override void OnModelCreating(ModelBuilder builder)
-    //{
-    //    base.OnModelCreating(builder);
-    //    //SeedRoles(builder);
-    //}
-    //#endregion
+    #region [ Methods - Protected ]
+    protected override void OnModelCreating(ModelBuilder builder)
+    {
+        base.OnModelCreating(builder);
+        SeedData(builder);
+    }
+    #endregion
 
     public static void SeedData(ModelBuilder builder)
     {
