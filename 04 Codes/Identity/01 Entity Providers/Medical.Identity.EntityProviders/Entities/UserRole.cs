@@ -7,7 +7,7 @@ using System.Text.Json.Serialization;
 namespace Medical.Identity.EntityProviders;
 
 [Table(nameof(UserRole))]
-[Index(nameof(RoleId), nameof(UserId), IsUnique = true)]
+[Index(nameof(RoleId), nameof(UserId), nameof(DepartmentId), IsUnique = true)]
 public class UserRole : BaseEntity
 {
     #region [ Properties ]
@@ -30,5 +30,15 @@ public class UserRole : BaseEntity
     [ForeignKey(nameof(UserId))]
     [InverseProperty("UserRoles")]
     public User User { get; set; }
+
+    [Required]
+    [DataType(DataType.Text)]
+    public string DepartmentId { get; set; }
+
+    [Required]
+    [JsonIgnore]
+    [ForeignKey(nameof(DepartmentId))]
+    [InverseProperty("UserRoles")]
+    public Department Department { get; set; }
     #endregion
 }

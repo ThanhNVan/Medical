@@ -19,6 +19,8 @@ public class IdentityDbContext : DbContext
     public DbSet<User> Users { get; set; }
 
     public DbSet<UserRole> UserRoles { get; set; }
+
+    public DbSet<Department> Departments { get; set; }
     #endregion
 
    // #region [ Methods - Protected ]
@@ -29,37 +31,41 @@ public class IdentityDbContext : DbContext
     //}
     //#endregion
 
-    public static void SeedRoles(ModelBuilder builder)
+    public static void SeedData(ModelBuilder builder)
     {
+        var department_0 = new Department();
+        department_0.Name = "Human Resource";
+        
+        var department_1 = new Department();
+        department_1.Name = "IT";
+        
+        var department_2 = new Department();
+        department_2.Name = "Sales";
+
+        builder.Entity<Department>().HasData(
+               department_0, department_1, department_2
+           );
+
         var role_0 = new Role();
-        role_0.Name = "Human Resource";
+        role_0.Name = "Staff";
         
         var role_1 = new Role();
-        role_1.Name = "IT";
+        role_1.Name = "Admin";
         
         var role_2 = new Role();
-        role_2.Name = "Staff";
+        role_2.Name = "Manager";
         
         var role_3 = new Role();
-        role_3.Name = "Admin";
+        role_3.Name = "Doctor";
         
         var role_4 = new Role();
-        role_4.Name = "Manager";
+        role_4.Name = "Nurse";
         
         var role_5 = new Role();
-        role_5.Name = "Sales";
-        
-        var role_6 = new Role();
-        role_6.Name = "Doctor";
-        
-        var role_7 = new Role();
-        role_7.Name = "Nurse";
-        
-        var role_8 = new Role();
-        role_8.Name = "Pharmacist";
+        role_5.Name = "Pharmacist";
 
         builder.Entity<Role>().HasData(
-                role_0, role_1, role_2, role_3, role_4, role_5, role_6, role_7, role_8
+                role_0, role_1, role_2, role_3, role_4, role_5
             );
     }
 }

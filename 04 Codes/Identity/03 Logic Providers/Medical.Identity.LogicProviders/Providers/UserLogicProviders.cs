@@ -1,6 +1,5 @@
 ﻿using Medical.Identity.DataProviders;
 using Medical.Identity.EntityProviders;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
 using ShareLibrary.DataProviders;
@@ -57,7 +56,7 @@ public class UserLogicProviders : BaseLogicProvider<User, IUserDataProviders, Id
             if (dbResult == null)
             {
                 return result;
-            } 
+            }
 
             var hashPassword = this._encriptionProvider.HashWithSalt(model.Password, dbResult.Id);
             if (hashPassword != dbResult.PasswordHash)
@@ -75,8 +74,7 @@ public class UserLogicProviders : BaseLogicProvider<User, IUserDataProviders, Id
             result.RefreshToken = token.RefreshToken;
 
             return result;
-        } 
-        catch (Exception ex)
+        } catch (Exception ex)
         {
             this._logger.LogError(ex.Message);
             return result;
@@ -111,9 +109,11 @@ public class UserLogicProviders : BaseLogicProvider<User, IUserDataProviders, Id
             var tokenInVerification = jwtTokenHandler.ValidateToken(model.AccessToken, tokenValidParam, out var validatedToken);
 
             // check 2: check algorithm
-            if (validatedToken is JwtSecurityToken jwtSecurityToken) {
+            if (validatedToken is JwtSecurityToken jwtSecurityToken)
+            {
                 var result = jwtSecurityToken.Header.Alg.Equals(SecurityAlgorithms.HmacSha512, StringComparison.InvariantCultureIgnoreCase);
-                if (!result) { // false
+                if (!result)
+                { // false
                     return null; //"Invalid Token"
                 }
             }
@@ -128,7 +128,7 @@ public class UserLogicProviders : BaseLogicProvider<User, IUserDataProviders, Id
             }
 
             // Check 4: Check refreshToken is existed in the db
-            
+
             var dbToken = await this._dataContext.RefreshToken.GetSingleByTokenAsync(model.RefreshToken);
             if (dbToken == null)
             {
@@ -172,7 +172,7 @@ public class UserLogicProviders : BaseLogicProvider<User, IUserDataProviders, Id
     #endregion
 
     #region [ Private Methods -  ]
-    private async  Task<TokenModel> GenerateTokenAsync(User user,string userRoleString)
+    private async Task<TokenModel> GenerateTokenAsync(User user, string userRoleString)
     {
         var userRole = string.Empty;
 
