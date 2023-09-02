@@ -60,6 +60,7 @@ public class AuthenticationController : ControllerBase
     #endregion
 
     #region [ Methods - RenewToken ]
+    [Authorize]
     [HttpPost(nameof(IdentityMethodUrl.RenewToken))]
     public async Task<IActionResult> RenewTokenAsync([FromBody] TokenModel TokenModel)
     {

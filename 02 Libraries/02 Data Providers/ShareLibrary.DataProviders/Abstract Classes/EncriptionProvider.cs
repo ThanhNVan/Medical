@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 
@@ -76,6 +77,11 @@ public class EncriptionProvider : IEncriptionProvider
     #region [ Methods - Hash ]
     public string HashWithSalt(string textString, string saltString)
     {
+        if (saltString.Count() < 16)
+        {
+            saltString += saltString;
+        }
+
         var result = string.Empty;
 
         var algorithm = SHA512.Create();

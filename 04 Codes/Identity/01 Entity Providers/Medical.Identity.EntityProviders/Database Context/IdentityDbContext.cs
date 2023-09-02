@@ -27,11 +27,11 @@ public class IdentityDbContext : DbContext
     protected override void OnModelCreating(ModelBuilder builder)
     {
         base.OnModelCreating(builder);
-        SeedData(builder);
+        //SeedData(builder);
     }
     #endregion
 
-    public static void SeedData(ModelBuilder builder)
+    public static void SeedRoleAndDepartmentData(ModelBuilder builder)
     {
         
         var department_1 = new Department();
@@ -74,4 +74,6 @@ public class IdentityDbContext : DbContext
                 role_6
             );
     }
+
+    
 }

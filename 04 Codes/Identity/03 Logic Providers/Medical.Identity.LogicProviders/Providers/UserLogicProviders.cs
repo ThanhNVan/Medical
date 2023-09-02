@@ -65,8 +65,8 @@ public class UserLogicProviders : BaseLogicProvider<User, IUserDataProviders, Id
             }
 
             result = new SignInSuccessModel();
-            var roleString = await this._dataContext.UserRole.GetStringDepartmentAndRoleByUserIdAsync(dbResult.Id);
-            var token = await this.GenerateTokenAsync(dbResult, roleString);
+            var departmentAndRoleString = await this._dataContext.UserRole.GetStringDepartmentAndRoleByUserIdAsync(dbResult.Id);
+            var token = await this.GenerateTokenAsync(dbResult, departmentAndRoleString);
 
             result.Email = dbResult.Email;
             result.Fullname = dbResult.Fullname;
@@ -172,7 +172,7 @@ public class UserLogicProviders : BaseLogicProvider<User, IUserDataProviders, Id
     #endregion
 
     #region [ Private Methods -  ]
-    private async Task<TokenModel> GenerateTokenAsync(User user, string userRoleString)
+    private async Task<TokenModel> GenerateTokenAsync(User user, DepartmentRoleModel departmentRoleModel)
     {
         var userRole = string.Empty;
 
@@ -187,7 +187,8 @@ public class UserLogicProviders : BaseLogicProvider<User, IUserDataProviders, Id
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
 
                 // roles
-                new Claim(ClaimTypes.Role, userRoleString),
+                new Claim(ClaimTypes.Role, departmentRoleModel.Role),
+                new Claim(IdentityDepartment.Department, departmentRoleModel.Department),
             }),
             Expires = DateTime.UtcNow.AddDays(3),
             SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(secretKeyBytes), SecurityAlgorithms.HmacSha512Signature)

@@ -14,9 +14,9 @@ public class UserRoleDataProviders : BaseDataProvider<UserRole, IdentityDbContex
     #endregion
 
     #region [ Methods -  ]
-    public async Task<string> GetStringDepartmentAndRoleByUserIdAsync(string userId)
+    public async Task<DepartmentRoleModel> GetStringDepartmentAndRoleByUserIdAsync(string userId)
     {
-        var result = string.Empty;
+        var result = new DepartmentRoleModel();
         try
         {
             using var context = await this.GetContextAsync();
@@ -28,17 +28,19 @@ public class UserRoleDataProviders : BaseDataProvider<UserRole, IdentityDbContex
 
             if (dbResults.Count <= 0 )
             {
-                return string.Empty;
+                return result;
             }
 
             for (int i = 0; i < dbResults.Count; i++)
             {
                 if (i == 0)
                 {
-                    result += dbResults[i].Role + " " + dbResults[i].Department;
+                    result.Role += dbResults[i].Role;
+                    result.Department += dbResults[i].Department;
                 } else
                 {
-                    result += ", " + dbResults[i].Role + " " + dbResults[i].Department;
+                    result.Role += ", " + dbResults[i].Role;
+                    result.Department += ", " + dbResults[i].Department;
                 }
             }
 

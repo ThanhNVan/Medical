@@ -4,6 +4,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using System;
+using System.Linq;
 using System.Text;
 
 namespace Medical.Identity.WebApiProviders;
@@ -41,7 +42,7 @@ public static class ServiceExtensions
             {
                 policy.RequireAssertion(context =>
                     context.User.IsInRole(IdentityRole.Admin) ||
-                    context.User.HasClaim(claims => claims.Type == IdentityDepartment.Department && claims.Value == IdentityDepartment.HR ) && context.User.IsInRole(IdentityRole.Manager));
+                    context.User.HasClaim(claims => claims.Type == IdentityDepartment.Department && claims.Value.Contains( IdentityDepartment.HR) ) && context.User.IsInRole(IdentityRole.Manager));
             });
         });
     }
