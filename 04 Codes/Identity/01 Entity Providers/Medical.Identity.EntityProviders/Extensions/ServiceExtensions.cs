@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using System;
 
 namespace Medical.Identity.EntityProviders;
 
@@ -32,5 +33,7 @@ public static class ServiceExtensions
         configuration.GetSection("AppSettingModel").Bind(appSettingModel);
 
         services.AddSingleton(appSettingModel);
+
+        services.AddScoped(p => p.GetRequiredService<IDbContextFactory<IdentityDbContext>>().CreateDbContext());
     }
 }

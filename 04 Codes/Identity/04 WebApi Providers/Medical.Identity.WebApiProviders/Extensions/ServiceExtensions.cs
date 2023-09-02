@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
+﻿using Medical.Identity.EntityProviders;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
@@ -25,6 +26,23 @@ public static class ServiceExtensions
 
                 ClockSkew = TimeSpan.Zero
             };
+        });
+    }
+
+    public static void AddAuthorizationProviders(this IServiceCollection services)
+    {
+        services.AddAuthorization(options => {
+            options.AddPolicy(IdentityRole.Admin, policy =>
+            {
+                policy.RequireRole(IdentityRole.Admin);
+            });
+
+            options.AddPolicy(IdentityRole.Manager, policy =>
+            {
+                policy.RequireAssertion(context =>
+                    context.User.IsInRole(IdentityRole.Admin) ||
+                    context.User.HasClaim(claims => claims.Type == IdentityDepartment.Department && claims.Value == IdentityDepartment.HR ) && context.User.IsInRole(IdentityRole.Manager));
+            });
         });
     }
 }

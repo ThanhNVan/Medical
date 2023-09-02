@@ -9,13 +9,15 @@ public class IdentityDataContext
                                 IRefreshTokenDataProviders refreshToken,
                                 IRoleDataProviders role,
                                 IUserDataProviders user,
-                                IUserRoleDataProviders userRole)
+                                IUserRoleDataProviders userRole,
+                                IDepartmentDataProviders department)
     {
         Encription = encription;
         RefreshToken = refreshToken;
         Role = role;
         User = user;
         UserRole = userRole;
+        Department = department;
     }
 
     #endregion
@@ -26,6 +28,7 @@ public class IdentityDataContext
     public IRoleDataProviders Role { get; }
     public IUserDataProviders User { get; }
     public IUserRoleDataProviders UserRole { get; }
+    public IDepartmentDataProviders Department { get; }
 
     #endregion
 }

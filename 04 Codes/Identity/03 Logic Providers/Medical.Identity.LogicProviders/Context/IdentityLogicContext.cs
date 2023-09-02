@@ -6,12 +6,14 @@ public class IdentityLogicContext
     public IdentityLogicContext(IRefreshTokenLogicProviders refreshToken,
                                 IRoleLogicProviders role,
                                 IUserLogicProviders user,
-                                IUserRoleLogicProviders userRole)
+                                IUserRoleLogicProviders userRole,
+                                IDepartmentLogicProviders department)
     {
         RefreshToken = refreshToken;
         Role = role;
         User = user;
         UserRole = userRole;
+        Department = department;
     }
     #endregion
 
@@ -20,5 +22,6 @@ public class IdentityLogicContext
     public IRoleLogicProviders Role { get; }
     public IUserLogicProviders User { get; }
     public IUserRoleLogicProviders UserRole { get; }
+    public IDepartmentLogicProviders Department { get; }
     #endregion
 }

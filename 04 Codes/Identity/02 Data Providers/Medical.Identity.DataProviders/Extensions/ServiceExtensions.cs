@@ -13,6 +13,7 @@ public static class ServiceExtensions
         services.AddTransient<IRoleDataProviders, RoleDataProviders>();
         services.AddTransient<IUserDataProviders, UserDataProviders>();
         services.AddTransient<IUserRoleDataProviders, UserRoleDataProviders>();
+        services.AddTransient<IDepartmentDataProviders, DepartmentDataProviders>();
 
         services.AddTransient<IdentityDataContext>();
     }

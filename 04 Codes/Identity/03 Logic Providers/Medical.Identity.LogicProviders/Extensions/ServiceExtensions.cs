@@ -11,6 +11,7 @@ public static class ServiceExtensions
         services.AddTransient<IRoleLogicProviders, RoleLogicProviders>();
         services.AddTransient<IUserLogicProviders, UserLogicProviders>();
         services.AddTransient<IUserRoleLogicProviders, UserRoleLogicProviders>();
+        services.AddTransient<IDepartmentLogicProviders, DepartmentLogicProviders>();
 
         services.AddTransient<IdentityLogicContext>();
     }
