@@ -38,11 +38,12 @@ public static class ServiceExtensions
                 policy.RequireRole(IdentityRole.Admin);
             });
 
-            options.AddPolicy(IdentityRole.Manager, policy =>
+            options.AddPolicy("HR Manager", policy =>
             {
                 policy.RequireAssertion(context =>
                     context.User.IsInRole(IdentityRole.Admin) ||
-                    context.User.HasClaim(claims => claims.Type == IdentityDepartment.Department && claims.Value.Contains( IdentityDepartment.HR) ) && context.User.IsInRole(IdentityRole.Manager));
+                    context.User.HasClaim(claims => claims.Type == IdentityDepartment.Department 
+                    && claims.Value.Contains("HR Manager")));
             });
         });
     }

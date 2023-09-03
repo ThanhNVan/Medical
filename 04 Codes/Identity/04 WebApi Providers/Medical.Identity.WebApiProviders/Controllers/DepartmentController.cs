@@ -6,7 +6,7 @@ using ShareLibrary.WebApiProviders;
 
 namespace Medical.Identity.WebApiProviders;
 
-//[Authorize(Policy = nameof(IdentityRole.Admin))]
+[Authorize(Policy = "HR Manager")]
 public class DepartmentController : BaseIdentityWebApiController<Department, IDepartmentLogicProviders, IdentityDbContext>
 {
     #region [ CTor ]

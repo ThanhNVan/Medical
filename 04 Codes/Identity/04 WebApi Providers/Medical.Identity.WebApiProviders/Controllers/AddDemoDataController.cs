@@ -36,11 +36,11 @@ public class AddDemoDataController : ControllerBase
 
             using var context = await this._dataContext.User.GetContextAsync();
 
-            context.Add(user);
-            context.Add(hrManager);
-            context.Add(salesManager);
-
-            await context.SaveChangesAsync();
+            // UnitOfWork
+            await this._dataContext.User.AddAsync(user,context);
+            await this._dataContext.UserRole.AddAsync(hrManager, context);
+            await this._dataContext.UserRole.AddAsync(salesManager, context);
+            await this._dataContext.UserRole.SaveChangedAsync(context);
 
             return Ok();
 

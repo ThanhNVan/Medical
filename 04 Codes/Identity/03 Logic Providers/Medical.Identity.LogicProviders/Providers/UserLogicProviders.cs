@@ -172,13 +172,16 @@ public class UserLogicProviders : BaseLogicProvider<User, IUserDataProviders, Id
     #endregion
 
     #region [ Private Methods -  ]
-    private async Task<TokenModel> GenerateTokenAsync(User user, DepartmentRoleModel departmentRoleModel)
+    private async Task<TokenModel> GenerateTokenAsync(User user, string departmentRoleModel)
     {
-        var userRole = string.Empty;
-
         var jwtTokenHandler = new JwtSecurityTokenHandler();
         var secretKeyBytes = Encoding.UTF8.GetBytes(_appSettingModel.SecretKey);
 
+        var role = string.Empty;
+        if (departmentRoleModel.Contains(IdentityRole.Admin))
+        {
+            role = IdentityRole.Admin;
+        }
         var tokenDescriptor = new SecurityTokenDescriptor
         {
             Subject = new ClaimsIdentity(new[] {
@@ -187,8 +190,8 @@ public class UserLogicProviders : BaseLogicProvider<User, IUserDataProviders, Id
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
 
                 // roles
-                new Claim(ClaimTypes.Role, departmentRoleModel.Role),
-                new Claim(IdentityDepartment.Department, departmentRoleModel.Department),
+                new Claim(ClaimTypes.Role, role),
+                new Claim(IdentityDepartment.Department, departmentRoleModel),
             }),
             Expires = DateTime.UtcNow.AddDays(3),
             SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(secretKeyBytes), SecurityAlgorithms.HmacSha512Signature)

@@ -6,6 +6,6 @@ namespace Medical.Identity.DataProviders;
 public interface IUserRoleDataProviders : IBaseDataProvider<UserRole, IdentityDbContext>
 {
     #region [ Methods -  ]
-    Task<DepartmentRoleModel> GetStringDepartmentAndRoleByUserIdAsync(string userId);
+    Task<string> GetStringDepartmentAndRoleByUserIdAsync(string userId);
     #endregion
 }
