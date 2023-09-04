@@ -14,4 +14,8 @@
     <ProjectReference Include="..\..\04 Codes\Platform\04 WebApi Providers\Medical.Platform.WebApiProviders\Medical.Platform.WebApiProviders.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Controllers\" />
+  </ItemGroup>
+
 </Project>
