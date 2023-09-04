@@ -45,6 +45,14 @@ public static class ServiceExtensions
                     context.User.HasClaim(claims => claims.Type == IdentityDepartment.Department 
                     && claims.Value.Contains("HR Manager")));
             });
+            
+            options.AddPolicy("Sales Manager", policy =>
+            {
+                policy.RequireAssertion(context =>
+                    context.User.IsInRole(IdentityRole.Admin) ||
+                    context.User.HasClaim(claims => claims.Type == IdentityDepartment.Department 
+                    && claims.Value.Contains("Sales Manager")));
+            });
         });
     }
 }
