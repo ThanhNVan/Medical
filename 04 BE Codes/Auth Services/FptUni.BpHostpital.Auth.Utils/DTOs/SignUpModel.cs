@@ -22,7 +22,7 @@ public class SignUpModel
     public string Lastname { get; set; }
 
     [Required]
-    [DataType(DataType.Text)]
-    public string Phone { get; set; }
+    [DataType(DataType.PhoneNumber)]
+    public string PhoneNumber { get; set; }
     #endregion
 }

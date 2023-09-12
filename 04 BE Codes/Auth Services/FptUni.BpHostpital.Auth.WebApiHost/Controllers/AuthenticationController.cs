@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace FptUni.BpHostpital.Auth.WebApiHost;
 
-[Route("Api/[controller]")]
+[Route("Api/V1/[controller]")]
 [ApiController]
 public class AuthenticationController : ControllerBase
 {
@@ -54,7 +54,24 @@ public class AuthenticationController : ControllerBase
     #endregion
 
     #region [ Methods - SignOut ]
+    [HttpPost(nameof(BaseMethodUrl.SignUp))]
+    public async Task<IActionResult> SignUpAsync([FromBody] SignUpModel model)
+    {
+        try
+        {
+            var result = await this._userService.SignUpAsync(model);
+            if (!result.Succeeded)
+            {
+                return BadRequest();
+            }
 
+            return Ok();
+        } catch (Exception ex)
+        {
+            this._logger.LogWarning(ex.Message);
+            return BadRequest();
+        }
+    }
     #endregion
 
     #region [ Methods - RenewToken ]

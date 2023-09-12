@@ -1,11 +1,9 @@
 ﻿using FptUni.BpHostpital.Auth.Repositories;
 using FptUni.BpHostpital.Auth.Utils;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.Extensions.Configuration;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
-using Newtonsoft.Json.Linq;
 using System;
-using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Security.Claims;
@@ -20,6 +18,7 @@ public class UserService : IUserService
     #region [ Fields ]
     private readonly UserManager<ApplicationUser> _userManager;
     private readonly SignInManager<ApplicationUser> _signInManager;
+    private readonly RoleManager<IdentityRole> _roleManager;
     private readonly IRefreshTokenRepository _refreshToken;
     private readonly JwtSettingModels _jwtSettingModels;
     #endregion
@@ -27,11 +26,13 @@ public class UserService : IUserService
     #region [ CTor ]
     public UserService(UserManager<ApplicationUser> userManager,
                         SignInManager<ApplicationUser> signInManager,
+                        RoleManager<IdentityRole> roleManager,
                         IRefreshTokenRepository refreshToken,
                         JwtSettingModels jwtSettingModels)
     {
         this._userManager = userManager;
         this._signInManager = signInManager;
+        this._roleManager = roleManager;
         this._refreshToken = refreshToken;
         this._jwtSettingModels = jwtSettingModels;
     }
@@ -69,11 +70,29 @@ public class UserService : IUserService
             Firstname = model.Firstname,
             Lastname = model.Lastname,
             Email = model.Email,
-            UserName = model.Email
+            UserName = model.Email,
+            PhoneNumber = model.PhoneNumber,
         };
 
+        //await _roleManager.CreateAsync(new IdentityRole(RoleConstants.Admin));
+        //await _roleManager.CreateAsync(new IdentityRole(RoleConstants.DepartmentDirector));
+        //await _roleManager.CreateAsync(new IdentityRole(RoleConstants.HRStaff));
+        //await _roleManager.CreateAsync(new IdentityRole(RoleConstants.HRManager));
+        //await _roleManager.CreateAsync(new IdentityRole(RoleConstants.SalesStaff));
+        //await _roleManager.CreateAsync(new IdentityRole(RoleConstants.SalesManager));
+        //await _roleManager.CreateAsync(new IdentityRole(RoleConstants.GeneralDirector));
+        //var cc = await _roleManager.Roles.ToListAsync();
+
         // auto write to AspNetUser table
-        return await _userManager.CreateAsync(user, model.Password);
+        var result = await _userManager.CreateAsync(user, model.Password);
+
+
+        //var dbUser = await this._userManager.FindByNameAsync(model.Email);
+        //await this._userManager.AddToRoleAsync(dbUser, RoleConstants.DepartmentDirector);
+        //var bb = await this._userManager.AddToRoleAsync(dbUser, RoleConstants.GeneralDirector);
+
+
+        return result;
     }
     #endregion
 
@@ -102,7 +121,13 @@ public class UserService : IUserService
 
         foreach (var item in roles.Select((value, i) => new { i, value }))
         {
-            rolesClaims += item.value;
+            if (item.i == 0)
+            {
+                rolesClaims += item.value;
+            } else
+            {
+                rolesClaims += ", " + item.value;
+            }
         }
         var tokenDescriptor = new SecurityTokenDescriptor
         {

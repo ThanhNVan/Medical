@@ -29,6 +29,10 @@ public static class BaseMethodUrl
 
     public static string SignIn = "/SignIn/";
 
+    public static string SignUp = "/SignUp/";
+
+    public static string SignOut = "/SignOut/";
+
     public static string GetSingleByEmail = "/GetSingleByEmail/";
 
     public static string GetListByUserId = "/GetListByUserId/";
