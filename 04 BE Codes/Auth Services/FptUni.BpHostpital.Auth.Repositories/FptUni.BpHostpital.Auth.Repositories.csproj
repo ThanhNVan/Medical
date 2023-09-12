@@ -6,4 +6,9 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\02 Libraries\02 Repositories\ShareLibrary.Repositories\ShareLibrary.Repositories.csproj" />
+    <ProjectReference Include="..\FptUni.BpHostpital.Auth.Utils\FptUni.BpHostpital.Auth.Utils.csproj" />
+  </ItemGroup>
+
 </Project>
