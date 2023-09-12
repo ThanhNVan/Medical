@@ -9,4 +9,6 @@ public interface IUserService
     Task<SignInSuccessModel> SignInAsync(SignInModel model);
 
     Task<IdentityResult> SignUpAsync(SignUpModel model);
+
+    Task<RenewTokenResponseModel> RenewTokenAsync(RenewTokenModel model);
 }

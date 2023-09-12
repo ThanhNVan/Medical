@@ -75,6 +75,24 @@ public class AuthenticationController : ControllerBase
     #endregion
 
     #region [ Methods - RenewToken ]
+    //[Authorize]
+    [HttpPost(nameof(BaseMethodUrl.RenewToken))]
+    public async Task<IActionResult> RenewTokenAsync([FromBody] RenewTokenModel model)
+    {
+        try
+        {
+            var result = await this._userService.RenewTokenAsync(model);
+            if (result is null)
+            {
+                return BadRequest();
+            }
 
+            return Ok(result);
+        } catch (Exception ex)
+        {
+            this._logger.LogWarning(ex.Message);
+            return BadRequest();
+        }
+    }
     #endregion
 }
