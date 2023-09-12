@@ -21,6 +21,6 @@ public class Department : BaseEntity
     [NotMapped]
     [JsonIgnore]
     [InverseProperty("Department")]
-    public virtual ICollection<User>? Users { get; set; }
+    public virtual ICollection<UserRole>? UserRoles { get; set; }
     #endregion
 }

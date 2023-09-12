@@ -1,4 +1,5 @@
-﻿using ShareLibrary.EntityProviders;
+﻿using Microsoft.EntityFrameworkCore;
+using ShareLibrary.EntityProviders;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -8,6 +9,7 @@ using System.Text.Json.Serialization;
 namespace FptUni.BpHostpital.HR.Utils;
 
 [Table(nameof(User))]
+[Index(nameof(EmailAddress), IsUnique = true)]
 public class User : BaseEntity
 {
     #region [ Properties ]
@@ -24,10 +26,6 @@ public class User : BaseEntity
     public string Fullname => Firstname + " " + Lastname;
 
     [Required]
-    [DataType(DataType.DateTime)]
-    public DateTime DateHired { get; set; }
-
-    [Required]
     [DataType(DataType.PhoneNumber)]
     public string PhoneNumber1 { get; set; }
     
@@ -40,13 +38,13 @@ public class User : BaseEntity
     public string EmailAddress { get; set;}
     #endregion
 
-    #region [ Properties - FK ]
-    [Required]
-    public string DepartmentId { get; set; }
-
+    #region [ Properties - Virtual]
     [JsonIgnore]
-    [ForeignKey(nameof(DepartmentId))]
-    [InverseProperty("Users")]
-    public Department Department { get; set; }
+    [InverseProperty("User")]
+    public virtual ICollection<ContactPerson>? ContactPersons { get; set; }
+    
+    [JsonIgnore]
+    [InverseProperty("User")]
+    public virtual ICollection<UserRole>? UserRoles { get; set; }
     #endregion
 }
