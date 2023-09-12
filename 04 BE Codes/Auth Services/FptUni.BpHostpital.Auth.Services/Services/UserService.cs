@@ -105,8 +105,6 @@ public class UserService : IUserService
     {
         try
         {
-
-
             var jwtTokenHandler = new JwtSecurityTokenHandler();
             var secretKeyBytes = Encoding.UTF8.GetBytes(this._jwtSettingModels.Secret);
             var tokenValidParam = new TokenValidationParameters

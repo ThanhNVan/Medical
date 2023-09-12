@@ -7,9 +7,9 @@ using System.Text;
 
 namespace FptUni.BpHostpital.Auth.WebApiHost;
 
-public static class ServiceExtensions
+public static class AuthenticationPolicies
 {
-    public static void AddAuthenticationProviders(this IServiceCollection services,
+    public static void AddAuthenticationPolicies(this IServiceCollection services,
              IConfiguration configuration)
     {
 

@@ -18,7 +18,7 @@ public class Program
         builder.Services.AddAuthRepositories();
         builder.Services.AddAuthServices();
 
-        builder.Services.AddAuthenticationProviders(builder.Configuration);
+        builder.Services.AddAuthenticationPolicies(builder.Configuration);
 
         builder.Services.AddAuthorizationPolicies();
         builder.Services.AddControllers();

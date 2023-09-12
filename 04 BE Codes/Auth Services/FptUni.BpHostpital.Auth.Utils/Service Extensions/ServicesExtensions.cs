@@ -9,7 +9,7 @@ public static class ServicesExtensions
 {
     public static void AddAuthServiceSqlServerProviders(this IServiceCollection services,
               IConfiguration configuration,
-              string connectionStringKey = "DefaultConnection")
+              string connectionStringKey = "AuthConnection")
     {
         var connectionString = configuration.GetConnectionString(connectionStringKey);
         var options = new DbContextOptions<AppDbContext>();

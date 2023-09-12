@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using FptUni.BpHostpital.HR.Utils;
 
 namespace FptUni.BpHostpital.HR.WebApiHost;
 
@@ -11,7 +12,11 @@ public class Program
         var builder = WebApplication.CreateBuilder(args);
 
         // Add services to the container.
+        builder.Services.AddHrServiceSqlServerProviders(builder.Configuration);
 
+        builder.Services.AddHrAuthenticationPolicies(builder.Configuration);
+
+        builder.Services.AddHrAuthorizationPolicies();
         builder.Services.AddControllers();
         // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
         builder.Services.AddEndpointsApiExplorer();
@@ -27,6 +32,8 @@ public class Program
         }
 
         app.UseHttpsRedirection();
+
+        app.UseAuthentication();
 
         app.UseAuthorization();
 

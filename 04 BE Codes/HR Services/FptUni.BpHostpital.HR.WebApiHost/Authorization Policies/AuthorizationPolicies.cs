@@ -2,12 +2,12 @@
 using ShareLibrary.EntityProviders;
 using System.Security.Claims;
 
-namespace FptUni.BpHostpital.Auth.WebApiHost;
+namespace FptUni.BpHostpital.HR.WebApiHost;
 
 public static class AuthorizationPolicies
 {
     #region [ Method - Policies]
-    public static void AddAuthorizationPolicies(this IServiceCollection services)
+    public static void AddHrAuthorizationPolicies(this IServiceCollection services)
     {
         services.AddAuthorization(options =>
         {

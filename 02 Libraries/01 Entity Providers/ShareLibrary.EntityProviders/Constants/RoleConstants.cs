@@ -1,4 +1,4 @@
-﻿namespace FptUni.BpHostpital.Auth.Utils;
+﻿namespace ShareLibrary.EntityProviders;
 
 public static class RoleConstants
 {
