@@ -14,7 +14,5 @@ public class HrDbContext : DbContext
     #region [ Properties - DbSet ]
     public DbSet<User> Users { get; set; }
     public DbSet<Department> Departments { get; set; }
-
-    public DbSet<UserPhone> UserPhones { get; set; }
     #endregion
 }

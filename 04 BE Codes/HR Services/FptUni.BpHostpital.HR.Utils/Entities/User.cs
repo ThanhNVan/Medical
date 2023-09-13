@@ -23,7 +23,7 @@ public class User : BaseEntity
 
     [NotMapped]
     [JsonIgnore]
-    public string Fullname => Firstname + " " + Lastname;
+    public string Fullname => Firstname + " " + Lastname; 
 
     [Required]
     [DataType(DataType.PhoneNumber)]

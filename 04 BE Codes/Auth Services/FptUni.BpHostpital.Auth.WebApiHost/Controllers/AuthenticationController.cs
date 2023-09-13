@@ -53,7 +53,7 @@ public class AuthenticationController : ControllerBase
     }
     #endregion
 
-    #region [ Methods - SignOut ]
+    #region [ Methods - SignUp ]
     [HttpPost(nameof(BaseMethodUrl.SignUp))]
     public async Task<IActionResult> SignUpAsync([FromBody] SignUpModel model)
     {
