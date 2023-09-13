@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using ShareLibrary.EntityProviders;
-using ShareLibrary.LogicProviders;
+using ShareLibrary.Services;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
@@ -12,19 +12,19 @@ namespace ShareLibrary.WebApiProviders;
 
 [ApiController]
 [Route("Api/V1/[controller]")]
-public abstract class BaseWebApiController<TEntity, TLogicProvider, TContext> : ControllerBase
+public abstract class BaseWebApiController<TEntity, TService, TContext> : ControllerBase
     where TEntity : BaseEntity
     where TContext : DbContext
-    where TLogicProvider : IBaseLogicProvider<TEntity>
+    where TService : IBaseService<TEntity>
 {
     #region [ Fields ]
-    protected readonly ILogger<BaseWebApiController<TEntity, TLogicProvider, TContext>> _logger;
-    protected readonly TLogicProvider _logicProvider;
+    protected readonly ILogger<BaseWebApiController<TEntity, TService, TContext>> _logger;
+    protected readonly TService _logicProvider;
     #endregion
 
     #region [ CTor ]
-    public BaseWebApiController(ILogger<BaseWebApiController<TEntity, TLogicProvider, TContext>> logger,
-                                TLogicProvider logicProvider)
+    public BaseWebApiController(ILogger<BaseWebApiController<TEntity, TService, TContext>> logger,
+                                TService logicProvider)
     {
 
         this._logger = logger;
