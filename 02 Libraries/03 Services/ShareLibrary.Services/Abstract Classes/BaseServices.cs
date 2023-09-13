@@ -19,10 +19,10 @@ public abstract class BaseServices<TEntity, TRepository, TContext> : IBaseServic
     #endregion
 
     #region [ CTor ]
-    public BaseServices(ILogger<BaseServices<TEntity, TRepository, TContext>> logger, TRepository dataProvider, IEncriptionProvider encriptionProvider)
+    public BaseServices(ILogger<BaseServices<TEntity, TRepository, TContext>> logger, TRepository repository, IEncriptionProvider encriptionProvider)
     {
         this._logger = logger;
-        this._repository = dataProvider;
+        this._repository = repository;
         this._encriptionProvider = encriptionProvider;
     }
     #endregion
