@@ -12,7 +12,11 @@ public class HrDbContext : DbContext
     #endregion
 
     #region [ Properties - DbSet ]
-    public DbSet<User> Users { get; set; }
+    public DbSet<ContactPerson> ContactPersons { get; set; }
     public DbSet<Department> Departments { get; set; }
+    public DbSet<Profile> Profiles { get; set; }
+    public DbSet<Role> Roles { get; set; }
+    public DbSet<User> Users { get; set; }
+    public DbSet<UserRole> UserRoles { get; set; }
     #endregion
 }
