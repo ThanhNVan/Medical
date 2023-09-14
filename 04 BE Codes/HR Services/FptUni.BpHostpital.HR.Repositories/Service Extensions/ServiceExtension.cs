@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using ShareLibrary.Repositories;
 
 namespace FptUni.BpHostpital.HR.Repositories;
 
@@ -11,7 +12,8 @@ public static class ServiceExtension
         services.AddTransient<IProfileRepository, ProfileRepository>();
         services.AddTransient<IRoleRepository, RoleRepository>();
         services.AddTransient<IUserRepository, UserRepository>();
-        services.AddTransient<IUserRoleRepository, IUserRoleRepository>();
+        services.AddTransient<IUserRoleRepository, UserRoleRepository>();
+        services.AddTransient<IEncriptionProvider, EncriptionProvider>();
 
 
         services.AddTransient<RepositoryContext>();
