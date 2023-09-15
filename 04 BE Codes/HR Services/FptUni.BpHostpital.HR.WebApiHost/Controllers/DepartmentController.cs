@@ -8,7 +8,7 @@ namespace FptUni.BpHostpital.HR.WebApiHost;
 public class DepartmentController : BaseWebApiController<Department, IDepartmentService, HrDbContext>
 {
     #region [ CTor ]
-    public DepartmentController(ILogger<BaseWebApiController<Department, IDepartmentService, HrDbContext>> logger, IDepartmentService logicProvider) : base(logger, logicProvider)
+    public DepartmentController(ILogger<DepartmentController> logger, IDepartmentService logicProvider) : base(logger, logicProvider)
     {
     }
     #endregion

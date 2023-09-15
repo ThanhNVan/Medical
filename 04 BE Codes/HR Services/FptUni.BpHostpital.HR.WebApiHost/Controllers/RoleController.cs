@@ -8,7 +8,7 @@ namespace FptUni.BpHostpital.HR.WebApiHost;
 public class RoleController : BaseWebApiController<Role, IRoleService, HrDbContext>
 {
     #region [ CTor ]
-    public RoleController(ILogger<BaseWebApiController<Role, IRoleService, HrDbContext>> logger, IRoleService logicProvider) : base(logger, logicProvider)
+    public RoleController(ILogger<RoleController> logger, IRoleService logicProvider) : base(logger, logicProvider)
     {
     }
     #endregion

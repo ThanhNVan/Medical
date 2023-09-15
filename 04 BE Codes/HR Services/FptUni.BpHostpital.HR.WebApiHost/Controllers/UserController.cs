@@ -8,7 +8,7 @@ namespace FptUni.BpHostpital.HR.WebApiHost;
 public class UserController : BaseWebApiController<User, IUserService, HrDbContext>
 {
     #region [ CTor ]
-    public UserController(ILogger<BaseWebApiController<User, IUserService, HrDbContext>> logger, IUserService logicProvider) : base(logger, logicProvider)
+    public UserController(ILogger<UserController> logger, IUserService logicProvider) : base(logger, logicProvider)
     {
     }
     #endregion

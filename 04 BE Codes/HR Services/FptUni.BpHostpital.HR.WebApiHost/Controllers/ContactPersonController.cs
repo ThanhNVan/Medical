@@ -8,7 +8,7 @@ namespace FptUni.BpHostpital.HR.WebApiHost;
 public class ContactPersonController : BaseWebApiController<ContactPerson, IContactPersonService, HrDbContext>
 {
     #region [ CTor ]
-    public ContactPersonController(ILogger<BaseWebApiController<ContactPerson, IContactPersonService, HrDbContext>> logger, IContactPersonService logicProvider) : base(logger, logicProvider)
+    public ContactPersonController(ILogger<ContactPersonController> logger, IContactPersonService logicProvider) : base(logger, logicProvider)
     {
     }
     #endregion

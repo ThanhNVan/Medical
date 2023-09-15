@@ -8,7 +8,7 @@ namespace FptUni.BpHostpital.HR.WebApiHost;
 public class ProfileController : BaseWebApiController<Profile, IProfileService, HrDbContext>
 {
     #region [ CTor ]
-    public ProfileController(ILogger<BaseWebApiController<Profile, IProfileService, HrDbContext>> logger, IProfileService logicProvider) : base(logger, logicProvider)
+    public ProfileController(ILogger<ProfileController> logger, IProfileService logicProvider) : base(logger, logicProvider)
     {
     }
     #endregion
