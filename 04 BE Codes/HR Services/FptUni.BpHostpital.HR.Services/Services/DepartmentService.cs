@@ -9,7 +9,7 @@ namespace FptUni.BpHostpital.HR.Services;
 public class DepartmentService : BaseServices<Department, IDepartmentRepository, HrDbContext>, IDepartmentService
 {
     #region [ CTor ]
-    public DepartmentService(ILogger<BaseServices<Department, IDepartmentRepository, HrDbContext>> logger, IDepartmentRepository repository, IEncriptionProvider encriptionProvider) : base(logger, repository, encriptionProvider)
+    public DepartmentService(ILogger<DepartmentService> logger, IDepartmentRepository repository, IEncriptionProvider encriptionProvider) : base(logger, repository, encriptionProvider)
     {
     }
     #endregion

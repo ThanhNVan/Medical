@@ -9,7 +9,7 @@ namespace FptUni.BpHostpital.HR.Services;
 public class UserRoleService : BaseServices<UserRole, IUserRoleRepository, HrDbContext>, IUserRoleService
 {
     #region [ CTor ]
-    public UserRoleService(ILogger<BaseServices<UserRole, IUserRoleRepository, HrDbContext>> logger, IUserRoleRepository repository, IEncriptionProvider encriptionProvider) : base(logger, repository, encriptionProvider)
+    public UserRoleService(ILogger<UserRoleService> logger, IUserRoleRepository repository, IEncriptionProvider encriptionProvider) : base(logger, repository, encriptionProvider)
     {
     }
     #endregion

@@ -9,7 +9,7 @@ namespace FptUni.BpHostpital.HR.Services;
 public class ProfileService : BaseServices<Profile, IProfileRepository, HrDbContext>, IProfileService
 {
     #region [ CTor ]
-    public ProfileService(ILogger<BaseServices<Profile, IProfileRepository, HrDbContext>> logger, IProfileRepository repository, IEncriptionProvider encriptionProvider) : base(logger, repository, encriptionProvider)
+    public ProfileService(ILogger<ProfileService> logger, IProfileRepository repository, IEncriptionProvider encriptionProvider) : base(logger, repository, encriptionProvider)
     {
     }
     #endregion

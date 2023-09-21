@@ -8,7 +8,7 @@ namespace FptUni.BpHostpital.HR.Repositories;
 public class ContactPersonRepository : BaseRepository<ContactPerson, HrDbContext>, IContactPersonRepository
 {
     #region [ CTor ]
-    public ContactPersonRepository(ILogger<BaseRepository<ContactPerson, HrDbContext>> logger, IDbContextFactory<HrDbContext> dbContextFactory, IEncriptionProvider encriptionProvider) : base(logger, dbContextFactory, encriptionProvider)
+    public ContactPersonRepository(ILogger<ContactPersonRepository> logger, IDbContextFactory<HrDbContext> dbContextFactory, IEncriptionProvider encriptionProvider) : base(logger, dbContextFactory, encriptionProvider)
     {
     }
     #endregion

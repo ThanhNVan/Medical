@@ -9,7 +9,7 @@ namespace FptUni.BpHostpital.HR.Repositories;
 public class RoleRepository : BaseRepository<Role, HrDbContext>, IRoleRepository
 {
     #region [ CTor ]
-    public RoleRepository(ILogger<BaseRepository<Role, HrDbContext>> logger, IDbContextFactory<HrDbContext> dbContextFactory, IEncriptionProvider encriptionProvider) : base(logger, dbContextFactory, encriptionProvider)
+    public RoleRepository(ILogger<RoleRepository> logger, IDbContextFactory<HrDbContext> dbContextFactory, IEncriptionProvider encriptionProvider) : base(logger, dbContextFactory, encriptionProvider)
     {
     }
     #endregion
