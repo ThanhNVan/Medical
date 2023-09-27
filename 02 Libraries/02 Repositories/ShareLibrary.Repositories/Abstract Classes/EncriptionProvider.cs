@@ -16,7 +16,7 @@ public class EncriptionProvider : IEncriptionProvider
     #endregion
 
     #region [ Methods - Encrypt ]
-    public string Encrypt(string text, string salt)
+    public string EncryptWithSalt(string text, string salt)
     {
         var result = string.Empty;
         var key = salt.Substring(0, 16);

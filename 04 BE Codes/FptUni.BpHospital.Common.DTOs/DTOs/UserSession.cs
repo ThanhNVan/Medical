@@ -1,6 +1,8 @@
-﻿namespace FptUni.BpHostpital.Auth.Utils;
+﻿using System;
 
-public class SignInSuccessModel
+namespace FptUni.BpHospital.Common.DTOs;
+
+public class UserSession
 {
     #region [ Properties ]
     public string Email { get; set; }
@@ -10,5 +12,9 @@ public class SignInSuccessModel
     public string AccessToken { get; set; }
 
     public string RefreshToken { get; set; }
+
+    public int ExpriesIn { get; set; }
+
+    public DateTime ExpiryTimeStamp { get; set; }
     #endregion
 }

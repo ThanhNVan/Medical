@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace FptUni.BpHostpital.Auth.Utils;
+namespace FptUni.BpHospital.Common.DTOs;
 
 public class SignUpModel
 {

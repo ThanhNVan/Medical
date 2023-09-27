@@ -1,9 +1,8 @@
-using FptUni.BpHospital.BlazorFE.Data;
+using FptUni.BpHospital.HttpClientProviders;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Syncfusion.Blazor;
-using Syncfusion.Licensing;
 
 namespace FptUni.BpHospital.BlazorFE;
 
@@ -14,13 +13,15 @@ public class Program
         var builder = WebApplication.CreateBuilder(args);
 
         // Add services to the container.
-        builder.Services.AddRazorPages();
         builder.Services.AddSyncfusionBlazor();
+        builder.Services.AddRazorPages();
         builder.Services.AddServerSideBlazor();
-        builder.Services.AddSingleton<WeatherForecastService>();
+        builder.Services.AddHttpClientProviders(builder.Configuration);
+        builder.Services.AddServices();
 
         var app = builder.Build();
-        SyncfusionLicenseProvider.RegisterLicense(builder.Configuration["SyncfusionKey"]);
+
+        Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense(builder.Configuration["SyncfusionKey"]);
         // Configure the HTTP request pipeline.
         if (!app.Environment.IsDevelopment())
         {

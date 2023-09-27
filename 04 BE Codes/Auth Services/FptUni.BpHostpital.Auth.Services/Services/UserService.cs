@@ -11,6 +11,7 @@ using System.Security.Claims;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+using FptUni.BpHospital.Common.DTOs;
 
 namespace FptUni.BpHostpital.Auth.Services;
 
@@ -43,9 +44,9 @@ public class UserService : IUserService
     #endregion
 
     #region [ Methods - Login ]
-    public async Task<SignInSuccessModel> SignInAsync(SignInModel model)
+    public async Task<UserSession> SignInAsync(SignInModel model)
     {
-        var result = default(SignInSuccessModel);
+        var result = default(UserSession);
         var dbResult = await this._signInManager.PasswordSignInAsync(model.Email, model.Password, false, false);
 
         if (!dbResult.Succeeded)
@@ -56,11 +57,13 @@ public class UserService : IUserService
         var token = await this.GenerateTokenAsync(dbUser);
         await this.GenerateAndSaveRefreshTokenAsync(token, dbUser.Id);
 
-        result = new SignInSuccessModel();
+        result = new UserSession();
         result.Email = dbUser.Email;
         result.Fullname = dbUser.Fullname;
         result.AccessToken = token.AccessToken;
         result.RefreshToken = token.RefreshToken;
+        result.ExpriesIn = 10800000;
+        result.ExpiryTimeStamp = DateTime.UtcNow;
 
         return result;
     }
