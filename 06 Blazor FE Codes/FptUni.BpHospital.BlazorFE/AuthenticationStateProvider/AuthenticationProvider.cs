@@ -42,12 +42,12 @@ public class AuthenticationProvider : AuthenticationStateProvider
             var savedToken = userSession.AccessToken;
             var tokenContent = this._jwtSecurityTokenHandler.ReadJwtToken(savedToken);
             var user = new ClaimsPrincipal(new ClaimsIdentity(tokenContent.Claims, "Jwt"));
-
-            return await Task.FromResult(new AuthenticationState(user));
+            var result = new AuthenticationState(user);
+            return result;
         } catch (Exception ex)
         {
             this._logger.LogError(ex.Message);
-            return await Task.FromResult(new AuthenticationState(_anonymous));
+            return new AuthenticationState(_anonymous);
         }
     }
 
@@ -72,6 +72,11 @@ public class AuthenticationProvider : AuthenticationStateProvider
         }
 
         NotifyAuthenticationStateChanged(Task.FromResult(new AuthenticationState(claimsPrincipal)));
+    }
+
+    public void UpdateAuthenticationState(AuthenticationState state)
+    {
+        NotifyAuthenticationStateChanged(Task.FromResult(state));
     }
 
     public async Task<string> GetToken()

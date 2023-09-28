@@ -55,11 +55,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "06 Blazor FE Codes", "06 Bl
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FptUni.BpHospital.BlazorFE", "06 Blazor FE Codes\FptUni.BpHospital.BlazorFE\FptUni.BpHospital.BlazorFE.csproj", "{D58FE1AB-4096-4D5A-8FDC-267B90D544E7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FptUni.BpHospital.Common.DTOs", "04 BE Codes\FptUni.BpHospital.Common.DTOs\FptUni.BpHospital.Common.DTOs.csproj", "{B3A79E53-B658-42EE-99B2-502363CA83C0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FptUni.BpHospital.Common.DTOs", "04 BE Codes\FptUni.BpHospital.Common.DTOs\FptUni.BpHospital.Common.DTOs.csproj", "{B3A79E53-B658-42EE-99B2-502363CA83C0}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "HttpClient Providers", "HttpClient Providers", "{754AC26B-0B64-402E-B3C8-1452D96AB964}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FptUni.BpHospital.HttpClientProviders", "06 Blazor FE Codes\HttpClient Providers\FptUni.BpHospital.HttpClientProviders\FptUni.BpHospital.HttpClientProviders.csproj", "{730D6007-8F38-4AD8-8C5E-7CDD4668ADFB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FptUni.BpHospital.HttpClientProviders", "06 Blazor FE Codes\HttpClient Providers\FptUni.BpHospital.HttpClientProviders\FptUni.BpHospital.HttpClientProviders.csproj", "{730D6007-8F38-4AD8-8C5E-7CDD4668ADFB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

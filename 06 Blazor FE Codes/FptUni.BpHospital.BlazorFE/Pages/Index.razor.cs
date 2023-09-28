@@ -27,6 +27,20 @@ public partial class Index
     private SignInModel Model = new SignInModel();
     #endregion
 
+    #region [ Methods - Override ]
+    protected override async Task OnInitializedAsync() { 
+        var AuthenticationProvider = (AuthenticationProvider)AuthenticationStateProvider;
+        var result = await AuthenticationProvider.GetAuthenticationStateAsync();
+        if (result.User.Identity != null && result.User.Identity.IsAuthenticated)
+        {
+            AuthenticationProvider.UpdateAuthenticationState(result);
+            NavigationManager.NavigateTo("/fetchdata");
+        }
+
+        await base.OnInitializedAsync();
+    }
+    #endregion
+
     #region [ Methods -  ]
     private async Task AuthenticateAsync()
     {
@@ -44,9 +58,9 @@ public partial class Index
             return;
         }
 
-        var customAuthStateProvider = (AuthenticationProvider)AuthenticationStateProvider;
-        await customAuthStateProvider.UpdateAuthenticationStateAsync(response);
-        NavigationManager.NavigateTo("/fetchdata", true);
+        var AuthenticationProvider = (AuthenticationProvider)AuthenticationStateProvider;
+        await AuthenticationProvider.UpdateAuthenticationStateAsync(response);
+        NavigationManager.NavigateTo("/fetchdata");
         return;
     }
     #endregion

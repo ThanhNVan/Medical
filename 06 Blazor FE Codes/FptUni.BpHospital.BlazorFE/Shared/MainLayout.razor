@@ -1,6 +1,6 @@
 ﻿@inherits LayoutComponentBase
 
-<PageTitle>FptUni.BpHospital.BlazorFE</PageTitle>
+<PageTitle>BpHospital</PageTitle>
 
 <div class="page">
     <div class="sidebar">
@@ -8,12 +8,18 @@
     </div>
 
     <main>
-        <div class="top-row px-4">
-            <a href="https://docs.microsoft.com/aspnet/" target="_blank">About</a>
-        </div>
+        <CascadingAuthenticationState>
+            <AuthorizeView>
+                <Authorized>
+                    <article class="content px-4">
+                        @Body
+                    </article>
+                </Authorized>
 
-        <article class="content px-4">
-            @Body
-        </article>
+                <NotAuthorized>
+                    <Unauthorized />
+                </NotAuthorized>
+            </AuthorizeView>
+        </CascadingAuthenticationState>
     </main>
 </div>
