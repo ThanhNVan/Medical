@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using ShareLibrary.Repositories;
+using ShareLibrary.EntityProviders;
 using System;
 using System.Threading.Tasks;
 

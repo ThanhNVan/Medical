@@ -3,7 +3,7 @@ using Blazored.SessionStorage;
 using FptUni.BpHospital.BlazorFE.Data;
 using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.Extensions.DependencyInjection;
-using ShareLibrary.Repositories;
+using ShareLibrary.EntityProviders;
 using System.IdentityModel.Tokens.Jwt;
 
 namespace FptUni.BpHospital.BlazorFE;

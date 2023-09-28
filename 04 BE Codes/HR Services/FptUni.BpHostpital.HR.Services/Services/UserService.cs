@@ -1,7 +1,7 @@
 ﻿using FptUni.BpHostpital.HR.Repositories;
 using FptUni.BpHostpital.HR.Utils;
 using Microsoft.Extensions.Logging;
-using ShareLibrary.Repositories;
+using ShareLibrary.EntityProviders;
 using ShareLibrary.Services;
 
 namespace FptUni.BpHostpital.HR.Services;

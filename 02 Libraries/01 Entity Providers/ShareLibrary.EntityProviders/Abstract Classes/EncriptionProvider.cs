@@ -4,7 +4,7 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 
-namespace ShareLibrary.Repositories;
+namespace ShareLibrary.EntityProviders;
 
 public class EncriptionProvider : IEncriptionProvider
 {
@@ -46,7 +46,7 @@ public class EncriptionProvider : IEncriptionProvider
         return result;
     }
 
-    public string Decrypt(string text, string salt)
+    public string DecryptWithSalt(string text, string salt)
     {
         var result = string.Empty;
         var key = salt.Substring(0, 16);

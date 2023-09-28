@@ -11,4 +11,8 @@
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <ProjectReference Include="..\..\02 Repositories\ShareLibrary.Repositories\ShareLibrary.Repositories.csproj" />
+	</ItemGroup>
+
 </Project>

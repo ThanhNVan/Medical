@@ -20,6 +20,7 @@ public static class ServiceEntensions
             {
                 clients.BaseAddress = new Uri(configuration["HrClient"]);
             });
+        services.AddTransient<IAuthenticationHttpClientProviders, AuthenticationHttpClientProviders>();
 
         services.AddTransient<HttpClientContext>();
     }

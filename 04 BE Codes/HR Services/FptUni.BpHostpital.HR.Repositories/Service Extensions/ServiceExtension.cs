@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using ShareLibrary.EntityProviders;
 using ShareLibrary.Repositories;
 
 namespace FptUni.BpHostpital.HR.Repositories;

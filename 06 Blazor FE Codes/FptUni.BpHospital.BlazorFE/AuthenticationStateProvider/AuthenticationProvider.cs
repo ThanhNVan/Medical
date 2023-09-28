@@ -51,7 +51,7 @@ public class AuthenticationProvider : AuthenticationStateProvider
         }
     }
 
-    public async Task UpdateAuthenticationState(UserSession? userSession)
+    public async Task UpdateAuthenticationStateAsync(UserSession? userSession)
     {
         var claimsPrincipal = default(ClaimsPrincipal);
 
