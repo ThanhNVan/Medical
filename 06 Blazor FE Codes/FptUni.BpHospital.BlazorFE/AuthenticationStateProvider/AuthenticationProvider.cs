@@ -2,6 +2,7 @@
 using FptUni.BpHospital.Common.DTOs;
 using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.Extensions.Logging;
+using ShareLibrary.EntityProviders;
 using System;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
@@ -16,16 +17,19 @@ public class AuthenticationProvider : AuthenticationStateProvider
     private readonly ISessionStorageService _session;
     private ClaimsPrincipal _anonymous = new ClaimsPrincipal(new ClaimsPrincipal());
     private readonly ILogger<AuthenticationProvider> _logger;
+    private readonly IEncriptionProvider _encriptionProvider;
     #endregion
 
     #region [ CTor ]
     public AuthenticationProvider(JwtSecurityTokenHandler jwtSecurityTokenHandler,
                                     ISessionStorageService session,
-                                  ILogger<AuthenticationProvider> logger)
+                                  ILogger<AuthenticationProvider> logger,
+                                  IEncriptionProvider encriptionProvider)
     {
         this._jwtSecurityTokenHandler = jwtSecurityTokenHandler;
         this._session = session;
         this._logger = logger;
+        this._encriptionProvider = encriptionProvider;
     }
     #endregion
 
@@ -39,7 +43,7 @@ public class AuthenticationProvider : AuthenticationStateProvider
                 return await Task.FromResult(new AuthenticationState(_anonymous));
             }
 
-            var savedToken = userSession.AccessToken;
+            var savedToken = this._encriptionProvider.DecryptWithSalt(userSession.AccessToken, userSession.Email);
             var tokenContent = this._jwtSecurityTokenHandler.ReadJwtToken(savedToken);
             var user = new ClaimsPrincipal(new ClaimsIdentity(tokenContent.Claims, "Jwt"));
             var result = new AuthenticationState(user);
@@ -57,7 +61,7 @@ public class AuthenticationProvider : AuthenticationStateProvider
 
         if (userSession != null) // sign in 
         {
-            var savedToken = userSession.AccessToken;
+            var savedToken = this._encriptionProvider.DecryptWithSalt(userSession.AccessToken, userSession.Email);
             var tokenContent = this._jwtSecurityTokenHandler.ReadJwtToken(savedToken);
 
             claimsPrincipal = new ClaimsPrincipal(new ClaimsIdentity(tokenContent.Claims));

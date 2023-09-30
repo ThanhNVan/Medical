@@ -27,7 +27,7 @@ public class AuthenticationHttpClientProviders : IAuthenticationHttpClientProvid
     public AuthenticationHttpClientProviders(IHttpClientFactory httpClientFactory,
                                             ILogger<AuthenticationHttpClientProviders> logger,
                                             IEncriptionProvider encriptionProvider)
-	{
+    {
         this._httpClientFactory = httpClientFactory;
         this._logger = logger;
         this._encriptionProvider = encriptionProvider;
@@ -38,7 +38,7 @@ public class AuthenticationHttpClientProviders : IAuthenticationHttpClientProvid
 
     #region [ Methods -  ]
     public async Task<UserSession> SignInAsync(SignInModel model)
-	{
+    {
         try
         {
             var url = this._entityUrl + BaseMethodUrl.SignIn;
@@ -50,6 +50,11 @@ public class AuthenticationHttpClientProviders : IAuthenticationHttpClientProvid
             if (response.IsSuccessStatusCode)
             {
                 var result = JsonConvert.DeserializeObject<UserSession>(await response.Content.ReadAsStringAsync());
+                if (result is not null)
+                {
+
+                    result.AccessToken = this._encriptionProvider.EncryptWithSalt(result.AccessToken, result.Email);
+                }
                 return result;
             }
 
@@ -62,12 +67,12 @@ public class AuthenticationHttpClientProviders : IAuthenticationHttpClientProvid
     }
 
     public async Task<TokenModel> RenowTokenAsync(string emailKey, TokenModel model, string accessToken)
-	{
+    {
         try
         {
             var url = this._entityUrl + BaseMethodUrl.RenewToken;
 
-            var httpClient = this.CreateClient(emailKey: emailKey,accessToken: accessToken);
+            var httpClient = this.CreateClient(emailKey: emailKey, accessToken: accessToken);
 
             var response = await httpClient.PostAsJsonAsync(url, model);
 
@@ -87,7 +92,7 @@ public class AuthenticationHttpClientProviders : IAuthenticationHttpClientProvid
     #endregion
 
     #region [ Private Methods -  ]
-    protected HttpClient CreateClient(string emailKey= "", string clientName = "AuthClient", string accessToken = "")
+    protected HttpClient CreateClient(string emailKey = "", string clientName = "AuthClient", string accessToken = "")
     {
         // RoutingUrl.BaseClientName = "BaseClientName"
         var result = this._httpClientFactory.CreateClient(clientName);
