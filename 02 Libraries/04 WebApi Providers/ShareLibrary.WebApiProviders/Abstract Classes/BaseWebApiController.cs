@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
@@ -10,6 +11,7 @@ using System.Threading.Tasks;
 
 namespace ShareLibrary.WebApiProviders;
 
+[Authorize]
 [ApiController]
 [Route("Api/V1/[controller]")]
 public abstract class BaseWebApiController<TEntity, TService, TContext> : ControllerBase

@@ -1,4 +1,5 @@
-﻿using FptUni.BpHostpital.Auth.Services;
+﻿using FptUni.BpHospital.Common.DTOs;
+using FptUni.BpHostpital.Auth.Services;
 using FptUni.BpHostpital.Auth.Utils;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;

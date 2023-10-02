@@ -2,6 +2,8 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using FptUni.BpHostpital.HR.Utils;
+using FptUni.BpHostpital.HR.Repositories;
+using FptUni.BpHostpital.HR.Services;
 
 namespace FptUni.BpHostpital.HR.WebApiHost;
 
@@ -13,7 +15,8 @@ public class Program
 
         // Add services to the container.
         builder.Services.AddHrServiceSqlServerProviders(builder.Configuration);
-
+        builder.Services.AddHrRepositories();
+        builder.Services.AddHrServices();
         builder.Services.AddHrAuthenticationPolicies(builder.Configuration);
 
         builder.Services.AddHrAuthorizationPolicies();

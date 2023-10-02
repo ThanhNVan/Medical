@@ -1,0 +1,26 @@
+﻿@page "/"
+@layout EmptyLayout
+
+<PageTitle>Sign In</PageTitle>
+
+<div class="row">
+    <div class="col-lg-4 offset-lg-4 pb-4 border">
+        <div class="mb-3 text-center">
+            <h3>Sign In</h3>
+        </div>
+
+        <div class="mb-3">
+            <label>User Name</label>
+            <input @bind="Model.Email" class="form-control" placeholder="User Name" />
+        </div>
+
+        <div class="mb-3">
+            <label>Password</label>
+            <input @bind="Model.Password" class="form-control" type="password" placeholder="Password" />
+        </div>
+
+        <div class="mb-3 d-grid gap-2">
+            <button @onclick="async () => await AuthenticateAsync()" class="btn btn-primary">Login</button>
+        </div>
+    </div>
+</div>

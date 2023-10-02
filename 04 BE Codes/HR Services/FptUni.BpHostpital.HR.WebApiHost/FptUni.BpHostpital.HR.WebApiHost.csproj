@@ -14,6 +14,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<ProjectReference Include="..\..\..\02 Libraries\04 WebApi Providers\ShareLibrary.WebApiProviders\ShareLibrary.WebApiProviders.csproj" />
 		<ProjectReference Include="..\FptUni.BpHostpital.HR.Services\FptUni.BpHostpital.HR.Services.csproj" />
 	</ItemGroup>
 

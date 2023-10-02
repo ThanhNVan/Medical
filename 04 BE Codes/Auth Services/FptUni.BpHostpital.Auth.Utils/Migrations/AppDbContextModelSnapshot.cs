@@ -169,57 +169,6 @@ namespace FptUni.BpHostpital.Auth.Utils.Migrations
                         .HasFilter("[NormalizedName] IS NOT NULL");
 
                     b.ToTable("AspNetRoles", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            Id = "67b8b922-31be-4723-8420-fc0cd01be035",
-                            ConcurrencyStamp = "1",
-                            Name = "Admin",
-                            NormalizedName = "ADMINISTRATOR"
-                        },
-                        new
-                        {
-                            Id = "62ea529c-6481-42b3-ad7d-f41e1d8f5129",
-                            ConcurrencyStamp = "2",
-                            Name = "Department Director",
-                            NormalizedName = "DEPARTMENT DIRECTOR"
-                        },
-                        new
-                        {
-                            Id = "6ed766d6-f55d-4df6-ade2-951db61f9c4d",
-                            ConcurrencyStamp = "3",
-                            Name = "HR Staff",
-                            NormalizedName = "HUMAN RESOURCE STAFF"
-                        },
-                        new
-                        {
-                            Id = "893118eb-f6cc-4651-ba74-3b7f350131a4",
-                            ConcurrencyStamp = "3",
-                            Name = "HR Manager",
-                            NormalizedName = "HUMAN RESOURCE MANAGER"
-                        },
-                        new
-                        {
-                            Id = "db3fdcc2-fa8b-4a1c-a436-28a6132e2c32",
-                            ConcurrencyStamp = "4",
-                            Name = "Sales Staff",
-                            NormalizedName = "SALES STAFF"
-                        },
-                        new
-                        {
-                            Id = "0879656e-c736-40e6-82d1-00dd8b6579a5",
-                            ConcurrencyStamp = "5",
-                            Name = "Sales Manager",
-                            NormalizedName = "SALES MANAGER"
-                        },
-                        new
-                        {
-                            Id = "b60520a9-c519-44d3-a8d9-87acd32118e3",
-                            ConcurrencyStamp = "6",
-                            Name = "General Director",
-                            NormalizedName = "GENERAL DIRECTOR"
-                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
