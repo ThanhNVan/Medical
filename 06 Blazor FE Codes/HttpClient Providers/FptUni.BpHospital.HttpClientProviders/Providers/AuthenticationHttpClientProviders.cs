@@ -52,7 +52,6 @@ public class AuthenticationHttpClientProviders : IAuthenticationHttpClientProvid
                 var result = JsonConvert.DeserializeObject<UserSession>(await response.Content.ReadAsStringAsync());
                 if (result is not null)
                 {
-
                     result.AccessToken = this._encriptionProvider.EncryptWithSalt(result.AccessToken, result.Email);
                 }
                 return result;
