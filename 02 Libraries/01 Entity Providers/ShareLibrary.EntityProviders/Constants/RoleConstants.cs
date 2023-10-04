@@ -10,5 +10,6 @@ public static class RoleConstants
     public static string SalesStaff = "Sales Staff";
     public static string SalesManager = "Sales Manager";
     public static string GeneralDirector = "General Director";
+    public static string Staff = "Staff";
     #endregion
 }

@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace FptUni.BpHostpital.Auth.WebApiHost;
 
-[Authorize(Policy = nameof(RoleConstants.Admin))]
+
 [Route("Api/V1/[controller]")]
 [ApiController]
 public class AuthenticationController : ControllerBase
@@ -56,6 +56,7 @@ public class AuthenticationController : ControllerBase
     #endregion
 
     #region [ Methods - SignUp ]
+    [Authorize(Policy = nameof(RoleConstants.Admin))]
     [HttpPost(nameof(BaseMethodUrl.SignUp))]
     public async Task<IActionResult> SignUpAsync([FromBody] SignUpModel model)
     {
@@ -77,6 +78,7 @@ public class AuthenticationController : ControllerBase
     #endregion
 
     #region [ Methods - RenewToken ]
+    [Authorize(Policy = nameof(RoleConstants.Staff))]
     [HttpPost(nameof(BaseMethodUrl.RenewToken))]
     public async Task<IActionResult> RenewTokenAsync([FromBody] RenewTokenModel model)
     {
