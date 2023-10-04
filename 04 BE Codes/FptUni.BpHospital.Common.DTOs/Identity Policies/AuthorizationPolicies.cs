@@ -1,13 +1,18 @@
-﻿using Microsoft.Extensions.DependencyInjection;
-using ShareLibrary.EntityProviders;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Security.Claims;
+using System.Text;
+using System.Threading.Tasks;
+using Microsoft.Extensions.DependencyInjection;
+using ShareLibrary.EntityProviders;
 
-namespace FptUni.BpHostpital.HR.WebApiHost;
+namespace FptUni.BpHospital.Common;
 
 public static class AuthorizationPolicies
 {
     #region [ Method - Policies]
-    public static void AddHrAuthorizationPolicies(this IServiceCollection services)
+    public static void AddAuthorizationPolicies(this IServiceCollection services)
     {
         services.AddAuthorization(options =>
         {
@@ -23,11 +28,11 @@ public static class AuthorizationPolicies
                     context.User.HasClaim(claims => claims.Type == ClaimTypes.Role && claims.Value.Contains(RoleConstants.GeneralDirector)) ||
                     context.User.HasClaim(claims => claims.Type == ClaimTypes.Role && claims.Value.Contains(RoleConstants.HRManager)));
             });
-
+            
             options.AddPolicy(RoleConstants.Staff, policy =>
             {
                 policy.RequireAssertion(context =>
-                    context.User.IsInRole(RoleConstants.Admin) ||
+                    context.User.HasClaim(claims => claims.Type == ClaimTypes.Role && claims.Value.Contains(RoleConstants.Admin)) ||
                     context.User.HasClaim(claims => claims.Type == ClaimTypes.Role && claims.Value.Contains(RoleConstants.DepartmentDirector)) ||
                     context.User.HasClaim(claims => claims.Type == ClaimTypes.Role && claims.Value.Contains(RoleConstants.HRStaff)) ||
                     context.User.HasClaim(claims => claims.Type == ClaimTypes.Role && claims.Value.Contains(RoleConstants.HRManager)) ||
@@ -36,6 +41,7 @@ public static class AuthorizationPolicies
                     context.User.HasClaim(claims => claims.Type == ClaimTypes.Role && claims.Value.Contains(RoleConstants.GeneralDirector)) ||
                     context.User.HasClaim(claims => claims.Type == ClaimTypes.Role && claims.Value.Contains(RoleConstants.Staff)));
             });
+
         });
     }
     #endregion

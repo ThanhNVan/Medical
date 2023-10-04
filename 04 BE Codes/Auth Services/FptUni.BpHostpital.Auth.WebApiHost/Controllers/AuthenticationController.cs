@@ -10,7 +10,6 @@ using System.Threading.Tasks;
 
 namespace FptUni.BpHostpital.Auth.WebApiHost;
 
-
 [Route("Api/V1/[controller]")]
 [ApiController]
 public class AuthenticationController : ControllerBase
@@ -78,7 +77,7 @@ public class AuthenticationController : ControllerBase
     #endregion
 
     #region [ Methods - RenewToken ]
-    [Authorize(Policy = nameof(RoleConstants.Staff))]
+    [Authorize]
     [HttpPost(nameof(BaseMethodUrl.RenewToken))]
     public async Task<IActionResult> RenewTokenAsync([FromBody] RenewTokenModel model)
     {
@@ -98,4 +97,21 @@ public class AuthenticationController : ControllerBase
         }
     }
     #endregion
+
+    [Authorize(Policy = nameof(RoleConstants.Staff))]
+    [HttpGet]
+    public async Task<IActionResult> Demo()
+    {
+        try
+        {
+            var result = 1;
+           
+
+            return Ok(result);
+        } catch (Exception ex)
+        {
+            this._logger.LogWarning(ex.Message);
+            return BadRequest();
+        }
+    }
 }

@@ -259,7 +259,7 @@ public class UserService : IUserService
                 new Claim(ClaimTypes.Name, user.Fullname),
                 new Claim(JwtRegisteredClaimNames.Email, user.Email),
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
-                new Claim("UserId", user.Id),
+                new Claim("userId", user.Id),
 
                 //roles
                 new Claim(ClaimTypes.Role, rolesClaims)

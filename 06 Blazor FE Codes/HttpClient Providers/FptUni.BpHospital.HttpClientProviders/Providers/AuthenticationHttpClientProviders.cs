@@ -65,7 +65,7 @@ public class AuthenticationHttpClientProviders : IAuthenticationHttpClientProvid
         }
     }
 
-    public async Task<TokenModel> RenowTokenAsync(string emailKey, TokenModel model, string accessToken)
+    public async Task<TokenModel> RenewTokenAsync(string emailKey, TokenModel model, string accessToken)
     {
         try
         {

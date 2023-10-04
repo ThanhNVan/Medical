@@ -1,15 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace FptUni.BpHospital.HttpClientProviders;
+﻿namespace FptUni.BpHospital.HttpClientProviders;
 
 public static class RoutingUrl
 {
-	#region [ Properties ]
-	public const string AuthClient = "AuthClient";
-	public const string HrClient = "HrClient";
-	#endregion
+    #region [ Properties ]
+    public const string AuthClient = "AuthClient";
+    public const string HrClient = "HrClient";
+    #endregion
 }

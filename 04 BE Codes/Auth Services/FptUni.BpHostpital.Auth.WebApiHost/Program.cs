@@ -4,6 +4,7 @@ using Microsoft.Extensions.Hosting;
 using FptUni.BpHostpital.Auth.Utils;
 using FptUni.BpHostpital.Auth.Services;
 using FptUni.BpHostpital.Auth.Repositories;
+using FptUni.BpHospital.Common; 
 
 namespace FptUni.BpHostpital.Auth.WebApiHost;
 

@@ -4,6 +4,7 @@ using Microsoft.Extensions.Hosting;
 using FptUni.BpHostpital.HR.Utils;
 using FptUni.BpHostpital.HR.Repositories;
 using FptUni.BpHostpital.HR.Services;
+using FptUni.BpHospital.Common;
 
 namespace FptUni.BpHostpital.HR.WebApiHost;
 
@@ -17,9 +18,9 @@ public class Program
         builder.Services.AddHrServiceSqlServerProviders(builder.Configuration);
         builder.Services.AddHrRepositories();
         builder.Services.AddHrServices();
-        builder.Services.AddHrAuthenticationPolicies(builder.Configuration);
+        builder.Services.AddAuthenticationPolicies(builder.Configuration);
 
-        builder.Services.AddHrAuthorizationPolicies();
+        builder.Services.AddAuthorizationPolicies();
         builder.Services.AddControllers();
         // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
         builder.Services.AddEndpointsApiExplorer();
