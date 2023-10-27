@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Claims;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Security.Claims;
 using Microsoft.Extensions.DependencyInjection;
 using ShareLibrary.EntityProviders;
 
@@ -28,7 +23,7 @@ public static class AuthorizationPolicies
                     context.User.HasClaim(claims => claims.Type == ClaimTypes.Role && claims.Value.Contains(RoleConstants.GeneralDirector)) ||
                     context.User.HasClaim(claims => claims.Type == ClaimTypes.Role && claims.Value.Contains(RoleConstants.HRManager)));
             });
-            
+
             options.AddPolicy(RoleConstants.Staff, policy =>
             {
                 policy.RequireAssertion(context =>
