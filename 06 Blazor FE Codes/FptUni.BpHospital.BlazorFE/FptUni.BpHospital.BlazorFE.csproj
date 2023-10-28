@@ -12,7 +12,6 @@
 	</ItemGroup>
 	<ItemGroup>
 	  <Folder Include="Data\" />
-	  <Folder Include="Pages\Human Resource\" />
 	  <Folder Include="Pages\Medicines\" />
 	</ItemGroup>
   <PropertyGroup>

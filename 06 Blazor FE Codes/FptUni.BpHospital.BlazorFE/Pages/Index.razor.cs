@@ -60,7 +60,7 @@ public partial class Index
 
         var AuthenticationProvider = (AuthenticationProvider)AuthenticationStateProvider;
         await AuthenticationProvider.UpdateAuthenticationStateAsync(response);
-        NavigationManager.NavigateTo("/fetchdata");
+        NavigationManager.NavigateTo("/Hr/Index/");
         return;
     }
     #endregion

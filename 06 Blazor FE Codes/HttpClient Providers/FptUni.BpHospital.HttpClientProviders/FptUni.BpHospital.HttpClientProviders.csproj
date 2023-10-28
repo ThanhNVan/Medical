@@ -8,7 +8,10 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\02 Libraries\05 HttpClient Providers\ShareLibrary.HttpClientProviders\ShareLibrary.HttpClientProviders.csproj" />
+    <ProjectReference Include="..\..\..\04 BE Codes\Auth Services\FptUni.BpHostpital.Auth.Utils\FptUni.BpHostpital.Auth.Utils.csproj" />
     <ProjectReference Include="..\..\..\04 BE Codes\FptUni.BpHospital.Common.DTOs\FptUni.BpHospital.Common.DTOs.csproj" />
+    <ProjectReference Include="..\..\..\04 BE Codes\HR Services\FptUni.BpHostpital.HR.Utils\FptUni.BpHostpital.HR.Utils.csproj" />
+    <ProjectReference Include="..\..\..\04 BE Codes\Medicine Services\FptUni.BpHostpital.Medicine.Utils\FptUni.BpHostpital.Medicine.Utils.csproj" />
   </ItemGroup>
 
 	<ItemGroup>
@@ -16,6 +19,11 @@
 		<PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="7.0.0" />
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
 		<PackageReference Include="System.Text.Json" Version="7.0.3" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="Interfaces\Medicines\" />
+	  <Folder Include="Providers\Medicines\" />
 	</ItemGroup>
 
 </Project>

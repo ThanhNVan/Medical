@@ -4,14 +4,17 @@ public class HttpClientContext
 {
 
 	#region [ CTor ]
-	public HttpClientContext(IAuthenticationHttpClientProviders authentication)
+	public HttpClientContext(IAuthenticationHttpClientProviders authentication,
+							IUserHttpClientProviders user)
 	{
         Authentication = authentication;
+        User = user;
     }
 
     #endregion
 
 	#region [ Properties ]
     public IAuthenticationHttpClientProviders Authentication { get; }
-	#endregion
+    public IUserHttpClientProviders User { get; }
+    #endregion
 }
