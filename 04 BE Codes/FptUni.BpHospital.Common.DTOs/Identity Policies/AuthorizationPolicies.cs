@@ -24,17 +24,30 @@ public static class AuthorizationPolicies
                     context.User.HasClaim(claims => claims.Type == ClaimTypes.Role && claims.Value.Contains(RoleConstants.HRManager)));
             });
 
-            options.AddPolicy(RoleConstants.Staff, policy =>
+            //options.AddPolicy(RoleConstants.Staff, policy =>
+            //{
+            //    policy.RequireAssertion(context =>
+            //        context.User.HasClaim(claims => claims.Type == ClaimTypes.Role && claims.Value.Contains(RoleConstants.Admin)) ||
+            //        context.User.HasClaim(claims => claims.Type == ClaimTypes.Role && claims.Value.Contains(RoleConstants.DepartmentDirector)) ||
+            //        context.User.HasClaim(claims => claims.Type == ClaimTypes.Role && claims.Value.Contains(RoleConstants.HRStaff)) ||
+            //        context.User.HasClaim(claims => claims.Type == ClaimTypes.Role && claims.Value.Contains(RoleConstants.HRManager)) ||
+            //        context.User.HasClaim(claims => claims.Type == ClaimTypes.Role && claims.Value.Contains(RoleConstants.SalesStaff)) ||
+            //        context.User.HasClaim(claims => claims.Type == ClaimTypes.Role && claims.Value.Contains(RoleConstants.SalesManager)) ||
+            //        context.User.HasClaim(claims => claims.Type == ClaimTypes.Role && claims.Value.Contains(RoleConstants.GeneralDirector)) ||
+            //        context.User.HasClaim(claims => claims.Type == ClaimTypes.Role && claims.Value.Contains(RoleConstants.Staff)));
+            //});
+            
+            options.AddPolicy("Staff", policy =>
             {
                 policy.RequireAssertion(context =>
-                    context.User.HasClaim(claims => claims.Type == ClaimTypes.Role && claims.Value.Contains(RoleConstants.Admin)) ||
-                    context.User.HasClaim(claims => claims.Type == ClaimTypes.Role && claims.Value.Contains(RoleConstants.DepartmentDirector)) ||
-                    context.User.HasClaim(claims => claims.Type == ClaimTypes.Role && claims.Value.Contains(RoleConstants.HRStaff)) ||
-                    context.User.HasClaim(claims => claims.Type == ClaimTypes.Role && claims.Value.Contains(RoleConstants.HRManager)) ||
-                    context.User.HasClaim(claims => claims.Type == ClaimTypes.Role && claims.Value.Contains(RoleConstants.SalesStaff)) ||
-                    context.User.HasClaim(claims => claims.Type == ClaimTypes.Role && claims.Value.Contains(RoleConstants.SalesManager)) ||
-                    context.User.HasClaim(claims => claims.Type == ClaimTypes.Role && claims.Value.Contains(RoleConstants.GeneralDirector)) ||
-                    context.User.HasClaim(claims => claims.Type == ClaimTypes.Role && claims.Value.Contains(RoleConstants.Staff)));
+                    context.User.HasClaim(claims => claims.Type == ClaimTypes.Role && claims.Value.Contains(RoleConstants.Admin) ||
+                                                                                        claims.Value.Contains(RoleConstants.DepartmentDirector) ||
+                                                                                        claims.Value.Contains(RoleConstants.HRStaff) ||
+                                                                                        claims.Value.Contains(RoleConstants.HRManager) ||
+                                                                                        claims.Value.Contains(RoleConstants.SalesStaff) ||
+                                                                                        claims.Value.Contains(RoleConstants.SalesManager) ||
+                                                                                        claims.Value.Contains(RoleConstants.GeneralDirector) ||
+                                                                                        claims.Value.Contains(RoleConstants.Staff)));
             });
 
         });
