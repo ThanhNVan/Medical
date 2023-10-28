@@ -3,11 +3,18 @@
 <PageTitle>BpHospital</PageTitle>
 
 <div class="page">
-    <div class="sidebar">
-        <NavMenu />
-    </div>
+    <CascadingAuthenticationState>
+        <AuthorizeView>
+            <Authorized>
 
+                <div class="sidebar">
+                    <NavMenu />
+                </div>
+            </Authorized>
+        </AuthorizeView>
+    </CascadingAuthenticationState>
     <main>
+
         <CascadingAuthenticationState>
             <AuthorizeView>
                 <Authorized>

@@ -61,13 +61,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "HttpClient Providers", "Htt
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FptUni.BpHospital.HttpClientProviders", "06 Blazor FE Codes\HttpClient Providers\FptUni.BpHospital.HttpClientProviders\FptUni.BpHospital.HttpClientProviders.csproj", "{730D6007-8F38-4AD8-8C5E-7CDD4668ADFB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FptUni.BpHostpital.Medicine.Repositories", "04 BE Codes\Medicine Services\FptUni.BpHostpital.Medicine.Repositories\FptUni.BpHostpital.Medicine.Repositories.csproj", "{5AC6C483-B3CB-46F1-9960-3CB6128679F0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FptUni.BpHostpital.Medicine.Repositories", "04 BE Codes\Medicine Services\FptUni.BpHostpital.Medicine.Repositories\FptUni.BpHostpital.Medicine.Repositories.csproj", "{5AC6C483-B3CB-46F1-9960-3CB6128679F0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FptUni.BpHostpital.Medicine.Utils", "04 BE Codes\Medicine Services\FptUni.BpHostpital.Medicine.Utils\FptUni.BpHostpital.Medicine.Utils.csproj", "{A21F91A3-6F90-46E3-8B3C-1ECEFB57A81E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FptUni.BpHostpital.Medicine.Utils", "04 BE Codes\Medicine Services\FptUni.BpHostpital.Medicine.Utils\FptUni.BpHostpital.Medicine.Utils.csproj", "{A21F91A3-6F90-46E3-8B3C-1ECEFB57A81E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FptUni.BpHostpital.Medicine.Services", "04 BE Codes\Medicine Services\FptUni.BpHostpital.Medicine.Services\FptUni.BpHostpital.Medicine.Services.csproj", "{C9AE4EAD-9E89-4805-9DAC-531CB2FCDA31}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FptUni.BpHostpital.Medicine.Services", "04 BE Codes\Medicine Services\FptUni.BpHostpital.Medicine.Services\FptUni.BpHostpital.Medicine.Services.csproj", "{C9AE4EAD-9E89-4805-9DAC-531CB2FCDA31}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FptUni.BpHostpital.Medicine.WebApiHost", "04 BE Codes\Medicine Services\FptUni.BpHostpital.Medicine.WebApiHost\FptUni.BpHostpital.Medicine.WebApiHost.csproj", "{1286D821-9834-4102-B28D-86742BD47C18}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FptUni.BpHostpital.Medicine.WebApiHost", "04 BE Codes\Medicine Services\FptUni.BpHostpital.Medicine.WebApiHost\FptUni.BpHostpital.Medicine.WebApiHost.csproj", "{1286D821-9834-4102-B28D-86742BD47C18}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

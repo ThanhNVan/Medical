@@ -34,7 +34,7 @@ public partial class Index
         if (result.User.Identity != null && result.User.Identity.IsAuthenticated)
         {
             AuthenticationProvider.UpdateAuthenticationState(result);
-            NavigationManager.NavigateTo("/fetchdata");
+            NavigationManager.NavigateTo("/Hr/Index");
         }
 
         await base.OnInitializedAsync();

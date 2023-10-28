@@ -6,9 +6,9 @@ using FptUni.BpHospital.HttpClientProviders;
 using FptUni.BpHostpital.HR.Utils;
 using Microsoft.AspNetCore.Components;
 
-namespace FptUni.BpHospital.BlazorFE.HR;
+namespace FptUni.BpHospital.BlazorFE;
 
-public partial class Index
+public partial class UserIndex
 {
     #region [ Properties - Inject]
     [Inject]
@@ -35,6 +35,13 @@ public partial class Index
 
         this.WorkItemList = await HttpClientContext.User.GetListAllAsync(Session.Email, Session.AccessToken);
 
+    }
+    #endregion
+
+    #region [ Methods -  ]
+    public void ViewDetail(string userId)
+    {
+        this.NavigationManager.NavigateTo($"/Hr/User/{userId}");
     }
     #endregion
 }

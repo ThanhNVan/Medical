@@ -98,20 +98,20 @@ public class AuthenticationController : ControllerBase
     }
     #endregion
 
-    [HttpGet]
-    [Authorize(Policy = nameof(RoleConstants.Staff))]
-    public async Task<IActionResult> Demo()
-    {
-        try
-        {
-            var result = 1;
+    //[HttpGet]
+    //[Authorize(Policy = nameof(RoleConstants.Staff))]
+    //public async Task<IActionResult> Demo()
+    //{
+    //    try
+    //    {
+    //        var result = 1;
            
 
-            return Ok(result);
-        } catch (Exception ex)
-        {
-            this._logger.LogWarning(ex.Message);
-            return BadRequest();
-        }
-    }
+    //        return Ok(result);
+    //    } catch (Exception ex)
+    //    {
+    //        this._logger.LogWarning(ex.Message);
+    //        return BadRequest();
+    //    }
+    //}
 }

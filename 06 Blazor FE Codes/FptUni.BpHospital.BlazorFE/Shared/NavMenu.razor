@@ -1,4 +1,6 @@
-﻿<div class="top-row ps-3 navbar navbar-dark">
+﻿@attribute [Authorize]
+
+<div class="top-row ps-3 navbar navbar-dark">
     <div class="container-fluid">
         <span class="navbar-brand">BP Hospital</span>
     </div>
@@ -12,17 +14,22 @@
             </NavLink>
         </div>
 
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="/Hr/Index/">
-                <span class="oi oi-plus" aria-hidden="true"></span> Human Resources
-            </NavLink>
-        </div>
+            <AuthorizeView Policy="HRManager">
+                <Authorized>
+                    <div class="nav-item px-3">
+                        <NavLink class="nav-link" href="/Hr/Index/">
+                            <span class="oi oi-plus" aria-hidden="true"></span> Human Resources
+                        </NavLink>
+                    </div>
+                </Authorized>
+            </AuthorizeView>
+
+        
         <div class="nav-item px-3">
             <NavLink class="nav-link" href="/Medicine/Index/">
                 <span class="oi oi-list-rich" aria-hidden="true"></span> Medicines
             </NavLink>
         </div>
-        <CascadingAuthenticationState>
             <AuthorizeView>
                 <Authorized>
                     <div class="nav-item px-3">
@@ -32,7 +39,6 @@
                     </div>
                 </Authorized>
             </AuthorizeView>
-        </CascadingAuthenticationState>
     </nav>
 </div>
 

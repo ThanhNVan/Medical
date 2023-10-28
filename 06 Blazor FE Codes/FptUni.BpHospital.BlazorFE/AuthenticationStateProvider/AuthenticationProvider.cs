@@ -4,8 +4,13 @@ using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.Extensions.Logging;
 using ShareLibrary.EntityProviders;
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
+using System.Linq;
 using System.Security.Claims;
+using System.Security.Principal;
+using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace FptUni.BpHospital.BlazorFE;
@@ -44,7 +49,8 @@ public class AuthenticationProvider : AuthenticationStateProvider
             }
 
             var savedToken = this._encriptionProvider.DecryptWithSalt(userSession.AccessToken, userSession.Email);
-            var tokenContent = this._jwtSecurityTokenHandler.ReadJwtToken(savedToken);
+            //var tokenContent = this._jwtSecurityTokenHandler.ReadJwtToken(savedToken);
+            var tokenContent = new ClaimsIdentity(ParseClaimsFromJwt(savedToken), "jwt");
             var user = new ClaimsPrincipal(new ClaimsIdentity(tokenContent.Claims, "Jwt"));
             var result = new AuthenticationState(user);
             return result;
@@ -64,18 +70,23 @@ public class AuthenticationProvider : AuthenticationStateProvider
             var savedToken = this._encriptionProvider.DecryptWithSalt(userSession.AccessToken, userSession.Email);
             var tokenContent = this._jwtSecurityTokenHandler.ReadJwtToken(savedToken);
 
-            claimsPrincipal = new ClaimsPrincipal(new ClaimsIdentity(tokenContent.Claims));
+            var identity = new ClaimsIdentity(ParseClaimsFromJwt(savedToken), "jwt");
+            var user = new ClaimsPrincipal(identity);
+            var state = new AuthenticationState(user);
+
+            claimsPrincipal = new ClaimsPrincipal(new ClaimsIdentity(tokenContent.Claims, "Jwt"));
 
             userSession.ExpiryTimeStamp = DateTime.UtcNow.AddSeconds(userSession.ExpriesIn);
 
             await _session.SetItemAsync("UserSession", userSession);
+            NotifyAuthenticationStateChanged(Task.FromResult(state));
         } else
         { // sign out
             claimsPrincipal = _anonymous;
             await _session.RemoveItemAsync("UserSession");
+            NotifyAuthenticationStateChanged(Task.FromResult(new AuthenticationState(claimsPrincipal)));
         }
 
-        NotifyAuthenticationStateChanged(Task.FromResult(new AuthenticationState(claimsPrincipal)));
     }
 
     public void UpdateAuthenticationState(AuthenticationState state)
@@ -101,5 +112,28 @@ public class AuthenticationProvider : AuthenticationStateProvider
             this._logger.LogError(ex.Message);
             throw;
         }
+    }
+
+    public static IEnumerable<Claim> ParseClaimsFromJwt(string jwt)
+    {
+        var payload = jwt.Split('.')[1];
+        var jsonBytes = ParseBase64WithoutPadding(payload);
+        var keyValuePairs = JsonSerializer.Deserialize<Dictionary<string, object>>(jsonBytes);
+        return keyValuePairs.Select(kvp => new Claim(kvp.Key, kvp.Value.ToString()));
+    }
+
+    public static byte[] ParseBase64WithoutPadding(string base64)
+    {
+        switch (base64.Length % 4)
+        {
+            case 2:
+                base64 += "==";
+                break;
+            case 3:
+                base64 += "=";
+                break;
+        }
+
+        return Convert.FromBase64String(base64);
     }
 }
