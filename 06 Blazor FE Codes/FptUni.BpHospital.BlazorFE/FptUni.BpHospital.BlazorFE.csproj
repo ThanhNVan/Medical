@@ -8,8 +8,12 @@
 		<PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.10.0" />
 	</ItemGroup>
 	<ItemGroup>
-	  <ProjectReference Include="..\..\02 Libraries\02 Repositories\ShareLibrary.Repositories\ShareLibrary.Repositories.csproj" />
 	  <ProjectReference Include="..\HttpClient Providers\FptUni.BpHospital.HttpClientProviders\FptUni.BpHospital.HttpClientProviders.csproj" />
+	</ItemGroup>
+	<ItemGroup>
+	  <Folder Include="Data\" />
+	  <Folder Include="Pages\Human Resource\" />
+	  <Folder Include="Pages\Medicines\" />
 	</ItemGroup>
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>

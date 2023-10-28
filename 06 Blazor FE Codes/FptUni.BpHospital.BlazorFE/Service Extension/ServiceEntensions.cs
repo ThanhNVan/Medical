@@ -1,6 +1,5 @@
 ﻿using Blazored.LocalStorage;
 using Blazored.SessionStorage;
-using FptUni.BpHospital.BlazorFE.Data;
 using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.Extensions.DependencyInjection;
 using ShareLibrary.EntityProviders;
@@ -18,7 +17,6 @@ public static class ServiceEntensions
         services.AddTransient<AuthenticationStateProvider, AuthenticationProvider>();
         services.AddTransient<JwtSecurityTokenHandler>();
         services.AddTransient<IEncriptionProvider, EncriptionProvider>();
-        services.AddTransient<WeatherForecastService>();
         services.AddAuthorizationCore();
     }
     #endregion
