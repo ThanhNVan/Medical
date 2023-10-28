@@ -127,7 +127,7 @@ public abstract class BaseHttpClientProvider<TEntity> : IBaseHttpClientProvider<
         }
     }
 
-    public async Task<bool> DestroyAsync(string emailKey, string entityId, string clientName, string accessToken = "")
+    public virtual async Task<bool> DestroyAsync(string emailKey, string entityId, string clientName, string accessToken = "")
     {
         try
         {
@@ -316,7 +316,7 @@ public abstract class BaseHttpClientProvider<TEntity> : IBaseHttpClientProvider<
     #endregion
 
     #region [ Private Methods -  ]
-    protected HttpClient CreateClient(string emailKey, string clientName = "HrClient", string accessToken = "")
+    protected HttpClient CreateClient(string emailKey, string clientName, string accessToken = "")
     {
         var result = this._httpClientFactory.CreateClient(clientName);
 

@@ -28,6 +28,7 @@ public static class ServiceEntensions
             });
 
         services.AddTransient<IAuthenticationHttpClientProviders, AuthenticationHttpClientProviders>();
+        services.AddTransient<IUserHttpClientProviders, UserHttpClientProviders>();
 
         services.AddTransient<HttpClientContext>();
     }
