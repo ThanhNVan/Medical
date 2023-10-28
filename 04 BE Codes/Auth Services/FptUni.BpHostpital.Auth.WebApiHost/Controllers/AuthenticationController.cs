@@ -98,8 +98,8 @@ public class AuthenticationController : ControllerBase
     }
     #endregion
 
-    [Authorize(Policy = nameof(RoleConstants.Staff))]
     [HttpGet]
+    [Authorize(Policy = nameof(RoleConstants.Staff))]
     public async Task<IActionResult> Demo()
     {
         try

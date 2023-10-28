@@ -250,7 +250,7 @@ public class UserService : IUserService
                 rolesClaims += item.value;
             } else
             {
-                rolesClaims += ", " + item.value;
+                rolesClaims += "," + item.value;
             }
         }
         var tokenDescriptor = new SecurityTokenDescriptor
