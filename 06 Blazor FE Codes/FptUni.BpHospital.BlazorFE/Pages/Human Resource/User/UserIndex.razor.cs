@@ -33,7 +33,7 @@ public partial class UserIndex
 
         this.Session = await SessionStorage.GetItemAsync<UserSession>(nameof(UserSession));
 
-        this.WorkItemList = await HttpClientContext.User.GetListAllAsync(Session.Email, Session.AccessToken);
+        this.WorkItemList = await HttpClientContext.User.GetListAllAsync();
 
     }
     #endregion

@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
+using Blazored.SessionStorage;
+using FptUni.BpHospital.Common.DTOs;
 using Microsoft.Extensions.Logging;
 using ShareLibrary.EntityProviders;
 using ShareLibrary.HttpClientProviders;
@@ -10,71 +12,97 @@ namespace FptUni.BpHospital.HttpClientProviders;
 public abstract class BaseHrHttpClientProviders<TEntity> : BaseHttpClientProvider<TEntity>
     where TEntity : BaseEntity
 {
+    #region [ Properties ]
+    protected readonly ISessionStorageService _sessionStorage;
+    #endregion
+
     #region [ CTor ]
-    public BaseHrHttpClientProviders(IHttpClientFactory httpClientFactory, ILogger<BaseHttpClientProvider<TEntity>> logger, IEncriptionProvider encriptionProvider) : base(httpClientFactory, logger, encriptionProvider)
+    public BaseHrHttpClientProviders(ISessionStorageService _sessionStorage, IHttpClientFactory httpClientFactory, ILogger<BaseHttpClientProvider<TEntity>> logger, IEncriptionProvider encriptionProvider) : base(httpClientFactory, logger, encriptionProvider)
     {
+        this._sessionStorage = _sessionStorage;
     }
     #endregion
 
-    #region [ Methods - Override ]
-    public async override Task<bool> AddAsync(string emailKey, TEntity entity, string accessToken, string clientName = "HrClient")
+    #region [ Methods -  ]
+    public async Task<bool> AddAsync(TEntity entity)
     {
-        return await base.AddAsync(emailKey, entity, "HrClient", accessToken);
+        var userSession = await this.GetUserSessionAsync();
+
+        return await base.AddAsync(userSession.Email, entity, "HrClient", userSession.AccessToken);
     }
 
-    public async override Task<TEntity> GetSingleByIdAsync(string emailKey, string id, string accessToken, string clientName = "HrClient")
+    public async  Task<TEntity> GetSingleByIdAsync(string id)
     {
-        return await base.GetSingleByIdAsync(emailKey, id, clientName, accessToken);
+        var userSession = await this.GetUserSessionAsync();
+        return await base.GetSingleByIdAsync(userSession.Email, id,  "HrClient", userSession.AccessToken);
     }
 
-    public async override Task<bool> UpdateAsync(string emailKey, TEntity entity, string accessToken, string clientName = "HrClient")
+    public async  Task<bool> UpdateAsync(TEntity entity)
     {
-        return await base.UpdateAsync(emailKey, entity, clientName, accessToken);
+        var userSession = await this.GetUserSessionAsync();
+        return await base.UpdateAsync(userSession.Email, entity,  "HrClient", userSession.AccessToken);
     }
 
-    public async override Task<bool> SoftDeleteAsync(string emailKey, string entityId, string accessToken, string clientName = "HrClient")
+    public async  Task<bool> SoftDeleteAsync(string entityId)
     {
-        return await base.SoftDeleteAsync(emailKey, entityId, clientName, accessToken);
+        var userSession = await this.GetUserSessionAsync();
+        return await base.SoftDeleteAsync(userSession.Email, entityId,  "HrClient", userSession.AccessToken);
     }
 
-    public async override Task<bool> DestroyAsync(string emailKey, string entityId, string accessToken, string clientName = "HrClient")
+    public async  Task<bool> DestroyAsync(string entityId)
     {
-        return await base.DestroyAsync(emailKey, entityId, clientName, accessToken);
+
+        var userSession = await this.GetUserSessionAsync();
+        return await base.DestroyAsync(userSession.Email, entityId,  "HrClient", userSession.AccessToken);
     }
 
-    public async override Task<bool> RecoverAsync(string emailKey, string entityId, string accessToken, string clientName = "HrClient")
+    public async  Task<bool> RecoverAsync(string entityId)
     {
-        return await base.RecoverAsync(emailKey, entityId, clientName, accessToken);
+        var userSession = await this.GetUserSessionAsync();
+        return await base.RecoverAsync(userSession.Email, entityId,  "HrClient", userSession.AccessToken);
     }
 
-    public async override Task<IList<TEntity>> GetListAllAsync(string emailKey, string accessToken, string clientName = "HrClient")
+    public async  Task<IList<TEntity>> GetListAllAsync()
     {
-        return await base.GetListAllAsync(emailKey, "HrClient", accessToken); 
+        var userSession = await this.GetUserSessionAsync();
+        return await base.GetListAllAsync(userSession.Email, "HrClient", userSession.AccessToken); 
     }
 
-    public async override Task<IList<TEntity>> GetListIsDeletedAsync(string emailKey, string accessToken, string clientName = "HrClient")
+    public async  Task<IList<TEntity>> GetListIsDeletedAsync()
     {
-        return await base.GetListIsDeletedAsync(emailKey, clientName, accessToken);
+        var userSession = await this.GetUserSessionAsync();
+        return await base.GetListIsDeletedAsync(userSession.Email,  "HrClient", userSession.AccessToken);
     }
 
-    public async override Task<IList<TEntity>> GetListIsNotDeletedAsync(string emailKey, string accessToken, string clientName = "HrClient")
+    public async  Task<IList<TEntity>> GetListIsNotDeletedAsync()
     {
-        return await base.GetListIsNotDeletedAsync(emailKey, clientName, accessToken);
+        var userSession = await this.GetUserSessionAsync();
+        return await base.GetListIsNotDeletedAsync(userSession.Email,  "HrClient", userSession.AccessToken);
     }
 
-    public async override Task<int> CountAllAsync(string emailKey, string accessToken, string clientName = "HrClient")
+    public async  Task<int> CountAllAsync()
     {
-        return await base.CountAllAsync(emailKey, clientName, accessToken);
+        var userSession = await this.GetUserSessionAsync();
+        return await base.CountAllAsync(userSession.Email,  "HrClient", userSession.AccessToken);
     }
 
-    public async override Task<int> CountIsDeletedAsync(string emailKey, string accessToken, string clientName = "HrClient")
+    public async  Task<int> CountIsDeletedAsync()
     {
-        return await base.CountIsDeletedAsync(emailKey, clientName, accessToken);
+        var userSession = await this.GetUserSessionAsync();
+        return await base.CountIsDeletedAsync(userSession.Email,  "HrClient", userSession.AccessToken);
     }
 
-    public async override Task<int> CountIsNotDeletedAsync(string emailKey, string accessToken, string clientName = "HrClient")
+    public async  Task<int> CountIsNotDeletedAsync()
     {
-        return await base.CountIsNotDeletedAsync(emailKey, clientName, accessToken);
+        var userSession = await this.GetUserSessionAsync();
+        return await base.CountIsNotDeletedAsync(userSession.Email,  "HrClient", userSession.AccessToken);
+    }
+    #endregion
+
+    #region [ Methods -  ]
+    public async Task<UserSession> GetUserSessionAsync()
+    {
+        return await this._sessionStorage.GetItemAsync<UserSession>("UserSession");
     }
     #endregion
 }
