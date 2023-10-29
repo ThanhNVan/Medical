@@ -42,7 +42,7 @@ public static class AuthorizationPolicies
     
     public static void AddAuthorizationCorePolicies(this IServiceCollection services)
     {
-        services.AddAuthorization(options =>
+        services.AddAuthorizationCore(options =>
         {
             options.AddPolicy(RoleConstants.Admin, policy =>
             {
@@ -53,21 +53,21 @@ public static class AuthorizationPolicies
             {
                 policy.RequireAssertion(context =>
                     context.User.IsInRole(RoleConstants.Admin) ||
-                    context.User.HasClaim(claims => claims.Type == ClaimTypes.Role && claims.Value.Contains(RoleConstants.GeneralDirector)) ||
-                    context.User.HasClaim(claims => claims.Type == ClaimTypes.Role && claims.Value.Contains(RoleConstants.HRManager)));
+                    context.User.HasClaim(claims => claims.Value.Contains(RoleConstants.GeneralDirector)) ||
+                    context.User.HasClaim(claims => claims.Value.Contains(RoleConstants.HRManager)));
             });
             
             options.AddPolicy(RoleConstants.Staff, policy =>
             {
                 policy.RequireAssertion(context =>
-                    context.User.HasClaim(claims => claims.Type == ClaimTypes.Role && claims.Value.Contains(RoleConstants.Admin) ||
-                                                                                        claims.Value.Contains(RoleConstants.DepartmentDirector) ||
-                                                                                        claims.Value.Contains(RoleConstants.HRStaff) ||
-                                                                                        claims.Value.Contains(RoleConstants.HRManager) ||
-                                                                                        claims.Value.Contains(RoleConstants.SalesStaff) ||
-                                                                                        claims.Value.Contains(RoleConstants.SalesManager) ||
-                                                                                        claims.Value.Contains(RoleConstants.GeneralDirector) ||
-                                                                                        claims.Value.Contains(RoleConstants.Staff)));
+                    context.User.HasClaim(claims => claims.Value.Contains(RoleConstants.Admin) ||
+                                                    claims.Value.Contains(RoleConstants.DepartmentDirector) ||
+                                                    claims.Value.Contains(RoleConstants.HRStaff) ||
+                                                    claims.Value.Contains(RoleConstants.HRManager) ||
+                                                    claims.Value.Contains(RoleConstants.SalesStaff) ||
+                                                    claims.Value.Contains(RoleConstants.SalesManager) ||
+                                                    claims.Value.Contains(RoleConstants.GeneralDirector) ||
+                                                    claims.Value.Contains(RoleConstants.Staff)));
             });
 
         });

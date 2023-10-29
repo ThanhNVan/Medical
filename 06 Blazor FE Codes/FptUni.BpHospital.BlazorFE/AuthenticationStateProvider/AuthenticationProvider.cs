@@ -114,6 +114,13 @@ public class AuthenticationProvider : AuthenticationStateProvider
         }
     }
 
+    public void MarkUserAsAuthenticated(string token)
+    {
+        var authenticatedUser = new ClaimsPrincipal(new ClaimsIdentity(ParseClaimsFromJwt(token), "jwt"));
+        var authState = Task.FromResult(new AuthenticationState(authenticatedUser));
+
+        NotifyAuthenticationStateChanged(authState);
+    }
     public static IEnumerable<Claim> ParseClaimsFromJwt(string jwt)
     {
         var payload = jwt.Split('.')[1];
