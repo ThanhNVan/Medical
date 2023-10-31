@@ -20,7 +20,15 @@ public static class ServiceEntensions
             {
                 clients.BaseAddress = new Uri(configuration["HrClient"]);
             });
+        
+        services.AddHttpClient(
+            RoutingUrl.MedicineClient, clients =>
+            {
+                clients.BaseAddress = new Uri(configuration["HrClient"]);
+            });
+
         services.AddTransient<IAuthenticationHttpClientProviders, AuthenticationHttpClientProviders>();
+        services.AddTransient<IUserHttpClientProviders, UserHttpClientProviders>();
 
         services.AddTransient<HttpClientContext>();
     }

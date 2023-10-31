@@ -1,0 +1,11 @@
+﻿@page "/Hr/Index"
+@namespace FptUni.BpHospital.BlazorFE
+
+@attribute [Authorize(Policy = "HRManager")]
+
+<PageTitle>Human Resource</PageTitle>
+
+<SfButton CssClass="e-inherit" IconCss="oi oi-document" OnClick="() => ViewReport()">View Reports</SfButton>
+<SfButton CssClass="e-inherit" IconCss="oi oi-calendar" OnClick="() => ViewLeaveRequest()">View Leave Requests</SfButton>
+<SfButton CssClass="e-inherit" IconCss="oi oi-people" OnClick="() => ViewEmployee()">View Employees</SfButton>
+@* <SfButton CssClass="e-inherit" IconCss="e-icons e-agenda-date-range" OnClick="() => ViewEmployee()">View Employees</SfButton> *@

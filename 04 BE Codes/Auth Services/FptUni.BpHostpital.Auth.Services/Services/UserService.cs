@@ -250,7 +250,7 @@ public class UserService : IUserService
                 rolesClaims += item.value;
             } else
             {
-                rolesClaims += ", " + item.value;
+                rolesClaims += "," + item.value;
             }
         }
         var tokenDescriptor = new SecurityTokenDescriptor
@@ -259,7 +259,7 @@ public class UserService : IUserService
                 new Claim(ClaimTypes.Name, user.Fullname),
                 new Claim(JwtRegisteredClaimNames.Email, user.Email),
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
-                new Claim("UserId", user.Id),
+                new Claim("userId", user.Id),
 
                 //roles
                 new Claim(ClaimTypes.Role, rolesClaims)

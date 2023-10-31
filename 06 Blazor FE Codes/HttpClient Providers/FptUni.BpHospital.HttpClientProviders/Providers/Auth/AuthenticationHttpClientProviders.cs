@@ -52,7 +52,6 @@ public class AuthenticationHttpClientProviders : IAuthenticationHttpClientProvid
                 var result = JsonConvert.DeserializeObject<UserSession>(await response.Content.ReadAsStringAsync());
                 if (result is not null)
                 {
-
                     result.AccessToken = this._encriptionProvider.EncryptWithSalt(result.AccessToken, result.Email);
                 }
                 return result;
@@ -66,7 +65,7 @@ public class AuthenticationHttpClientProviders : IAuthenticationHttpClientProvid
         }
     }
 
-    public async Task<TokenModel> RenowTokenAsync(string emailKey, TokenModel model, string accessToken)
+    public async Task<TokenModel> RenewTokenAsync(string emailKey, TokenModel model, string accessToken)
     {
         try
         {

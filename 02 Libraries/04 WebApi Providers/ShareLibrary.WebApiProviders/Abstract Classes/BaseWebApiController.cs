@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace ShareLibrary.WebApiProviders;
 
-[Authorize]
+//[Authorize(Policy = "HRManager")]
 [ApiController]
 [Route("Api/V1/[controller]")]
 public abstract class BaseWebApiController<TEntity, TService, TContext> : ControllerBase

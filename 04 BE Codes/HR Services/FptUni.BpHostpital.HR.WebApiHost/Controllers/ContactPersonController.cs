@@ -5,6 +5,7 @@ using Microsoft.Extensions.Logging;
 
 namespace FptUni.BpHostpital.HR.WebApiHost;
 
+
 public class ContactPersonController : BaseWebApiController<ContactPerson, IContactPersonService, HrDbContext>
 {
     #region [ CTor ]

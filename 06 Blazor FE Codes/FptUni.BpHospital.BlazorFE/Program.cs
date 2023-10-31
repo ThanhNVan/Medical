@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Syncfusion.Blazor;
+using FptUni.BpHospital.Common;
 
 namespace FptUni.BpHospital.BlazorFE;
 
@@ -17,6 +18,8 @@ public class Program
         builder.Services.AddRazorPages();
         builder.Services.AddServerSideBlazor();
         builder.Services.AddHttpClientProviders(builder.Configuration);
+        builder.Services.AddAuthenticationPolicies(builder.Configuration);
+        builder.Services.AddAuthorizationCorePolicies();
         builder.Services.AddServices();
 
         var app = builder.Build();
@@ -31,7 +34,8 @@ public class Program
         }
 
         app.UseHttpsRedirection();
-
+        app.UseAuthentication();
+        app.UseAuthorization(); 
         app.UseStaticFiles();
 
         app.UseRouting();

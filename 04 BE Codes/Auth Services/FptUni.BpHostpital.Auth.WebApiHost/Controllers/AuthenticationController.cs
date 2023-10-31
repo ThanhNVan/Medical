@@ -55,6 +55,7 @@ public class AuthenticationController : ControllerBase
     #endregion
 
     #region [ Methods - SignUp ]
+    [Authorize(Policy = nameof(RoleConstants.Admin))]
     [HttpPost(nameof(BaseMethodUrl.SignUp))]
     public async Task<IActionResult> SignUpAsync([FromBody] SignUpModel model)
     {
@@ -76,7 +77,7 @@ public class AuthenticationController : ControllerBase
     #endregion
 
     #region [ Methods - RenewToken ]
-    //[Authorize]
+    [Authorize]
     [HttpPost(nameof(BaseMethodUrl.RenewToken))]
     public async Task<IActionResult> RenewTokenAsync([FromBody] RenewTokenModel model)
     {
@@ -96,4 +97,21 @@ public class AuthenticationController : ControllerBase
         }
     }
     #endregion
+
+    //[HttpGet]
+    //[Authorize(Policy = nameof(RoleConstants.Staff))]
+    //public async Task<IActionResult> Demo()
+    //{
+    //    try
+    //    {
+    //        var result = 1;
+           
+
+    //        return Ok(result);
+    //    } catch (Exception ex)
+    //    {
+    //        this._logger.LogWarning(ex.Message);
+    //        return BadRequest();
+    //    }
+    //}
 }

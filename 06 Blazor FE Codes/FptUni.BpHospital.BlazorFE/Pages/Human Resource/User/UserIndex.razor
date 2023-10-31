@@ -1,0 +1,16 @@
+﻿@page "/Hr/User/Index"
+@namespace FptUni.BpHospital.BlazorFE
+
+@attribute [Authorize(Policy = "HRManager")]
+
+<PageTitle>Employees</PageTitle>
+
+<SfButton CssClass="e-inherit" IconCss="e-icons e-check-large" OnClick="() => Onboard()">Onboard New Employee</SfButton>
+<SfGrid DataSource="@WorkItemList" AllowPaging="true" AllowSorting="true" Height="520" AllowFiltering="true">
+    <GridColumns>
+        <GridColumn Field="@nameof(User.Fullname)" HeaderTextAlign="TextAlign.Center" />
+        <GridColumn Field="@nameof(User.PhoneNumber1)" HeaderText="Phone Number" HeaderTextAlign="TextAlign.Center" />
+        <GridColumn Field="@nameof(User.EmailAddress)" HeaderText="Email Address" HeaderTextAlign="TextAlign.Center" />
+        <GridColumn Field="@nameof(User.EmailAddress)" HeaderText="Occupation" HeaderTextAlign="TextAlign.Center" />
+    </GridColumns>
+</SfGrid>

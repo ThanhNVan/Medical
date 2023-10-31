@@ -34,7 +34,7 @@ public partial class Index
         if (result.User.Identity != null && result.User.Identity.IsAuthenticated)
         {
             AuthenticationProvider.UpdateAuthenticationState(result);
-            NavigationManager.NavigateTo("/fetchdata");
+            NavigationManager.NavigateTo("/Hr/Index");
         }
 
         await base.OnInitializedAsync();
@@ -60,7 +60,7 @@ public partial class Index
 
         var AuthenticationProvider = (AuthenticationProvider)AuthenticationStateProvider;
         await AuthenticationProvider.UpdateAuthenticationStateAsync(response);
-        NavigationManager.NavigateTo("/fetchdata");
+        NavigationManager.NavigateTo("/Hr/Index/");
         return;
     }
     #endregion

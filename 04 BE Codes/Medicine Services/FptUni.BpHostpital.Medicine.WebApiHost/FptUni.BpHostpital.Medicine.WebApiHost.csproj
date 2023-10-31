@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>disable</ImplicitUsings>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="6.0.21" />
+		<PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.21" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\..\..\02 Libraries\04 WebApi Providers\ShareLibrary.WebApiProviders\ShareLibrary.WebApiProviders.csproj" />
+		<ProjectReference Include="..\FptUni.BpHostpital.Medicine.Services\FptUni.BpHostpital.Medicine.Services.csproj" />
+	</ItemGroup>
+
+</Project>

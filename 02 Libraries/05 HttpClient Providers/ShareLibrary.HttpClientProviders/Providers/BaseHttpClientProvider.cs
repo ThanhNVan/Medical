@@ -35,13 +35,13 @@ public abstract class BaseHttpClientProvider<TEntity> : IBaseHttpClientProvider<
     #endregion
 
     #region [ Public Methods - CRUD ]
-    public virtual async Task<bool> AddAsync(string emailKey, TEntity entity, string accessToken = "")
+    public virtual async Task<bool> AddAsync(string emailKey, TEntity entity, string clientName, string accessToken = "")
     {
         try
         {
             var url = this._entityUrl + BaseMethodUrl.Add;
 
-            var httpClient = this.CreateClient(emailKey: emailKey, accessToken: accessToken);
+            var httpClient = this.CreateClient(emailKey, clientName, accessToken);
 
             var result = await httpClient.PostAsJsonAsync(url, entity);
 
@@ -58,13 +58,13 @@ public abstract class BaseHttpClientProvider<TEntity> : IBaseHttpClientProvider<
         }
     }
 
-    public virtual async Task<TEntity> GetSingleByIdAsync(string emailKey, string id, string accessToken = "")
+    public virtual async Task<TEntity> GetSingleByIdAsync(string emailKey, string id, string clientName, string accessToken = "")
     {
         try
         {
             var url = this._entityUrl + BaseMethodUrl.GetSingleById + id;
 
-            var httpClient = this.CreateClient(emailKey: emailKey, accessToken: accessToken);
+            var httpClient = this.CreateClient(emailKey, clientName, accessToken);
 
             var response = await httpClient.GetAsync(url);
 
@@ -82,13 +82,13 @@ public abstract class BaseHttpClientProvider<TEntity> : IBaseHttpClientProvider<
         }
     }
 
-    public virtual async Task<bool> UpdateAsync(string emailKey, TEntity entity, string accessToken = "")
+    public virtual async Task<bool> UpdateAsync(string emailKey, TEntity entity, string clientName, string accessToken = "")
     {
         try
         {
             var url = this._entityUrl + BaseMethodUrl.Update;
 
-            var httpClient = this.CreateClient(emailKey: emailKey, accessToken: accessToken);
+            var httpClient = this.CreateClient(emailKey, clientName, accessToken);
 
             var response = await httpClient.PutAsJsonAsync(url, entity);
 
@@ -105,13 +105,13 @@ public abstract class BaseHttpClientProvider<TEntity> : IBaseHttpClientProvider<
         }
     }
 
-    public virtual async Task<bool> SoftDeleteAsync(string emailKey, string entityId, string accessToken = "")
+    public virtual async Task<bool> SoftDeleteAsync(string emailKey, string entityId, string clientName, string accessToken = "")
     {
         try
         {
             var url = this._entityUrl + BaseMethodUrl.SoftDelete + entityId;
 
-            var httpClient = this.CreateClient(emailKey: emailKey, accessToken: accessToken);
+            var httpClient = this.CreateClient(emailKey, clientName, accessToken);
 
             var response = await httpClient.DeleteAsync(url);
 
@@ -127,13 +127,13 @@ public abstract class BaseHttpClientProvider<TEntity> : IBaseHttpClientProvider<
         }
     }
 
-    public async Task<bool> DestroyAsync(string emailKey, string entityId, string accessToken = "")
+    public virtual async Task<bool> DestroyAsync(string emailKey, string entityId, string clientName, string accessToken = "")
     {
         try
         {
             var url = this._entityUrl + BaseMethodUrl.Destroy + entityId;
 
-            var httpClient = this.CreateClient(emailKey: emailKey, accessToken: accessToken);
+            var httpClient = this.CreateClient(emailKey, clientName, accessToken);
 
             var response = await httpClient.DeleteAsync(url);
 
@@ -149,13 +149,13 @@ public abstract class BaseHttpClientProvider<TEntity> : IBaseHttpClientProvider<
         }
     }
 
-    public virtual async Task<bool> RecoverAsync(string emailKey, string entityId, string accessToken = "")
+    public virtual async Task<bool> RecoverAsync(string emailKey, string entityId, string clientName, string accessToken = "")
     {
         try
         {
             var url = this._entityUrl + BaseMethodUrl.Recover;
 
-            var httpClient = this.CreateClient(emailKey: emailKey, accessToken: accessToken);
+            var httpClient = this.CreateClient(emailKey, clientName, accessToken);
 
             var response = await httpClient.PutAsJsonAsync(url, entityId);
 
@@ -171,13 +171,13 @@ public abstract class BaseHttpClientProvider<TEntity> : IBaseHttpClientProvider<
         }
     }
 
-    public virtual async Task<IList<TEntity>> GetListAllAsync(string emailKey, string accessToken = "")
+    public virtual async Task<IList<TEntity>> GetListAllAsync(string emailKey, string clientName, string accessToken = "")
     {
         try
         {
             var url = this._entityUrl + BaseMethodUrl.GetListAll;
 
-            var httpClient = this.CreateClient(emailKey: emailKey, accessToken: accessToken);
+            var httpClient = this.CreateClient(emailKey, clientName, accessToken);
 
             var response = await httpClient.GetAsync(url);
 
@@ -195,13 +195,13 @@ public abstract class BaseHttpClientProvider<TEntity> : IBaseHttpClientProvider<
         }
     }
 
-    public virtual async Task<IList<TEntity>> GetListIsDeletedAsync(string emailKey, string accessToken = "")
+    public virtual async Task<IList<TEntity>> GetListIsDeletedAsync(string emailKey, string clientName, string accessToken = "")
     {
         try
         {
             var url = this._entityUrl + BaseMethodUrl.GetListIsDeleted;
 
-            var httpClient = this.CreateClient(emailKey: emailKey, accessToken: accessToken);
+            var httpClient = this.CreateClient(emailKey, clientName, accessToken);
 
             var response = await httpClient.GetAsync(url);
 
@@ -219,13 +219,13 @@ public abstract class BaseHttpClientProvider<TEntity> : IBaseHttpClientProvider<
         }
     }
 
-    public virtual async Task<IList<TEntity>> GetListIsNotDeletedAsync(string emailKey, string accessToken = "")
+    public virtual async Task<IList<TEntity>> GetListIsNotDeletedAsync(string emailKey, string clientName, string accessToken = "")
     {
         try
         {
             var url = this._entityUrl + BaseMethodUrl.GetListIsNotDeleted;
 
-            var httpClient = this.CreateClient(emailKey: emailKey, accessToken: accessToken);
+            var httpClient = this.CreateClient(emailKey, clientName, accessToken);
 
             var response = await httpClient.GetAsync(url);
 
@@ -243,13 +243,13 @@ public abstract class BaseHttpClientProvider<TEntity> : IBaseHttpClientProvider<
         }
     }
 
-    public virtual async Task<int> CountAllAsync(string emailKey, string accessToken = "")
+    public virtual async Task<int> CountAllAsync(string emailKey, string clientName, string accessToken = "")
     {
         try
         {
             var url = this._entityUrl + BaseMethodUrl.CountAll;
 
-            var httpClient = this.CreateClient(emailKey: emailKey, accessToken: accessToken);
+            var httpClient = this.CreateClient(emailKey, clientName, accessToken);
 
             var response = await httpClient.GetAsync(url);
 
@@ -267,13 +267,13 @@ public abstract class BaseHttpClientProvider<TEntity> : IBaseHttpClientProvider<
         }
     }
 
-    public virtual async Task<int> CountIsDeletedAsync(string emailKey, string accessToken = "")
+    public virtual async Task<int> CountIsDeletedAsync(string emailKey, string clientName, string accessToken = "")
     {
         try
         {
             var url = this._entityUrl + BaseMethodUrl.CountIsDeleted;
 
-            var httpClient = this.CreateClient(emailKey: emailKey, accessToken: accessToken);
+            var httpClient = this.CreateClient(emailKey, clientName, accessToken);
 
             var response = await httpClient.GetAsync(url);
 
@@ -290,13 +290,13 @@ public abstract class BaseHttpClientProvider<TEntity> : IBaseHttpClientProvider<
             return -1;
         }
     }
-    public virtual async Task<int> CountIsNotDeletedAsync(string emailKey, string accessToken = "")
+    public virtual async Task<int> CountIsNotDeletedAsync(string emailKey, string clientName, string accessToken = "")
     {
         try
         {
             var url = this._entityUrl + BaseMethodUrl.CountIsNotDeleted;
 
-            var httpClient = this.CreateClient( emailKey: emailKey, accessToken: accessToken);
+            var httpClient = this.CreateClient(emailKey, clientName, accessToken);
 
             var response = await httpClient.GetAsync(url);
 
@@ -316,7 +316,7 @@ public abstract class BaseHttpClientProvider<TEntity> : IBaseHttpClientProvider<
     #endregion
 
     #region [ Private Methods -  ]
-    protected HttpClient CreateClient(string emailKey, string clientName = "HrClient", string accessToken = "")
+    protected HttpClient CreateClient(string emailKey, string clientName, string accessToken = "")
     {
         var result = this._httpClientFactory.CreateClient(clientName);
 

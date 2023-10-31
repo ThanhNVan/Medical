@@ -1,6 +1,6 @@
 using System;
 
-namespace FptUni.BpHospital.BlazorFE.Data;
+namespace FptUni.BpHostpital.Medicine.WebApiHost;
 
 public class WeatherForecast
 {
