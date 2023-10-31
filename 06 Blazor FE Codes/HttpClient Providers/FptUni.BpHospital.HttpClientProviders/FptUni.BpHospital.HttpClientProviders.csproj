@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
@@ -24,8 +24,8 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Folder Include="Interfaces\Medicines\" />
-	  <Folder Include="Providers\Medicines\" />
+	  <Folder Include="Interfaces\Medicines\Base\" />
+	  <Folder Include="Providers\Medicines\Base\" />
 	</ItemGroup>
 
 </Project>

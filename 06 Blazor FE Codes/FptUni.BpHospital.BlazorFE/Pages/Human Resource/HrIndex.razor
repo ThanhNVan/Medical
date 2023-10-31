@@ -1,49 +1,11 @@
 ﻿@page "/Hr/Index"
-
 @namespace FptUni.BpHospital.BlazorFE
-@using System.Security.Claims;
 
-@if (user is not null)
-{
-    <h3>@user.Identity.Name</h3>
-    <div class="m-2 p-2">
-        Is Authenticated: @user.Identity.IsAuthenticated
-    </div>
-    <div class="m-2 p-2">
-        Authentication Type: @user.Identity.AuthenticationType
-    </div>
-    <div class="m-2 p-2">
-        Admin Role: @user.Claims.Any(x => x.Value.Contains("Admin"))
-    </div>
-    <div class="m-2 p-2">
-        <h5>Claims</h5>
-        @foreach (var claim in user.Claims)
-        {
-            <span>
-                @claim.Type
-            </span>
-            <span>:</span>
-            <span>
-                @claim.Value
-            </span>
-            <br />
-        }
-    </div>
-} else
-{
-    <div class="m-2 p-2">
-        No User Exists
-    </div>
-}
+@attribute [Authorize(Policy = "HRManager")]
 
-@code {
-    [CascadingParameter] public Task<AuthenticationState> AuthTask { get; set; }
+<PageTitle>Human Resource</PageTitle>
 
-    private System.Security.Claims.ClaimsPrincipal user;
-
-    protected async override Task OnInitializedAsync()
-    {
-        var authState = await AuthTask;
-        this.user = authState.User;
-    }
-}
+<SfButton CssClass="e-inherit" IconCss="oi oi-document" OnClick="() => ViewReport()">View Reports</SfButton>
+<SfButton CssClass="e-inherit" IconCss="oi oi-calendar" OnClick="() => ViewLeaveRequest()">View Leave Requests</SfButton>
+<SfButton CssClass="e-inherit" IconCss="oi oi-people" OnClick="() => ViewEmployee()">View Employees</SfButton>
+@* <SfButton CssClass="e-inherit" IconCss="e-icons e-agenda-date-range" OnClick="() => ViewEmployee()">View Employees</SfButton> *@

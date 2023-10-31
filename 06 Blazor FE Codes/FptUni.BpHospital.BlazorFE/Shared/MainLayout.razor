@@ -1,4 +1,5 @@
-﻿@inherits LayoutComponentBase
+﻿@using System.Security.Claims;
+@inherits LayoutComponentBase
 
 <PageTitle>BpHospital</PageTitle>
 
@@ -6,7 +7,6 @@
     <CascadingAuthenticationState>
         <AuthorizeView>
             <Authorized>
-
                 <div class="sidebar">
                     <NavMenu />
                 </div>
@@ -18,6 +18,9 @@
         <CascadingAuthenticationState>
             <AuthorizeView>
                 <Authorized>
+                    <div class="top-row px-4">
+                        <span class="oi oi-person" aria-hidden="true"> Hello<a>@UserDisplayName(context.User.Claims)</a></span>
+                    </div>
                     <article class="content px-4">
                         @Body
                     </article>
@@ -30,3 +33,12 @@
         </CascadingAuthenticationState>
     </main>
 </div>
+
+@code {
+    private string UserDisplayName(IEnumerable<Claim> claims)
+    {
+        var name = claims.FirstOrDefault(x => x.Type == "unique_name").Value;
+
+        return name;
+    }
+}

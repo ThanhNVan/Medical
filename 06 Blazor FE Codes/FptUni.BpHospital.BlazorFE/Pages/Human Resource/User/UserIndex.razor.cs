@@ -31,9 +31,7 @@ public partial class UserIndex
     protected override async Task OnInitializedAsync()
     {
 
-        this.Session = await SessionStorage.GetItemAsync<UserSession>(nameof(UserSession));
-
-        this.WorkItemList = await HttpClientContext.User.GetListAllAsync();
+        this.WorkItemList = await HttpClientContext.User.GetListIsNotDeletedAsync();
 
     }
     #endregion
@@ -42,6 +40,11 @@ public partial class UserIndex
     public void ViewDetail(string userId)
     {
         this.NavigationManager.NavigateTo($"/Hr/User/{userId}");
+    }
+    
+    public void Onboard()
+    {
+        this.NavigationManager.NavigateTo($"/Hr/User/");
     }
     #endregion
 }
