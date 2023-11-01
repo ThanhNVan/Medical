@@ -17,7 +17,6 @@ public static class ServiceEntensions
         services.AddTransient<AuthenticationStateProvider, AuthenticationProvider>();
         services.AddTransient<JwtSecurityTokenHandler>();
         services.AddTransient<IEncriptionProvider, EncriptionProvider>();
-        services.AddAuthorizationCore();
     }
     #endregion
 
