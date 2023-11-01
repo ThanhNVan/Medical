@@ -31,8 +31,15 @@ public partial class UserIndex
     protected override async Task OnInitializedAsync()
     {
 
-        this.WorkItemList = await HttpClientContext.User.GetListIsNotDeletedAsync();
+        this.WorkItemList = new List<User>();
+        await this.LoadDataAsync();
+    }
+    #endregion
 
+    #region [ Methods - LoadData ]
+    public async Task LoadDataAsync()
+    {
+        this.WorkItemList = await HttpClientContext.User.GetListIsNotDeletedAsync();
     }
     #endregion
 

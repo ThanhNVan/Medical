@@ -36,6 +36,10 @@ public class User : BaseEntity
     [Required]
     [DataType(DataType.EmailAddress)]
     public string EmailAddress { get; set;}
+    
+    [Required]
+    [DataType(DataType.Text)]
+    public string OccupationId { get; set;}
     #endregion
 
     #region [ Properties - Virtual]
@@ -53,5 +57,10 @@ public class User : BaseEntity
     [NotMapped]
     [InverseProperty("User")]
     public virtual Profile Profile { get; set; }
+
+    [JsonIgnore]
+    [ForeignKey(nameof(OccupationId))]
+    [InverseProperty("Users")]
+    public Occupation Occupation { get; set; }
     #endregion
 }

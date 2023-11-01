@@ -29,7 +29,7 @@ public class ContactPerson : BaseEntity
 	public string PhoneNumber2 { get; set; }
 
 	[Required]
-	public int RelationshipWithUser { get; set; }
+	public RelationshipWithUser RelationshipWithUser { get; set; }
 
 	[DataType(DataType.EmailAddress)]
 	public string EmailAddress { get; set; }

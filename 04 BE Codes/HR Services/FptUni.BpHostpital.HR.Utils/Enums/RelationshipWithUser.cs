@@ -12,5 +12,6 @@ public enum RelationshipWithUser
     Wife,
     Partner,
     Son,
-    Daughter
+    Daughter,
+    Other
 }

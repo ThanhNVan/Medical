@@ -5,12 +5,24 @@
 
 <PageTitle>Employees</PageTitle>
 
-<SfButton CssClass="e-inherit" IconCss="e-icons e-check-large" OnClick="() => Onboard()">Onboard New Employee</SfButton>
+<div>
+    <SfButton CssClass="e-inherit" IconCss="e-icons e-plus" OnClick="() => Onboard()">Onboard New Employee</SfButton>
+    <SfButton CssClass="e-inherit" IconCss="e-icons e-close" OnClick="() => Onboard()">Offboard An Employee</SfButton>
+</div>
+<br />
 <SfGrid DataSource="@WorkItemList" AllowPaging="true" AllowSorting="true" Height="520" AllowFiltering="true">
     <GridColumns>
         <GridColumn Field="@nameof(User.Fullname)" HeaderTextAlign="TextAlign.Center" />
         <GridColumn Field="@nameof(User.PhoneNumber1)" HeaderText="Phone Number" HeaderTextAlign="TextAlign.Center" />
         <GridColumn Field="@nameof(User.EmailAddress)" HeaderText="Email Address" HeaderTextAlign="TextAlign.Center" />
-        <GridColumn Field="@nameof(User.EmailAddress)" HeaderText="Occupation" HeaderTextAlign="TextAlign.Center" />
+        <GridColumn Field="@nameof(User.EmailAddress)" HeaderText="Position" HeaderTextAlign="TextAlign.Center" />
+        <GridColumn TextAlign="TextAlign.Right" Width="8%">
+            <Template>
+                @{
+                    var user = context as User;
+                    <SfButton CssClass="e-inherit" IconCss="e-icons e-circle-info" OnClick="() => ViewDetail(user.Id)"></SfButton>
+                }
+            </Template>
+        </GridColumn>
     </GridColumns>
 </SfGrid>

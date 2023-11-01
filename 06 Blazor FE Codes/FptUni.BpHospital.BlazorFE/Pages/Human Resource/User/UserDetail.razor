@@ -7,6 +7,18 @@
 
 <h3>User Detail</h3>
 
-@code {
-
-}
+<div class="col-lg-12">
+    <EditForm Model="@WorkItem">
+        <div style="padding-top: 20px;">
+            <div class="form-group col-md-6">
+                <SfTextBox Readonly=true Value="@WorkItem.Fullname" Placeholder="Fullname" FloatLabelType="FloatLabelType.Always"/>
+                <SfTextBox Readonly=true Value="@WorkItem.PhoneNumber1" Placeholder="Phone Number " FloatLabelType="FloatLabelType.Always" />
+                @if (!string.IsNullOrEmpty(WorkItem.PhoneNumber2))
+                {
+                    <SfTextBox Readonly=true Value="@WorkItem.PhoneNumber2" Placeholder="Phone Number 2" FloatLabelType="FloatLabelType.Always" />
+                }
+                <SfTextBox Readonly=true Value="@WorkItem.EmailAddress" Placeholder="EmailAddress" FloatLabelType="FloatLabelType.Always" />
+            </div>
+        </div>
+    </EditForm>
+</div>
