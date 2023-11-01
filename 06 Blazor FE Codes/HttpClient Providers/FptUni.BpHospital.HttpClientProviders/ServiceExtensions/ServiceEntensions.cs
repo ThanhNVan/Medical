@@ -24,11 +24,17 @@ public static class ServiceEntensions
         services.AddHttpClient(
             RoutingUrl.MedicineClient, clients =>
             {
-                clients.BaseAddress = new Uri(configuration["HrClient"]);
+                clients.BaseAddress = new Uri(configuration["MedicineClient"]);
             });
 
         services.AddTransient<IAuthenticationHttpClientProviders, AuthenticationHttpClientProviders>();
+        services.AddTransient<IContactPersonHttpClientProviders, ContactPersonHttpClientProviders>();
+        services.AddTransient<IDepartmentHttpClientProviders, DepartmentHttpClientProviders>();
+        services.AddTransient<IOccupationHttpClientProviders, OccupationHttpClientProviders>();
+        services.AddTransient<IProfileHttpClientProviders, ProfileHttpClientProviders>();
+        services.AddTransient<IRoleHttpClientProviders, RoleHttpClientProviders>();
         services.AddTransient<IUserHttpClientProviders, UserHttpClientProviders>();
+        services.AddTransient<IUserRoleHttpClientProviders, UserRoleHttpClientProviders>();
 
         services.AddTransient<HttpClientContext>();
     }

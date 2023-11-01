@@ -15,6 +15,7 @@ public static class ServiceExtension
         services.AddTransient<IUserRepository, UserRepository>();
         services.AddTransient<IUserRoleRepository, UserRoleRepository>();
         services.AddTransient<IEncriptionProvider, EncriptionProvider>();
+        services.AddTransient<IOccupationRepository, OccupationRepository>();
 
 
         services.AddTransient<RepositoryContext>();

@@ -8,7 +8,8 @@ public class RepositoryContext
                             IProfileRepository profile,
                             IRoleRepository role,
                             IUserRepository user,
-                            IUserRoleRepository userRole)
+                            IUserRoleRepository userRole,
+                            IOccupationRepository occupation)
     {
         ContactPerson = contactPerson;
         Department = department;
@@ -16,6 +17,7 @@ public class RepositoryContext
         Role = role;
         User = user;
         UserRole = userRole;
+        Occupation = occupation;
     }
 
     #endregion
@@ -27,5 +29,6 @@ public class RepositoryContext
     public IRoleRepository Role { get; }
     public IUserRepository User { get; }
     public IUserRoleRepository UserRole { get; }
+    public IOccupationRepository Occupation { get; }
     #endregion
 }

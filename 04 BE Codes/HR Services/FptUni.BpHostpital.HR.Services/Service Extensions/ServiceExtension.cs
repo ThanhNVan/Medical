@@ -12,6 +12,7 @@ public static class ServiceExtension
         services.AddTransient<IRoleService, RoleService>();
         services.AddTransient<IUserRoleService, UserRoleService>();
         services.AddTransient<IUserService, UserService>();
+        services.AddTransient<IOccupationService, OccupationService>();
 
         services.AddTransient<ServiceContext>();
     }

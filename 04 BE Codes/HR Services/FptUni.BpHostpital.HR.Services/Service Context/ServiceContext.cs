@@ -8,7 +8,8 @@ public class ServiceContext
                             IProfileService profile,
                             IRoleService role,
                             IUserRoleService userRole,
-                            IUserService user)
+                            IUserService user,
+                            IOccupationService occupation)
     {
         ContactPerson = contactPerson;
         Department = department;
@@ -16,6 +17,7 @@ public class ServiceContext
         Role = role;
         UserRole = userRole;
         User = user;
+        Occupation = occupation;
     }
     #endregion
 
@@ -26,5 +28,6 @@ public class ServiceContext
     public IRoleService Role { get; }
     public IUserRoleService UserRole { get; }
     public IUserService User { get; }
+    public IOccupationService Occupation { get; }
     #endregion
 }

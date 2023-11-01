@@ -3,6 +3,6 @@ using ShareLibrary.EntityProviders;
 
 namespace FptUni.BpHospital.HttpClientProviders;
 
-public interface IUserHttpClientProviders : IBaseProvider<User>
+public interface IOccupationHttpClientProviders : IBaseProvider<Occupation>
 {
 }

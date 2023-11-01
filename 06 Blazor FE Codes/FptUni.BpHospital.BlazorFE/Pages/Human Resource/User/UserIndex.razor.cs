@@ -25,6 +25,8 @@ public partial class UserIndex
     private UserSession Session { get; set; }
 
     public IList<User> WorkItemList { get; set; }
+
+    public IList<Occupation> OccupationList { get; set; }
     #endregion
 
     #region [ Methods - Override ]
@@ -32,6 +34,7 @@ public partial class UserIndex
     {
 
         this.WorkItemList = new List<User>();
+        this.OccupationList = new List<Occupation>();
         await this.LoadDataAsync();
     }
     #endregion
@@ -40,6 +43,7 @@ public partial class UserIndex
     public async Task LoadDataAsync()
     {
         this.WorkItemList = await HttpClientContext.User.GetListIsNotDeletedAsync();
+
     }
     #endregion
 

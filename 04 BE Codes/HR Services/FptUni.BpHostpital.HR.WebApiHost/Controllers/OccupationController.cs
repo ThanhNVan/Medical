@@ -8,10 +8,10 @@ using ShareLibrary.WebApiProviders;
 namespace FptUni.BpHostpital.HR.WebApiHost;
 
 [Authorize(Policy = nameof(RoleConstants.HRManager))]
-public class UserRoleController : BaseWebApiController<UserRole, IUserRoleService, HrDbContext>
+public class OccupationController : BaseWebApiController<Occupation, IOccupationService, HrDbContext>
 {
     #region [ CTor ]
-    public UserRoleController(ILogger<UserRoleController> logger, IUserRoleService logicProvider) : base(logger, logicProvider)
+    public OccupationController(ILogger<OccupationController> logger, IOccupationService logicProvider) : base(logger, logicProvider)
     {
     }
     #endregion
