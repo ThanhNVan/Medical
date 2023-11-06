@@ -26,8 +26,6 @@ public class ContactPersonController : BaseWebApiController<ContactPerson, ICont
         try
         {
 
-
-
             return Ok();
 
         } catch (ArgumentNullException ex)

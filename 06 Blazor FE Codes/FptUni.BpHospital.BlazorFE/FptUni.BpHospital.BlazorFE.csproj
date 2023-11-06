@@ -10,7 +10,10 @@
 	</ItemGroup>
 	<ItemGroup>
 	  <Folder Include="Data\" />
+	  <Folder Include="Pages\Human Resource\Departments\" />
+	  <Folder Include="Pages\Human Resource\Occupations\" />
 	  <Folder Include="Pages\Medicines\" />
+	  <Folder Include="Pages\My Information\" />
 	</ItemGroup>
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
