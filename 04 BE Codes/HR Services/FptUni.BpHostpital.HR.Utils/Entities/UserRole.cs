@@ -34,7 +34,7 @@ public class UserRole : BaseEntity
     public string UserId { get; set; }
 
     [JsonIgnore]
-    [ForeignKey(nameof(RoleId))]
+    [ForeignKey(nameof(UserId))]
     [InverseProperty("UserRoles")]
     public User User { get; set; }
     #endregion

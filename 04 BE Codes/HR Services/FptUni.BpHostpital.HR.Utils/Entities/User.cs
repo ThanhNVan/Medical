@@ -52,15 +52,25 @@ public class User : BaseEntity
     [NotMapped]
     [InverseProperty("User")]
     public virtual ICollection<UserRole>? UserRoles { get; set; }
+    
+    [JsonIgnore]
+    [NotMapped]
+    [InverseProperty("User")]
+    public virtual ICollection<LeaveRequest>? LeaveRequests { get; set; }
+    
+    [JsonIgnore]
+    [NotMapped]
+    [InverseProperty("User")]
+    public virtual ICollection<Attendance>? Attendances { get; set; }
 
     [JsonIgnore]
     [NotMapped]
     [InverseProperty("User")]
-    public virtual Profile Profile { get; set; }
+    public virtual Profile? Profile { get; set; }
 
     [JsonIgnore]
     [ForeignKey(nameof(OccupationId))]
     [InverseProperty("Users")]
-    public Occupation Occupation { get; set; }
+    public Occupation? Occupation { get; set; }
     #endregion
 }

@@ -1,13 +1,9 @@
-﻿using ShareLibrary.WebApiProviders;
+﻿using FptUni.BpHostpital.HR.Services;
 using FptUni.BpHostpital.HR.Utils;
-using FptUni.BpHostpital.HR.Services;
-using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.Extensions.Logging;
 using ShareLibrary.EntityProviders;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using System.Threading.Tasks;
-using System;
+using ShareLibrary.WebApiProviders;
 
 namespace FptUni.BpHostpital.HR.WebApiHost;
 
@@ -20,22 +16,22 @@ public class ContactPersonController : BaseWebApiController<ContactPerson, ICont
     }
     #endregion
 
-    [HttpGet(nameof(BaseMethodUrl.Add))]
-    public virtual async Task<IActionResult> AddAsync()
-    {
-        try
-        {
+    //[HttpGet(nameof(BaseMethodUrl.Add))]
+    //public virtual async Task<IActionResult> AddAsync()
+    //{
+    //    try
+    //    {
 
-            return Ok();
+    //        return Ok();
 
-        } catch (ArgumentNullException ex)
-        {
-            this._logger.LogError(ex.Message);
-            return BadRequest();
-        } catch (Exception ex)
-        {
-            this._logger.LogError(ex.Message);
-            return new StatusCodeResult(StatusCodes.Status500InternalServerError);
-        }
-    }
+    //    } catch (ArgumentNullException ex)
+    //    {
+    //        this._logger.LogError(ex.Message);
+    //        return BadRequest();
+    //    } catch (Exception ex)
+    //    {
+    //        this._logger.LogError(ex.Message);
+    //        return new StatusCodeResult(StatusCodes.Status500InternalServerError);
+    //    }
+    //}
 }
