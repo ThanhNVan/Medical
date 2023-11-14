@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\02 Libraries\01 Entity Providers\ShareLibrary.EntityProviders\ShareLibrary.EntityProviders.csproj" />
+    <ProjectReference Include="..\..\FptUni.BpHospital.Common.DTOs\FptUni.BpHospital.Common.DTOs.csproj" />
   </ItemGroup>
 
   <ItemGroup>

@@ -1,4 +1,5 @@
-﻿using ShareLibrary.EntityProviders;
+﻿using FptUni.BpHospital.Common;
+using ShareLibrary.EntityProviders;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text.Json.Serialization;

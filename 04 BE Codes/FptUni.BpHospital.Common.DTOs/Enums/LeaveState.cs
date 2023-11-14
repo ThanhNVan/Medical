@@ -1,4 +1,4 @@
-﻿namespace FptUni.BpHostpital.HR.Utils;
+﻿namespace FptUni.BpHospital.Common;
 
 public enum LeaveState
 {

@@ -11,5 +11,7 @@ public static class EntityUrl
     public const string Profile = "Api/V1/Profile";
     public const string Role = "Api/V1/Role";
     public const string UserRole = "Api/V1/UserRole";
+    public const string Attendance = "Api/V1/Attendance";
+    public const string LeaveRequest = "Api/V1/LeaveRequest";
     #endregion
 }

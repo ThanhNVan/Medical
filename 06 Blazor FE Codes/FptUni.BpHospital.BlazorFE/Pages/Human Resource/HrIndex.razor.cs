@@ -19,12 +19,7 @@ public partial class HrIndex
     {
         this.NavigationManager.NavigateTo($"/Hr/Report/Index");
     }
-    
-    public void ViewInternalReport()
-    {
-        this.NavigationManager.NavigateTo($"/Hr/Report/Internal");
-    }
-       
+          
     public void ViewLeaveRequest()
     {
         this.NavigationManager.NavigateTo($"/Hr/LeaveRequest/Index");
@@ -53,6 +48,11 @@ public partial class HrIndex
     //public void ViewOvertimeReport()
     //{
     //    this.NavigationManager.NavigateTo($"/Hr/Report/Overtime");
+    //}
+
+    //public void ViewInternalReport()
+    //{
+    //    this.NavigationManager.NavigateTo($"/Hr/Report/Internal");
     //}
     #endregion
 }

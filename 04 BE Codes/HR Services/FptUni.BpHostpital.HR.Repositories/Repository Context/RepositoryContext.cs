@@ -9,7 +9,9 @@ public class RepositoryContext
                             IRoleRepository role,
                             IUserRepository user,
                             IUserRoleRepository userRole,
-                            IOccupationRepository occupation)
+                            IOccupationRepository occupation,
+                            IAttendanceRepository attendance,
+                            ILeaveRequestRepository leaveRequest)
     {
         ContactPerson = contactPerson;
         Department = department;
@@ -18,6 +20,8 @@ public class RepositoryContext
         User = user;
         UserRole = userRole;
         Occupation = occupation;
+        Attendance = attendance;
+        LeaveRequest = leaveRequest;
     }
 
     #endregion
@@ -30,5 +34,7 @@ public class RepositoryContext
     public IUserRepository User { get; }
     public IUserRoleRepository UserRole { get; }
     public IOccupationRepository Occupation { get; }
+    public IAttendanceRepository Attendance { get; }
+    public ILeaveRequestRepository LeaveRequest { get; }
     #endregion
 }

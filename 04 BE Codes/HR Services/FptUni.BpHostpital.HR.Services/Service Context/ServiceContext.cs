@@ -9,7 +9,9 @@ public class ServiceContext
                             IRoleService role,
                             IUserRoleService userRole,
                             IUserService user,
-                            IOccupationService occupation)
+                            IOccupationService occupation,
+                            ILeaveRequestService leaveRequest,
+                            IAttendanceService attendance)
     {
         ContactPerson = contactPerson;
         Department = department;
@@ -18,6 +20,8 @@ public class ServiceContext
         UserRole = userRole;
         User = user;
         Occupation = occupation;
+        LeaveRequest = leaveRequest;
+        Attendance = attendance;
     }
     #endregion
 
@@ -29,5 +33,7 @@ public class ServiceContext
     public IUserRoleService UserRole { get; }
     public IUserService User { get; }
     public IOccupationService Occupation { get; }
+    public ILeaveRequestService LeaveRequest { get; }
+    public IAttendanceService Attendance { get; }
     #endregion
 }

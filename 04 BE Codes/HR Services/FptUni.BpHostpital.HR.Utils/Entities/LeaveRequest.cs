@@ -2,6 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text.Json.Serialization;
+using FptUni.BpHospital.Common;
 using ShareLibrary.EntityProviders;
 
 namespace FptUni.BpHostpital.HR.Utils;
@@ -17,6 +18,9 @@ public class LeaveRequest : BaseEntity
     [Required]
     [DataType(DataType.DateTime)]
     public DateTime EndDate{ get; set; }
+
+    [Required]
+    public int TotalDay { get; set; }
 
     [Required]
     public LeaveType LeaveType { get; set; }
