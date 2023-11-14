@@ -12,7 +12,11 @@ public class LeaveRequest : BaseEntity
     #region [ Properties ]
     [Required]
     [DataType(DataType.DateTime)]
-    public DateTime Date { get; set; }
+    public DateTime StartDate { get; set; }
+    
+    [Required]
+    [DataType(DataType.DateTime)]
+    public DateTime EndDate{ get; set; }
 
     [Required]
     public LeaveType LeaveType { get; set; }
