@@ -22,7 +22,6 @@ public partial class LeaveRequestIndex
     #endregion
 
     #region [ Properties ]
-    private UserSession Session { get; set; }
 
     public IList<LeaveRequest> WorkItemList { get; set; }
     #endregion
@@ -39,7 +38,7 @@ public partial class LeaveRequestIndex
     #region [ Methods - LoadData ]
     public async Task LoadDataAsync()
     {
-        //this.WorkItemList = await HttpClientContext.User.GetListIsNotDeletedAsync();
+        this.WorkItemList = await HttpClientContext.LeaveRequest.GetListIsNotDeletedAsync();
         this.StateHasChanged();
     }
     #endregion

@@ -22,8 +22,6 @@ public partial class OccupationIndex
     #endregion
 
     #region [ Properties ]
-    private UserSession Session { get; set; }
-
     public IList<Occupation> WorkItemList { get; set; }
     #endregion
 
@@ -38,7 +36,7 @@ public partial class OccupationIndex
     #region [ Methods - LoadData ]
     public async Task LoadDataAsync()
     {
-        //this.WorkItemList = await HttpClientContext.User.GetListIsNotDeletedAsync();
+        this.WorkItemList = await HttpClientContext.Occupation.GetListIsNotDeletedAsync();
         this.StateHasChanged();
     }
     #endregion

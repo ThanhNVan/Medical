@@ -20,6 +20,11 @@ public class Profile : BaseEntity
     [DataType(DataType.Text)]
     public string Address { get; set; }
 
+
+    [Required]
+    [DataType(DataType.Text)]
+    public string Ward { get; set; }
+
     [Required]
     [DataType(DataType.Text)]
     public string City { get; set; }

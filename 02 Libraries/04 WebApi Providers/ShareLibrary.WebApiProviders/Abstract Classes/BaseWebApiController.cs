@@ -21,7 +21,7 @@ public abstract class BaseWebApiController<TEntity, TService, TContext> : Contro
 {
     #region [ Fields ]
     protected readonly ILogger<BaseWebApiController<TEntity, TService, TContext>> _logger;
-    protected readonly TService _logicProvider;
+    protected readonly TService _service;
     #endregion
 
     #region [ CTor ]
@@ -30,7 +30,7 @@ public abstract class BaseWebApiController<TEntity, TService, TContext> : Contro
     {
 
         this._logger = logger;
-        this._logicProvider = logicProvider;
+        this._service = logicProvider;
     }
     #endregion
 
@@ -40,7 +40,7 @@ public abstract class BaseWebApiController<TEntity, TService, TContext> : Contro
     {
         try
         {
-            var dbEntity = await this._logicProvider.GetSingleByIdAsync(entity.Id);
+            var dbEntity = await this._service.GetSingleByIdAsync(entity.Id);
 
             if (dbEntity != null)
             {
@@ -49,7 +49,7 @@ public abstract class BaseWebApiController<TEntity, TService, TContext> : Contro
                 return BadRequest(error);
             }
 
-            var result = await this._logicProvider.AddAsync(entity);
+            var result = await this._service.AddAsync(entity);
 
             if (result)
             {
@@ -75,7 +75,7 @@ public abstract class BaseWebApiController<TEntity, TService, TContext> : Contro
     {
         try
         {
-            var result = await this._logicProvider.GetSingleByIdAsync(id);
+            var result = await this._service.GetSingleByIdAsync(id);
 
             if (result == null)
             {
@@ -100,13 +100,13 @@ public abstract class BaseWebApiController<TEntity, TService, TContext> : Contro
     {
         try
         {
-            var dbEntity = await this._logicProvider.GetSingleByIdAsync(entity.Id);
+            var dbEntity = await this._service.GetSingleByIdAsync(entity.Id);
             if (dbEntity == null)
             {
                 return BadRequest($"Not existed {typeof(TEntity)}");
             }
 
-            var result = await this._logicProvider.UpdateAsync(entity);
+            var result = await this._service.UpdateAsync(entity);
             if (result)
             {
                 return Ok("Updated");
@@ -130,7 +130,7 @@ public abstract class BaseWebApiController<TEntity, TService, TContext> : Contro
     {
         try
         {
-            var dbEntity = await this._logicProvider.GetSingleByIdAsync(id);
+            var dbEntity = await this._service.GetSingleByIdAsync(id);
 
             if (dbEntity == null)
             {
@@ -139,7 +139,7 @@ public abstract class BaseWebApiController<TEntity, TService, TContext> : Contro
                 return BadRequest(error);
             }
 
-            var result = await this._logicProvider.SoftDeleteAsync(id);
+            var result = await this._service.SoftDeleteAsync(id);
 
             if (result)
             {
@@ -163,14 +163,14 @@ public abstract class BaseWebApiController<TEntity, TService, TContext> : Contro
     {
         try
         {
-            var dbEntity = await this._logicProvider.GetSingleByIdAsync(id);
+            var dbEntity = await this._service.GetSingleByIdAsync(id);
 
             if (dbEntity == null)
             {
                 return BadRequest($"Not existed {typeof(TEntity)}");
             }
 
-            var result = await this._logicProvider.RecoverAsync(id);
+            var result = await this._service.RecoverAsync(id);
 
             if (result)
             {
@@ -194,14 +194,14 @@ public abstract class BaseWebApiController<TEntity, TService, TContext> : Contro
     {
         try
         {
-            var dbEntity = await this._logicProvider.GetSingleByIdAsync(id);
+            var dbEntity = await this._service.GetSingleByIdAsync(id);
 
             if (dbEntity == null)
             {
                 return BadRequest($"Not existed {typeof(TEntity)}");
             }
 
-            var result = await this._logicProvider.DestroyAsync(id);
+            var result = await this._service.DestroyAsync(id);
 
             if (result)
             {
@@ -225,7 +225,7 @@ public abstract class BaseWebApiController<TEntity, TService, TContext> : Contro
     {
         try
         {
-            var result = await this._logicProvider.GetListAllAsync();
+            var result = await this._service.GetListAllAsync();
             if (result == null || result.Count() <= 0)
             {
                 return NotFound("Empty");
@@ -248,7 +248,7 @@ public abstract class BaseWebApiController<TEntity, TService, TContext> : Contro
     {
         try
         {
-            var result = await this._logicProvider.GetListIsDeletedAsync();
+            var result = await this._service.GetListIsDeletedAsync();
             if (result == null || result.Count() <= 0)
             {
                 return NotFound("Empty");
@@ -271,7 +271,7 @@ public abstract class BaseWebApiController<TEntity, TService, TContext> : Contro
     {
         try
         {
-            var result = await this._logicProvider.GetListIsNotDeletedAsync();
+            var result = await this._service.GetListIsNotDeletedAsync();
             if (result == null || result.Count() <= 0)
             {
                 return NotFound("Empty");
@@ -294,7 +294,7 @@ public abstract class BaseWebApiController<TEntity, TService, TContext> : Contro
     {
         try
         {
-            var result = await this._logicProvider.CountAllAsync();
+            var result = await this._service.CountAllAsync();
 
             return Ok(result);
         } catch (ArgumentNullException ex)
@@ -313,7 +313,7 @@ public abstract class BaseWebApiController<TEntity, TService, TContext> : Contro
     {
         try
         {
-            var result = await this._logicProvider.CountIsDeletedAsync();
+            var result = await this._service.CountIsDeletedAsync();
 
             return Ok(result);
         } catch (ArgumentNullException ex)
@@ -332,7 +332,7 @@ public abstract class BaseWebApiController<TEntity, TService, TContext> : Contro
     {
         try
         {
-            var result = await this._logicProvider.CountIsNotDeletedAsync();
+            var result = await this._service.CountIsNotDeletedAsync();
 
             return Ok(result);
         } catch (ArgumentNullException ex)

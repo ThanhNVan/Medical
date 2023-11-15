@@ -22,8 +22,6 @@ public partial class UserIndex
     #endregion
 
     #region [ Properties ]
-    private UserSession Session { get; set; }
-
     public IList<User> WorkItemList { get; set; }
 
     public IList<Occupation> OccupationList { get; set; }

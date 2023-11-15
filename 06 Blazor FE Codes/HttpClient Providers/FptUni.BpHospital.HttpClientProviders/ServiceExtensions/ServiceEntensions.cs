@@ -35,6 +35,8 @@ public static class ServiceEntensions
         services.AddTransient<IRoleHttpClientProviders, RoleHttpClientProviders>();
         services.AddTransient<IUserHttpClientProviders, UserHttpClientProviders>();
         services.AddTransient<IUserRoleHttpClientProviders, UserRoleHttpClientProviders>();
+        services.AddTransient<IAttendanceHttpClientProviders, AttendanceHttpClientProviders>();
+        services.AddTransient<ILeaveRequestHttpClientProviders, LeaveRequestHttpClientProviders>();
 
         services.AddTransient<HttpClientContext>();
     }

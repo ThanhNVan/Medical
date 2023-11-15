@@ -22,8 +22,6 @@ public partial class AttendanceIndex
     #endregion
 
     #region [ Properties ]
-    private UserSession Session { get; set; }
-
     public IList<Attendance> WorkItemList { get; set; }
     #endregion
 
@@ -39,7 +37,7 @@ public partial class AttendanceIndex
     #region [ Methods - LoadData ]
     public async Task LoadDataAsync()
     {
-        //this.WorkItemList = await HttpClientContext.User.GetListIsNotDeletedAsync();
+        this.WorkItemList = await HttpClientContext.Attendance.GetListIsNotDeletedAsync();
         this.StateHasChanged();
     }
     #endregion

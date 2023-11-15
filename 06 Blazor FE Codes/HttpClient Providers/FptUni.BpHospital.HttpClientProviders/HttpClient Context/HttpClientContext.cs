@@ -11,7 +11,9 @@ public class HttpClientContext
                             IProfileHttpClientProviders profile,
                             IRoleHttpClientProviders role,
 							IUserHttpClientProviders user,
-                            IUserRoleHttpClientProviders userRole)
+                            IUserRoleHttpClientProviders userRole,
+                            ILeaveRequestHttpClientProviders leaveRequest,
+                            IAttendanceHttpClientProviders attendance)
 	{
         Authentication = authentication;
         ContactPerson = contactPerson;
@@ -21,6 +23,8 @@ public class HttpClientContext
         Role = role;
         User = user;
         UserRole = userRole;
+        LeaveRequest = leaveRequest;
+        Attendance = attendance;
     }
 
     #endregion
@@ -34,5 +38,7 @@ public class HttpClientContext
     public IRoleHttpClientProviders Role { get; }
     public IUserHttpClientProviders User { get; }
     public IUserRoleHttpClientProviders UserRole { get; }
+    public ILeaveRequestHttpClientProviders LeaveRequest { get; }
+    public IAttendanceHttpClientProviders Attendance { get; }
     #endregion
 }

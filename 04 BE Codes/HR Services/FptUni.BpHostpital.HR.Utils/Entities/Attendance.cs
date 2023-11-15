@@ -12,7 +12,11 @@ public class Attendance : BaseEntity
     #region [ Properties ]
     [Required]
     [DataType(DataType.DateTime)]
-    public DateTime DateTime { get; set; }
+    public DateTime DateTimeIn { get; set; }
+    
+    [Required]
+    [DataType(DataType.DateTime)]
+    public DateTime DateTimeOut { get; set; }
     #endregion
 
     #region [ Properties - FK ]

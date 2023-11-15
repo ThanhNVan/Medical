@@ -24,8 +24,7 @@ public class ContactPerson : BaseEntity
 	[Required]
 	[DataType(DataType.PhoneNumber)]
 	public string PhoneNumber1 { get; set; }
-	
-	[Required]
+
 	[DataType(DataType.PhoneNumber)]
 	public string PhoneNumber2 { get; set; }
 
@@ -38,8 +37,12 @@ public class ContactPerson : BaseEntity
 	[Required]
     [DataType(DataType.Text)]
     public string Address { get; set; }
-	
+
 	[Required]
+	[DataType(DataType.Text)]
+    public string Ward { get; set; }
+
+    [Required]
     [DataType(DataType.Text)]
     public string City { get; set; }
 	

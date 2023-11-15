@@ -22,7 +22,6 @@ public partial class DepartmentIndex
     #endregion
 
     #region [ Properties ]
-    private UserSession Session { get; set; }
 
     public IList<Department> WorkItemList { get; set; }
     #endregion
@@ -39,7 +38,7 @@ public partial class DepartmentIndex
     #region [ Methods - LoadData ]
     public async Task LoadDataAsync()
     {
-        //this.WorkItemList = await HttpClientContext.User.GetListIsNotDeletedAsync();
+        this.WorkItemList = await HttpClientContext.Department.GetListIsNotDeletedAsync();
         this.StateHasChanged();
     }
     #endregion

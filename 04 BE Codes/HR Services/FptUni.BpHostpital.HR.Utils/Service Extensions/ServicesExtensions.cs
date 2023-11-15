@@ -16,6 +16,7 @@ public static class ServicesExtensions
         builder.UseSqlServer(connectionString);
         builder.EnableSensitiveDataLogging();
 
+        //services.AddDbContext<HrDbContext>()
         services.AddPooledDbContextFactory<HrDbContext>(options =>
         {
             options.UseSqlServer(connectionString,
