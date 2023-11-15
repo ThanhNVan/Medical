@@ -21,7 +21,7 @@ public class TestController : ControllerBase
     }
 	#endregion
 
-	[HttpGet]
+	//[HttpGet]
 	public async Task<IActionResult> Test()
 	{
 		using var dbContext = await _dbContextFactory.CreateDbContextAsync();

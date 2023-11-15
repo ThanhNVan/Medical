@@ -15,7 +15,7 @@
         <GridColumn Field="@nameof(User.Fullname)" HeaderTextAlign="TextAlign.Center" />
         <GridColumn Field="@nameof(User.PhoneNumber1)" HeaderText="Phone Number" HeaderTextAlign="TextAlign.Center" />
         <GridColumn Field="@nameof(User.EmailAddress)" HeaderText="Email Address" HeaderTextAlign="TextAlign.Center" />
-        <GridColumn Field="@nameof(User.EmailAddress)" HeaderText="Position" HeaderTextAlign="TextAlign.Center" />
+        <GridColumn Field="@nameof(User.Occupation)" HeaderText="Position" HeaderTextAlign="TextAlign.Center" />
         <GridColumn TextAlign="TextAlign.Right" Width="8%">
             <Template>
                 @{
@@ -26,5 +26,3 @@
         </GridColumn>
     </GridColumns>
 </SfGrid>
-
-        <SfPager ></SfPager>
