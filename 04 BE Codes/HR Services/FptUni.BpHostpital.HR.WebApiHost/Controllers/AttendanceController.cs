@@ -23,7 +23,7 @@ public class AttendanceController : BaseWebApiController<Attendance, IAttendance
 
     #region [ Methods - List ]
     [HttpPost(nameof(UrlConstant.GetListByUserId))]
-    public virtual async Task<IActionResult> GetListByUserIdAsync([FromBody] GetAttendanceModel model)
+    public virtual async Task<IActionResult> GetListByUserIdAsync([FromBody] GetByUserIdFromAndEndDateModel model)
     {
         try
         {

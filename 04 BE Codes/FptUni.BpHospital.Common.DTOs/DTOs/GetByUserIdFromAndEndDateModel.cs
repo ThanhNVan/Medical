@@ -2,7 +2,7 @@
 
 namespace FptUni.BpHospital.Common;
 
-public class GetAttendanceModel
+public class GetByUserIdFromAndEndDateModel
 {
 	#region [ Properties ]
 	public string UserId { get; set; }

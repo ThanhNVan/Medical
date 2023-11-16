@@ -74,6 +74,17 @@
                         <br />
                     }
                 }
+
+                @if (this.LeaveRequests is not null)
+                {
+                    <br />
+                    <h4>Leave Requests</h4>
+                    foreach (var item in this.LeaveRequests)
+                    {
+                        <SfTextBox Readonly=true Value=@($"From {item.StartDate.ToShortDateString()} To {item.EndDate.ToShortDateString()}, Lasted for {item.TotalDay} Day(s), {item.LeaveState.ToString()}") FloatLabelType="FloatLabelType.Always" />
+                        <br/>
+                    }
+                }
             </div>
         </div>
     </EditForm>

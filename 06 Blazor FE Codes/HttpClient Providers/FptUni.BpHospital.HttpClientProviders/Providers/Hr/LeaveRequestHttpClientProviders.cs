@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Net.Http;
-using System.Text;
+using System.Net.Http.Json;
 using System.Threading.Tasks;
 using Blazored.SessionStorage;
+using FptUni.BpHospital.Common;
 using FptUni.BpHostpital.HR.Utils;
 using Microsoft.Extensions.Logging;
+using Newtonsoft.Json;
 using ShareLibrary.EntityProviders;
 
 namespace FptUni.BpHospital.HttpClientProviders;
@@ -17,6 +18,28 @@ public class LeaveRequestHttpClientProviders : BaseHrHttpClientProviders<LeaveRe
     public LeaveRequestHttpClientProviders(ISessionStorageService _sessionStorage, IHttpClientFactory httpClientFactory, ILogger<LeaveRequestHttpClientProviders> logger, IEncriptionProvider encriptionProvider) : base(_sessionStorage, httpClientFactory, logger, encriptionProvider)
     {
         this._entityUrl = EntityUrl.LeaveRequest;
+    }
+    #endregion
+
+    #region [ Methods - List ]
+    public async Task<IList<LeaveRequest>> GetListByUserIdAsync(GetByUserIdFromAndEndDateModel model)
+    {
+        var result = default(List<LeaveRequest>);
+        try
+        {
+            var httpClient = await base.GetHrClientAsync();
+            var url = this._entityUrl + UrlConstant.GetListByUserId;
+            var response = await httpClient.PostAsJsonAsync(url, model);
+            if (response.IsSuccessStatusCode)
+            {
+                result = JsonConvert.DeserializeObject<List<LeaveRequest>>(await response.Content.ReadAsStringAsync());
+            }
+
+        } catch (Exception ex)
+        {
+            this._logger.LogError(ex.Message);
+        }
+        return result;
     }
     #endregion
 }

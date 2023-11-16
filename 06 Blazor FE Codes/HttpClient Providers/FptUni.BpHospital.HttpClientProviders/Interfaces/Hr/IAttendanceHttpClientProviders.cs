@@ -10,6 +10,6 @@ namespace FptUni.BpHospital.HttpClientProviders;
 public interface IAttendanceHttpClientProviders : IBaseProvider<Attendance>
 {
     #region [ Methods - List ]
-    Task<IList<Attendance>> GetListByUserIdAsync(GetAttendanceModel model);
+    Task<IList<Attendance>> GetListByUserIdAsync(GetByUserIdFromAndEndDateModel model);
     #endregion
 }

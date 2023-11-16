@@ -22,7 +22,7 @@ public class AttendanceHttpClientProviders : BaseHrHttpClientProviders<Attendanc
     #endregion
 
     #region [ Methods - List ]
-    public async Task<IList<Attendance>> GetListByUserIdAsync(GetAttendanceModel model)
+    public async Task<IList<Attendance>> GetListByUserIdAsync(GetByUserIdFromAndEndDateModel model)
     {
         var result = default(List<Attendance>);
         try

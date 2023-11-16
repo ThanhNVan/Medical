@@ -31,6 +31,7 @@ public partial class UserDetail
     public IList<ContactPerson> ContactPersons { get; set; }
     public IList<UserRoleModel> UserRoleModels { get; set; }
     public IList<Attendance> Attendances { get; set; }
+    public IList<LeaveRequest> LeaveRequests { get; set; }
 
     #endregion
 
@@ -57,7 +58,8 @@ public partial class UserDetail
         this.WorkItem.Occupation = Occupations.FirstOrDefault(x => x.Id == this.WorkItem.OccupationId);
         this.UserProfile = await HttpClientContext.Profile.GetSingleByUserIdAsync(this.Id);
         this.UserRoleModels = await HttpClientContext.UserRole.GetListByUserIdAsync(this.Id);
-        this.Attendances = await HttpClientContext.Attendance.GetListByUserIdAsync(new GetAttendanceModel() { UserId = this.Id, FromDate = DateTime.UtcNow.AddDays(-15), EndDate = DateTime.UtcNow.AddDays(1) });
+        this.Attendances = await HttpClientContext.Attendance.GetListByUserIdAsync(new GetByUserIdFromAndEndDateModel() { UserId = this.Id, FromDate = DateTime.UtcNow.AddDays(-15), EndDate = DateTime.UtcNow.AddDays(1) });
+        this.LeaveRequests = await HttpClientContext.LeaveRequest.GetListByUserIdAsync(new GetByUserIdFromAndEndDateModel() { UserId = this.Id, FromDate = DateTime.UtcNow.AddDays(-90), EndDate = DateTime.UtcNow.AddDays(1) });
         this.ContactPersons = await HttpClientContext.ContactPerson.GetListByUserIdAsync(this.Id);
     }    
     #endregion
