@@ -31,7 +31,7 @@ public class User : BaseEntity
     
     
     [DataType(DataType.PhoneNumber)]
-    public string PhoneNumber2 { get; set; }
+    public string? PhoneNumber2 { get; set; }
 
     [Required]
     [DataType(DataType.EmailAddress)]

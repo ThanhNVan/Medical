@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FptUni.BpHostpital.HR.Utils.Migrations
 {
     [DbContext(typeof(HrDbContext))]
-    [Migration("20231114071301_AddLeaveRequestAndAttendance")]
-    partial class AddLeaveRequestAndAttendance
+    [Migration("20231115140806_Init")]
+    partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -32,7 +32,10 @@ namespace FptUni.BpHostpital.HR.Utils.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime>("DateTime")
+                    b.Property<DateTime>("DateTimeIn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("DateTimeOut")
                         .HasColumnType("datetime2");
 
                     b.Property<bool>("IsDeleted")
@@ -95,7 +98,6 @@ namespace FptUni.BpHostpital.HR.Utils.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("PhoneNumber2")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("PostalCode")
@@ -112,6 +114,10 @@ namespace FptUni.BpHostpital.HR.Utils.Migrations
                     b.Property<string>("UserId")
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Ward")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -154,7 +160,7 @@ namespace FptUni.BpHostpital.HR.Utils.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime>("Date")
+                    b.Property<DateTime>("EndDate")
                         .HasColumnType("datetime2");
 
                     b.Property<bool>("IsDeleted")
@@ -167,6 +173,12 @@ namespace FptUni.BpHostpital.HR.Utils.Migrations
                         .HasColumnType("int");
 
                     b.Property<int>("LeaveType")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("StartDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("TotalDay")
                         .HasColumnType("int");
 
                     b.Property<string>("UserId")
@@ -244,6 +256,10 @@ namespace FptUni.BpHostpital.HR.Utils.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
+                    b.Property<string>("Ward")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("Id");
 
                     b.HasIndex("UserId")
@@ -313,7 +329,6 @@ namespace FptUni.BpHostpital.HR.Utils.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("PhoneNumber2")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");

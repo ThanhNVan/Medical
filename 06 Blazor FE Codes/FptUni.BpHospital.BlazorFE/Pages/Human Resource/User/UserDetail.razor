@@ -11,13 +11,69 @@
     <EditForm Model="@WorkItem">
         <div style="padding-top: 20px;">
             <div class="form-group col-md-6">
-                <SfTextBox Readonly=true Value="@WorkItem.Fullname" Placeholder="Fullname" FloatLabelType="FloatLabelType.Always"/>
+                <SfTextBox Readonly=true Value="@WorkItem.Fullname" Placeholder="Fullname" FloatLabelType="FloatLabelType.Always" />
                 <SfTextBox Readonly=true Value="@WorkItem.PhoneNumber1" Placeholder="Phone Number " FloatLabelType="FloatLabelType.Always" />
                 @if (!string.IsNullOrEmpty(WorkItem.PhoneNumber2))
                 {
                     <SfTextBox Readonly=true Value="@WorkItem.PhoneNumber2" Placeholder="Phone Number 2" FloatLabelType="FloatLabelType.Always" />
                 }
-                <SfTextBox Readonly=true Value="@WorkItem.EmailAddress" Placeholder="EmailAddress" FloatLabelType="FloatLabelType.Always" />
+                <SfTextBox Readonly=true Value="@WorkItem.EmailAddress" Placeholder="Email Address" FloatLabelType="FloatLabelType.Always" />
+                @if (WorkItem.Occupation is not null)
+                {
+                    <SfTextBox Readonly=true Value="@WorkItem.Occupation.Name" Placeholder="Occupation" FloatLabelType="FloatLabelType.Always" />
+                }
+                <SfTextBox Readonly=true Value="@UserProfile.DateHired.ToString("dd, MMM, yyyy")" Placeholder="Date Hired" FloatLabelType="FloatLabelType.Always" />
+                <SfTextBox Readonly=true Value="@UserProfile.Address" Placeholder="Address" FloatLabelType="FloatLabelType.Always" />
+                <SfTextBox Readonly=true Value="@UserProfile.Ward" Placeholder="Ward" FloatLabelType="FloatLabelType.Always" />
+                <SfTextBox Readonly=true Value="@UserProfile.City" Placeholder="City" FloatLabelType="FloatLabelType.Always" />
+                <SfTextBox Readonly=true Value="@UserProfile.State" Placeholder="State" FloatLabelType="FloatLabelType.Always" />
+                <SfTextBox Readonly=true Value="@UserProfile.Country" Placeholder="Country" FloatLabelType="FloatLabelType.Always" />
+                <SfTextBox Readonly=true Value="@UserProfile.PostalCode" Placeholder="Postal Code" FloatLabelType="FloatLabelType.Always" />
+
+                @if (this.ContactPersons is not null)
+                {
+                    <br/>
+                    <h4>Contact Person</h4>
+                    @foreach (var item in this.ContactPersons)
+                    {
+                        <SfTextBox Readonly=true Value="@item.Fullname" Placeholder="Fullname" FloatLabelType="FloatLabelType.Always" />
+                        <SfTextBox Readonly=true Value="@item.PhoneNumber1" Placeholder="Phone Number " FloatLabelType="FloatLabelType.Always" />
+                        @if (!string.IsNullOrEmpty(item.PhoneNumber2))
+                        {
+                            <SfTextBox Readonly=true Value="@item.PhoneNumber2" Placeholder="Phone Number 2" FloatLabelType="FloatLabelType.Always" />
+                        }
+                        <SfTextBox Readonly=true Value="@item.EmailAddress" Placeholder="Email Address" FloatLabelType="FloatLabelType.Always" />
+                        <SfTextBox Readonly=true Value="@item.RelationshipWithUser.ToString()" Placeholder="Email Address" FloatLabelType="FloatLabelType.Always" />
+                        <SfTextBox Readonly=true Value="@item.Address" Placeholder="Address" FloatLabelType="FloatLabelType.Always" />
+                        <SfTextBox Readonly=true Value="@item.Ward" Placeholder="Ward" FloatLabelType="FloatLabelType.Always" />
+                        <SfTextBox Readonly=true Value="@item.City" Placeholder="City" FloatLabelType="FloatLabelType.Always" />
+                        <SfTextBox Readonly=true Value="@item.State" Placeholder="State" FloatLabelType="FloatLabelType.Always" />
+                        <SfTextBox Readonly=true Value="@item.Country" Placeholder="Country" FloatLabelType="FloatLabelType.Always" />
+                        <SfTextBox Readonly=true Value="@item.PostalCode" Placeholder="Postal Code" FloatLabelType="FloatLabelType.Always" />
+                    }
+                }
+
+                @if (this.UserRoleModels is not null)
+                {
+                    <br />
+                    <h4>Position</h4>
+                    foreach (var item in this.UserRoleModels)
+                    {
+                        <SfTextBox Readonly=true Value=@($"{item.RoleName} at {item.DepartmentName}") FloatLabelType="FloatLabelType.Always" />   
+                    }
+                }
+
+                @if (this.Attendances is not null)
+                {
+                    <br />
+                    <h4>Attendance</h4>
+                    foreach (var item in this.Attendances)
+                    {
+                        <SfTextBox Readonly=true Value=@($"Come at {item.DateTimeIn}") FloatLabelType="FloatLabelType.Always" />
+                        <SfTextBox Readonly=true Value=@($"Leave at {item.DateTimeOut}") FloatLabelType="FloatLabelType.Always" />
+                        <br />
+                    }
+                }
             </div>
         </div>
     </EditForm>

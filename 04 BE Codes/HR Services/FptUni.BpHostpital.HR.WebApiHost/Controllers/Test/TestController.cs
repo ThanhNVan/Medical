@@ -6,8 +6,8 @@ using Microsoft.EntityFrameworkCore;
 
 namespace FptUni.BpHostpital.HR.WebApiHost;
 
-//[ApiController]
-//[Route("Api/V1/[controller]")]
+[ApiController]
+[Route("Api/V1/[controller]")]
 public class TestController : ControllerBase
 {
 	#region [ Properties - Fields ]
@@ -21,7 +21,7 @@ public class TestController : ControllerBase
     }
 	#endregion
 
-	//[HttpGet]
+	[HttpGet]
 	public async Task<IActionResult> Test()
 	{
 		using var dbContext = await _dbContextFactory.CreateDbContextAsync();

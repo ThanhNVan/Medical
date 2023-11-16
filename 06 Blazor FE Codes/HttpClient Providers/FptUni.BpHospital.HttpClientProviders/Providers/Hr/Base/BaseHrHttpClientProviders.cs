@@ -104,5 +104,12 @@ public abstract class BaseHrHttpClientProviders<TEntity> : BaseHttpClientProvide
     {
         return await this._sessionStorage.GetItemAsync<UserSession>("UserSession");
     }
+
+    public async Task<HttpClient> GetHrClientAsync()
+    {
+        var userSession = await this.GetUserSessionAsync();
+        var httpClient = this.CreateClient(userSession.Email, "HrClient", userSession.AccessToken);
+        return httpClient;
+    }
     #endregion
 }

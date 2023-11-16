@@ -26,7 +26,7 @@ public class ContactPerson : BaseEntity
 	public string PhoneNumber1 { get; set; }
 
 	[DataType(DataType.PhoneNumber)]
-	public string PhoneNumber2 { get; set; }
+	public string? PhoneNumber2 { get; set; }
 
 	[Required]
 	public RelationshipWithUser RelationshipWithUser { get; set; }
