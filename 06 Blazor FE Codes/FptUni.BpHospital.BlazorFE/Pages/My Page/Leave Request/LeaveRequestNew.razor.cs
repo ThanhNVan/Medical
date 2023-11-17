@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using FptUni.BpHospital.HttpClientProviders;
-using FptUni.BpHospital.HR.Utils;
+using FptUni.BpHostpital.HR.Utils;
 using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;
 

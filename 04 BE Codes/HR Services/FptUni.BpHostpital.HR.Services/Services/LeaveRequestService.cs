@@ -32,8 +32,12 @@ public class LeaveRequestService : BaseServices<LeaveRequest, ILeaveRequestRepos
 
         return await this._repository.GetListByUserIdAsync(userId, fromDate, endDate);
     }
-    #endregion
 
+    public async Task<IList<LeaveRequest>> GetListProcessingStateAsync()
+    {
+        return await this._repository.GetListProcessingStateAsync();
+    }
+    #endregion
 
     #region [ Methods - Update ]
     public async Task<bool> ApproveAsync(string leaveRequestId)

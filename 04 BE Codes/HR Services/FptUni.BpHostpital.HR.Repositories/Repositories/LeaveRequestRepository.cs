@@ -41,8 +41,25 @@ public class LeaveRequestRepository : BaseRepository<LeaveRequest, HrDbContext>,
             return result;
         }
     }
-    #endregion
 
+    public async Task<IList<LeaveRequest>> GetListProcessingStateAsync()
+    {
+        var result = default(List<LeaveRequest>);
+        try
+        {
+            using var dbContext = await this.GetContextAsync();
+
+            result = await (from dbLeaveRequest in dbContext.LeaveRequests
+                            where dbLeaveRequest.LeaveState == LeaveState.Processing
+                            select dbLeaveRequest).ToListAsync();
+            return result;
+        } catch (Exception ex)
+        {
+            this._logger.LogError(ex.Message);
+            return result;
+        }
+    }
+    #endregion
 
     #region [ Methods - Update ]
     public async Task<bool> ApproveAsync(string leaveRequestId)

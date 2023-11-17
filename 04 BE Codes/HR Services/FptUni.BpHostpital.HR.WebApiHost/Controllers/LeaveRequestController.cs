@@ -43,8 +43,32 @@ public class LeaveRequestController : BaseWebApiController<LeaveRequest, ILeaveR
             return new StatusCodeResult(StatusCodes.Status500InternalServerError);
         }
     }
-    #endregion
 
+    [HttpGet(nameof(UrlConstant.GetListProcessingState))]
+    public virtual async Task<IActionResult> GetListProcessingStateAsync([FromBody] GetByUserIdFromAndEndDateModel model)
+    {
+        try
+        {
+            var result = await this._service.GetListProcessingStateAsync();
+
+            if (result is null || result.Count == 0)
+            {
+                return NotFound();
+            }
+
+            return Ok(result);
+
+        } catch (ArgumentNullException ex)
+        {
+            this._logger.LogError(ex.Message);
+            return BadRequest();
+        } catch (Exception ex)
+        {
+            this._logger.LogError(ex.Message);
+            return new StatusCodeResult(StatusCodes.Status500InternalServerError);
+        }
+    }
+    #endregion
 
     #region [ Methods - Update ]
     [HttpPut(nameof(UrlConstant.Approve))]

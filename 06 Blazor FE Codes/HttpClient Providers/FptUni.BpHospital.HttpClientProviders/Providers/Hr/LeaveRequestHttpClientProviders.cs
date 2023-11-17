@@ -41,6 +41,26 @@ public class LeaveRequestHttpClientProviders : BaseHrHttpClientProviders<LeaveRe
         }
         return result;
     }
+
+    public async Task<IList<LeaveRequest>> GetListProcessingStateAsync()
+    {
+        var result = default(List<LeaveRequest>);
+        try
+        {
+            var httpClient = await base.GetHrClientAsync();
+            var url = this._entityUrl + UrlConstant.GetListProcessingState;
+            var response = await httpClient.GetAsync(url);
+            if (response.IsSuccessStatusCode)
+            {
+                result = JsonConvert.DeserializeObject<List<LeaveRequest>>(await response.Content.ReadAsStringAsync());
+            }
+
+        } catch (Exception ex)
+        {
+            this._logger.LogError(ex.Message);
+        }
+        return result;
+    }
     #endregion
 
     #region [ Methods - Update ]

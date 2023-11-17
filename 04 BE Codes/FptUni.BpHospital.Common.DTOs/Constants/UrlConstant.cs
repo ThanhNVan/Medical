@@ -9,5 +9,6 @@ public static class UrlConstant
     public const string GetListByDepartmentId = "/GetListByDepartmentId/";
     public const string Approve = "/Approve/";
     public const string Deny = "/Deny/";
+    public const string GetListProcessingState = "/GetListProcessingState/";
     #endregion
 }

@@ -10,6 +10,8 @@ public interface ILeaveRequestRepository : IBaseRepository<LeaveRequest, HrDbCon
 {
     #region [ Methods - List ]
     Task<IList<LeaveRequest>> GetListByUserIdAsync(string userId, DateTime fromDate, DateTime endDate);
+
+    Task<IList<LeaveRequest>> GetListProcessingStateAsync();
     #endregion
 
     #region [ Methods - Update ]

@@ -38,7 +38,7 @@ public partial class LeaveRequestIndex
     #region [ Methods - LoadData ]
     public async Task LoadDataAsync()
     {
-        this.WorkItemList = await HttpClientContext.LeaveRequest.GetListIsNotDeletedAsync();
+        this.WorkItemList = await HttpClientContext.LeaveRequest.GetListProcessingStateAsync();
         foreach (var item in this.WorkItemList)
         {
             item.User = await HttpClientContext.User.GetSingleByIdAsync(item.UserId);
