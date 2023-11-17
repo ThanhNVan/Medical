@@ -33,6 +33,7 @@ public class ContactPersonController : BaseWebApiController<ContactPerson, ICont
             {
                 return NotFound();
             }
+
             return Ok(result);
 
         } catch (ArgumentNullException ex)

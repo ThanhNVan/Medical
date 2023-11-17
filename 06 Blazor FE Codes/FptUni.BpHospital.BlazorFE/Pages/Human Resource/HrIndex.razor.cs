@@ -12,32 +12,32 @@ public partial class HrIndex
     #region [ Properties - Navigation ]
     public void ViewEmployee()
     {
-        this.NavigationManager.NavigateTo($"/Hr/User/Index");
+        this.NavigationManager.NavigateTo($"/Hr/User/");
     }
     
     public void ViewReport()
     {
-        this.NavigationManager.NavigateTo($"/Hr/Report/Index");
+        this.NavigationManager.NavigateTo($"/Hr/Report/");
     }
           
     public void ViewLeaveRequest()
     {
-        this.NavigationManager.NavigateTo($"/Hr/LeaveRequest/Index");
+        this.NavigationManager.NavigateTo($"/Hr/LeaveRequest/");
     }
     
     public void ViewAttendance()
     {
-        this.NavigationManager.NavigateTo($"/Hr/Attendance/Index");
+        this.NavigationManager.NavigateTo($"/Hr/Attendance/");
     }
     
     public void ViewDepartments()
     {
-        this.NavigationManager.NavigateTo($"/Hr/Department/Index");
+        this.NavigationManager.NavigateTo($"/Hr/Department/");
     }
 
     public void ViewOccupations()
     {
-        this.NavigationManager.NavigateTo($"/Hr/Occupation/Index");
+        this.NavigationManager.NavigateTo($"/Hr/Occupation/");
     }
 
     //public void ViewGeneralReport()

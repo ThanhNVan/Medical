@@ -15,9 +15,6 @@ public partial class OccupationIndex
     private NavigationManager NavigationManager { get; set; }
 
     [Inject]
-    private ISessionStorageService SessionStorage { get; set; }
-
-    [Inject]
     private HttpClientContext HttpClientContext { get; set; }
     #endregion
 
@@ -38,6 +35,18 @@ public partial class OccupationIndex
     {
         this.WorkItemList = await HttpClientContext.Occupation.GetListIsNotDeletedAsync();
         this.StateHasChanged();
+    }
+    #endregion
+
+    #region [ Methods -  ]
+    public void NewOccupation()
+    {
+        this.NavigationManager.NavigateTo($"/Hr/Occupation/New");
+    }
+
+    public void ViewDetail(string occupationId)
+    {
+        this.NavigationManager.NavigateTo($"/Hr/Occupation/{occupationId}");
     }
     #endregion
 }

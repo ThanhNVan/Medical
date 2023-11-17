@@ -1,9 +1,22 @@
-﻿@page "/Hr/Occupation/Index"
+﻿@page "/Hr/Occupation/"
 @namespace FptUni.BpHospital.BlazorFE
 
 @attribute [Authorize(Policy = "HRManager")]
 
 <PageTitle>Occupations</PageTitle>
 
+<SfButton CssClass="e-inherit" IconCss="e-icons e-plus" OnClick="() => NewOccupation()">New Occupation</SfButton>
+
 <SfGrid DataSource="@WorkItemList" AllowPaging="true" AllowSorting="true" Height="520" AllowFiltering="true">
+    <GridColumns>
+        <GridColumn Field="@nameof(Occupation.Name)" HeaderTextAlign="TextAlign.Center" />
+        <GridColumn TextAlign="TextAlign.Right" Width="8%">
+            <Template>
+                @{
+                    var item = context as Occupation;
+                    <SfButton CssClass="e-inherit" IconCss="e-icons e-circle-info" OnClick="() => ViewDetail(item.Id)"></SfButton>
+                }
+            </Template>
+        </GridColumn>
+    </GridColumns>
 </SfGrid>

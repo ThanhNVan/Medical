@@ -1,6 +1,10 @@
-﻿using FptUni.BpHostpital.HR.Services;
+﻿using System;
+using System.Threading.Tasks;
+using FptUni.BpHospital.Common;
+using FptUni.BpHostpital.HR.Services;
 using FptUni.BpHostpital.HR.Utils;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using ShareLibrary.EntityProviders;
 using ShareLibrary.WebApiProviders;
@@ -16,19 +20,23 @@ public class UserController : BaseWebApiController<User, IUserService, HrDbConte
     }
     #endregion
 
-    //[HttpGet]
-    //public async Task<IActionResult> Demo()
-    //{
-    //    try
-    //    {
-    //        var result = 1;
+    [HttpGet(nameof(UrlConstant.GetListByOccupationId) + "/{occupationId}")]
+    public async Task<IActionResult> GetListByOccupationIdAsync(string occupationId)
+    {
+        try
+        {
+            var result = await this._service.GetListByOccupationIdAsync(occupationId);
+            if (result is null || result.Count == 0)
+            {
+                return NotFound();
+            }
 
+            return Ok(result);
 
-    //        return Ok(result);
-    //    } catch (Exception ex)
-    //    {
-    //        this._logger.LogWarning(ex.Message);
-    //        return BadRequest();
-    //    }
-    //}
+        } catch (Exception ex)
+        {
+            this._logger.LogWarning(ex.Message);
+            return BadRequest();
+        }
+    }
 }

@@ -1,4 +1,4 @@
-﻿@page "/Hr/LeaveRequest/Index"
+﻿@page "/Hr/LeaveRequest/"
 @namespace FptUni.BpHospital.BlazorFE
 
 @attribute [Authorize(Policy = "HRManager")]
@@ -6,4 +6,64 @@
 <PageTitle>Leave Requests</PageTitle>
 
 <SfGrid DataSource="@WorkItemList" AllowPaging="true" AllowSorting="true" Height="520" AllowFiltering="true">
+    <GridColumns>
+        <GridColumn HeaderText="Name" HeaderTextAlign="TextAlign.Center">
+            <Template>
+                @{
+                    var item = context as LeaveRequest;
+                    @if (item is null)
+                    {
+                        <span>@item.UserId</span>
+                    } else
+                    {
+                        <span>@item.User.Fullname</span>
+                    }
+                }
+            </Template>
+        </GridColumn>
+
+        <GridColumn HeaderText="Email Address" HeaderTextAlign="TextAlign.Center">
+            <Template>
+                @{
+                    var item = context as LeaveRequest;
+                    @if (item is null)
+                    {
+                        <span>@item.UserId</span>
+                    } else
+                    {
+                        <span>@item.User.EmailAddress</span>
+                    }
+                }
+            </Template>
+        </GridColumn>
+
+        <GridColumn TextAlign="TextAlign.Center" HeaderText="Start Date">
+            <Template>
+                @{
+                    var leaveRequest = context as LeaveRequest;
+                    <span>@leaveRequest.StartDate.ToShortDateString()</span>
+                }
+            </Template>
+        </GridColumn>
+
+        <GridColumn TextAlign="TextAlign.Center" HeaderText="End Date">
+            <Template>
+                @{
+                    var leaveRequest = context as LeaveRequest;
+                    <span>@leaveRequest.CreatedAt.ToShortDateString()</span>
+                }
+            </Template>
+        </GridColumn>
+
+        <GridColumn Field="@nameof(LeaveRequest.TotalDay)" HeaderText="Total" HeaderTextAlign="TextAlign.Center" TextAlign="TextAlign.Center" Width="8%"/>
+
+        <GridColumn TextAlign="TextAlign.Right" Width="8%" HeaderText="Info">
+            <Template>
+                @{
+                    var leaveRequest = context as LeaveRequest;
+                    <SfButton CssClass="e-inherit" IconCss="e-icons e-circle-info" OnClick="() => ViewDetail(leaveRequest.Id)"></SfButton>
+                }
+            </Template>
+        </GridColumn>
+    </GridColumns>
 </SfGrid>

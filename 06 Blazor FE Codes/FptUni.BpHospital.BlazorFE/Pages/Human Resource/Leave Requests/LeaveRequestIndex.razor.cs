@@ -39,7 +39,18 @@ public partial class LeaveRequestIndex
     public async Task LoadDataAsync()
     {
         this.WorkItemList = await HttpClientContext.LeaveRequest.GetListIsNotDeletedAsync();
+        foreach (var item in this.WorkItemList)
+        {
+            item.User = await HttpClientContext.User.GetSingleByIdAsync(item.UserId);
+        }
         this.StateHasChanged();
+    }
+    #endregion
+
+    #region [ Methods -  ]
+    public void ViewDetail(string leaveRequestId)
+    {
+        this.NavigationManager.NavigateTo($"/Hr/LeaveRequest/{leaveRequestId}");
     }
     #endregion
 }
