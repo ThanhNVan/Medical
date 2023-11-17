@@ -42,4 +42,59 @@ public class LeaveRequestRepository : BaseRepository<LeaveRequest, HrDbContext>,
         }
     }
     #endregion
+
+
+    #region [ Methods - Update ]
+    public async Task<bool> ApproveAsync(string leaveRequestId)
+    {
+        var result = default(bool);
+        try
+        {
+            using var dbContext = await this.GetContextAsync();
+            var dbEntity = await dbContext.LeaveRequests.FirstOrDefaultAsync(x => x.Id == leaveRequestId);
+            if (dbEntity is not null)
+            {
+                dbEntity.LastUpdatedAt = DateTime.UtcNow;
+                dbEntity.LeaveState = LeaveState.Approved;
+                dbContext.Update(dbEntity);
+                await dbContext.SaveChangesAsync();
+
+                return true;
+            } else
+            {
+                return false;
+            }
+        } catch (Exception ex)
+        {
+            this._logger.LogError(ex.Message);
+            return result;
+        }
+    }
+
+    public async Task<bool> DenyAsync(string leaveRequestId)
+    {
+        var result = default(bool);
+        try
+        {
+            using var dbContext = await this.GetContextAsync();
+            var dbEntity = await dbContext.LeaveRequests.FirstOrDefaultAsync(x => x.Id == leaveRequestId);
+            if (dbEntity is not null)
+            {
+                dbEntity.LastUpdatedAt = DateTime.UtcNow;
+                dbEntity.LeaveState = LeaveState.Denied;
+                dbContext.Update(dbEntity);
+                await dbContext.SaveChangesAsync();
+
+                return true;
+            } else
+            {
+                return false;
+            }
+        } catch (Exception ex)
+        {
+            this._logger.LogError(ex.Message);
+            return result;
+        }
+    }
+    #endregion
 }

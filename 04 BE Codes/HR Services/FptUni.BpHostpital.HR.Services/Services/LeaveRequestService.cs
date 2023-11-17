@@ -33,4 +33,27 @@ public class LeaveRequestService : BaseServices<LeaveRequest, ILeaveRequestRepos
         return await this._repository.GetListByUserIdAsync(userId, fromDate, endDate);
     }
     #endregion
+
+
+    #region [ Methods - Update ]
+    public async Task<bool> ApproveAsync(string leaveRequestId)
+    {
+        if (string.IsNullOrEmpty(leaveRequestId))
+        {
+            return false;
+        }
+
+        return await this._repository.ApproveAsync(leaveRequestId);
+    }
+
+    public async Task<bool> DenyAsync(string leaveRequestId)
+    {
+        if (string.IsNullOrEmpty(leaveRequestId))
+        {
+            return false;
+        }
+
+        return await this._repository.DenyAsync(leaveRequestId);
+    }
+    #endregion
 }

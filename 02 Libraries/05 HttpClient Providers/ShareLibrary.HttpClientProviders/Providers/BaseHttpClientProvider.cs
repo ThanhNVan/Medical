@@ -90,7 +90,9 @@ public abstract class BaseHttpClientProvider<TEntity> : IBaseHttpClientProvider<
 
             var httpClient = this.CreateClient(emailKey, clientName, accessToken);
 
-            var response = await httpClient.PutAsJsonAsync(url, entity);
+            var payload = this.GetJsonPayload(entity);
+
+            var response = await httpClient.PutAsync(url, payload);
 
             if (response.IsSuccessStatusCode)
             {

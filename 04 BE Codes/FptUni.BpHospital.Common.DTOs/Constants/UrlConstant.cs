@@ -7,5 +7,7 @@ public static class UrlConstant
     public const string GetListByUserId = "/GetListByUserId/";
     public const string GetListByOccupationId = "/GetListByOccupationId/";
     public const string GetListByDepartmentId = "/GetListByDepartmentId/";
+    public const string Approve = "/Approve/";
+    public const string Deny = "/Deny/";
     #endregion
 }

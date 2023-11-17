@@ -42,4 +42,46 @@ public class LeaveRequestHttpClientProviders : BaseHrHttpClientProviders<LeaveRe
         return result;
     }
     #endregion
+
+    #region [ Methods - Update ]
+    public async Task<bool> ApproveAsync(string leaveRequestId)
+    {
+        var result = default(bool);
+        try
+        {
+            var httpClient = await base.GetHrClientAsync();
+            var url = this._entityUrl + UrlConstant.Approve;
+            var response = await httpClient.PutAsJsonAsync(url, leaveRequestId);
+            if (response.IsSuccessStatusCode)
+            {
+                result = true;
+            }
+
+        } catch (Exception ex)
+        {
+            this._logger.LogError(ex.Message);
+        }
+        return result;
+    }
+
+    public async Task<bool> DenyAsync(string leaveRequestId)
+    {
+        var result = default(bool);
+        try
+        {
+            var httpClient = await base.GetHrClientAsync();
+            var url = this._entityUrl + UrlConstant.Deny;
+            var response = await httpClient.PutAsJsonAsync(url, leaveRequestId);
+            if (response.IsSuccessStatusCode)
+            {
+                result = true;
+            }
+
+        } catch (Exception ex)
+        {
+            this._logger.LogError(ex.Message);
+        }
+        return result;
+    }
+    #endregion
 }

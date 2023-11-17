@@ -11,4 +11,10 @@ public interface ILeaveRequestHttpClientProviders : IBaseProvider<LeaveRequest>
     #region [ Methods - List ]
     Task<IList<LeaveRequest>> GetListByUserIdAsync(GetByUserIdFromAndEndDateModel model);
     #endregion
+
+
+    #region [ Methods - Update ]
+    Task<bool> ApproveAsync(string leaveRequestId);
+    Task<bool> DenyAsync(string leaveRequestId);
+    #endregion
 }

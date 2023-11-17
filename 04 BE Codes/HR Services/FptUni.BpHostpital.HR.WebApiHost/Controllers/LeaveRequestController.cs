@@ -44,4 +44,53 @@ public class LeaveRequestController : BaseWebApiController<LeaveRequest, ILeaveR
         }
     }
     #endregion
+
+
+    #region [ Methods - Update ]
+    [HttpPut(nameof(UrlConstant.Approve))]
+    public async Task<IActionResult> ApproveAsync([FromBody] string leaveRequestId)
+    {
+        try
+        {
+            var result = await _service.ApproveAsync(leaveRequestId);
+            if (result)
+            {
+                return Ok();
+            }
+
+            return BadRequest();
+        } catch (ArgumentNullException ex)
+        {
+            this._logger.LogError(ex.Message);
+            return BadRequest();
+        } catch (Exception ex)
+        {
+            this._logger.LogError(ex.Message);
+            return new StatusCodeResult(StatusCodes.Status500InternalServerError);
+        }
+    }
+
+    [HttpPut(nameof(UrlConstant.Deny))]
+    public async Task<IActionResult> DenyAsync([FromBody] string leaveRequestId)
+    {
+        try
+        {
+            var result = await _service.DenyAsync(leaveRequestId);
+            if (result)
+            {
+                return Ok();
+            }
+
+            return BadRequest();
+        } catch (ArgumentNullException ex)
+        {
+            this._logger.LogError(ex.Message);
+            return BadRequest();
+        } catch (Exception ex)
+        {
+            this._logger.LogError(ex.Message);
+            return new StatusCodeResult(StatusCodes.Status500InternalServerError);
+        }
+    }
+    #endregion
 }

@@ -57,6 +57,15 @@
 
         <GridColumn Field="@nameof(LeaveRequest.TotalDay)" HeaderText="Total" HeaderTextAlign="TextAlign.Center" TextAlign="TextAlign.Center" Width="8%"/>
 
+        <GridColumn TextAlign="TextAlign.Center" HeaderText="State" HeaderTextAlign="TextAlign.Center" >
+            <Template>
+                @{
+                    var leaveRequest = context as LeaveRequest;
+                    <span>@leaveRequest.LeaveState.ToString()</span>
+                }
+            </Template>
+        </GridColumn>
+        
         <GridColumn TextAlign="TextAlign.Right" Width="8%" HeaderText="Info">
             <Template>
                 @{

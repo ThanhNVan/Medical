@@ -11,5 +11,11 @@ public interface ILeaveRequestService : IBaseService<LeaveRequest>
     #region [ Methods - List ]
     Task<IList<LeaveRequest>> GetListByUserIdAsync(string userId, DateTime fromDate, DateTime endDate);
     #endregion
+
+
+    #region [ Methods - Update ]
+    Task<bool> ApproveAsync(string leaveRequestId);
+    Task<bool> DenyAsync(string leaveRequestId);
+    #endregion
 }
 
