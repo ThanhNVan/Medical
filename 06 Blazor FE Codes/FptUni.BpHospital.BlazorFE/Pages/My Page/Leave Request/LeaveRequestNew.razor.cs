@@ -60,10 +60,17 @@ public partial class LeaveRequestNew
         var userEmail = user.User.Claims.FirstOrDefault(x => x.Type == "email").Value;
         var userId = await this.HttpClientContext.User.GetUserIdByEmailAsync(userEmail);
         var payload = new LeaveRequest();
+        var totalDay = this.GetBusinessDays(this.WorkItem.StartDate, this.WorkItem.EndDate);
+
+        if (totalDay <= 0)
+        {
+            await JSRuntime.InvokeVoidAsync("alert", "Selected Dates are not valid, please try again");
+            return;
+        }
 
         payload.StartDate = this.WorkItem.StartDate;
         payload.EndDate = this.WorkItem.EndDate;
-        payload.TotalDay = this.GetBusinessDays(this.WorkItem.StartDate, this.WorkItem.EndDate);
+        payload.TotalDay = totalDay;
         payload.LeaveType = (LeaveType)this.SelectedLeaveType;
         payload.LeaveState = LeaveState.Processing;
         payload.UserId = userId.Value;
