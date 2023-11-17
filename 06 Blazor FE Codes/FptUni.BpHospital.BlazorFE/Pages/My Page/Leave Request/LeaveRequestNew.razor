@@ -1,0 +1,11 @@
+﻿@page "/MyPage/LeaveRequest/"
+@namespace FptUni.BpHospital.BlazorFE
+
+@attribute [Authorize]
+
+<PageTitle>New Leave Request</PageTitle>
+
+<SfDateRangePicker TValue="DateTime" Placeholder="Choose a Range" @bind-StartDate="@WorkItem.StartDate" @bind-EndDate="@WorkItem.EndDate" Min="@MinDate" Max="MaxDate" MinDays="1" MaxDays="15">
+</SfDateRangePicker>
+
+<SfButton CssClass="e-inherit" IconCss="e-icons e-close" OnClick="async () => await CreateAsync()">Create Leave Request</SfButton>

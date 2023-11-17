@@ -4,6 +4,7 @@ public partial class NavMenu
 {
 	#region [ Properties ]
 	public bool ExpandSubMenu { get; set; }
+	public bool ExpandSubMenuMyPage { get; set; }
 	#endregion
 
 	#region [ Methods -  ]

@@ -16,7 +16,7 @@
             <AuthorizeView Policy="@RoleConstants.HRManager">
                 <Authorized>
                     <div class="nav-item px-3">
-                        <NavLink class="nav-link" href="/Hr/Index/" @onclick="()=> ExpandSubMenu = !ExpandSubMenu">
+                        <NavLink class="nav-link" @onclick="()=> ExpandSubMenu = !ExpandSubMenu">
                             <span class="oi oi-clipboard" aria-hidden="true"></span> Human Resources
                         </NavLink>
                         @if (ExpandSubMenu)
@@ -47,14 +47,14 @@
                                     </NavLink>
 
                                 </li>
-                                
+
                                 <li class="nav-item px-3">
                                     <NavLink class="nav-link" href="/Hr/Occupation/">
                                         <span class="oi oi-briefcase" aria-hidden="true"></span> Occupations
                                     </NavLink>
 
                                 </li>
-                                
+
                                 <li class="nav-item px-3">
                                     <NavLink class="nav-link" href="/Hr/Attendance/">
                                         <span class="oi oi-circle-check" aria-hidden="true"></span> Attendance
@@ -67,7 +67,6 @@
                 </Authorized>
             </AuthorizeView>
 
-
             @*             <div class="nav-item px-3">
             <NavLink class="nav-link" href="/Medicine/Index/">
             <span class="oi oi-list-rich" aria-hidden="true"></span> Medicines
@@ -76,6 +75,21 @@
             <AuthorizeView>
                 <Authorized>
                     <div class="nav-item px-3">
+                        <NavLink class="nav-link" @onclick="()=> ExpandSubMenuMyPage = !ExpandSubMenuMyPage">
+                            <span class="oi oi-clipboard" aria-hidden="true"></span> My Page
+                        </NavLink>
+                        @if (ExpandSubMenuMyPage)
+                        {
+                            <ul class="nav flex-column">
+                                <li class="nav-item px-3">
+                                    <NavLink class="nav-link" href="/MyPage/LeaveRequest/">
+                                        <span class="oi oi-document" aria-hidden="true"></span>Leave Request
+                                    </NavLink>
+
+                                </li>
+                            </ul>
+                        }
+
                         <NavLink class="nav-link" href="Logout">
                             <span class="oi oi-account-logout" aria-hidden="true"></span> Logout
                         </NavLink>
