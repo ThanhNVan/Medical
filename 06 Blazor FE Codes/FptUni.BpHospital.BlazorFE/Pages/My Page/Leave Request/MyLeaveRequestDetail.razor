@@ -1,0 +1,22 @@
+﻿@page "/MyPage/LeaveRequest/{Id}"
+@namespace FptUni.BpHospital.BlazorFE
+
+@attribute [Authorize]
+
+<PageTitle>Details</PageTitle>
+
+<div class="col-lg-12">
+    <EditForm Model="@WorkItem">
+        <div style="padding-top: 20px;">
+            <div class="form-group col-md-6">
+
+                <SfTextBox Readonly=true Value="@WorkItem.CreatedAt.ToShortDateString()" Placeholder="Created At" FloatLabelType="FloatLabelType.Always" />
+                <SfTextBox Readonly=true Value="@WorkItem.StartDate.ToShortDateString()" Placeholder="Start Date" FloatLabelType="FloatLabelType.Always" />
+                <SfTextBox Readonly=true Value="@WorkItem.EndDate.ToShortDateString()" Placeholder="End Date" FloatLabelType="FloatLabelType.Always" />
+                <SfNumericTextBox Readonly=true Value="@WorkItem.TotalDay" Placeholder="Total Day" FloatLabelType="FloatLabelType.Always" />
+                <SfTextBox Readonly=true Value="@WorkItem.LeaveType.ToString()" Placeholder="Leave Type" FloatLabelType="FloatLabelType.Always" />
+                <SfTextBox Readonly=true Value="@WorkItem.LeaveState.ToString()" Placeholder="Leave State" FloatLabelType="FloatLabelType.Always" />
+            </div>
+        </div>
+    </EditForm>
+</div>

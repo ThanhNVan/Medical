@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using ShareLibrary.WebApiProviders;
 using Microsoft.AspNetCore.Authorization;
+using ShareLibrary.EntityProviders;
 
 namespace FptUni.BpHostpital.HR.WebApiHost;
 
@@ -16,6 +17,15 @@ public class LeaveRequestController : BaseWebApiController<LeaveRequest, ILeaveR
     #region [ CTor ]
     public LeaveRequestController(ILogger<LeaveRequestController> logger, ILeaveRequestService logicProvider) : base(logger, logicProvider)
     {
+    }
+    #endregion
+
+    #region [ Methods - Single ]
+    [Authorize]
+    [HttpGet(nameof(BaseMethodUrl.GetSingleById) + "/{id}")]
+    public override async Task<IActionResult> GetSingleByIdAsync(string id)
+    {
+        return await base.GetSingleByIdAsync(id); 
     }
     #endregion
 

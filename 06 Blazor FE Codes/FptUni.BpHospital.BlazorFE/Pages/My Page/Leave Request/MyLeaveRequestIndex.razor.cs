@@ -59,7 +59,7 @@ public partial class MyLeaveRequestIndex
     #region [ Methods -  ]
     public void ViewDetail(string leaveRequestId)
     {
-        this.NavigationManager.NavigateTo($"/Hr/LeaveRequest/{leaveRequestId}");
+        this.NavigationManager.NavigateTo($"/MyPage/LeaveRequest/{leaveRequestId}");
     }
 
     public void NewLeaveRequest()

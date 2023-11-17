@@ -8,7 +8,6 @@ using Microsoft.JSInterop;
 using FptUni.BpHospital.Common;
 using System.Linq;
 using Microsoft.AspNetCore.Components.Authorization;
-using Syncfusion.Blazor.Calendars;
 
 namespace FptUni.BpHospital.BlazorFE;
 
@@ -103,6 +102,11 @@ public partial class LeaveRequestNew
 
         var isValid = int.TryParse(calcBusinessDays.ToString(), out var result);
         return result;
+    }
+
+    public void CalculateBusinessDate()
+    {
+        this.TotalDay = this.GetBusinessDays(this.WorkItem.StartDate, this.WorkItem.EndDate);
     }
     #endregion
 }

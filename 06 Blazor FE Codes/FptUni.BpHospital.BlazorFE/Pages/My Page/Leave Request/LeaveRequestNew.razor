@@ -14,7 +14,7 @@
             <div style="padding-top: 20px;">
 
                 <div class="form-group col-md-6">
-                    <span>Select Date</span>
+                    <span>Choose a Range</span>
                     <SfDateRangePicker TValue="DateTime" Placeholder="Choose a Range" @bind-StartDate="@WorkItem.StartDate" @bind-EndDate="@WorkItem.EndDate" Min="@MinDate" Max="MaxDate" MinDays="1" MaxDays="15">
                     </SfDateRangePicker>
                 </div>
@@ -22,6 +22,10 @@
                 <div class="form-group col-md-6">
                     <span>Total Date</span>
                     <SfNumericTextBox Readonly=true @bind-Value="@TotalDay" FloatLabelType="FloatLabelType.Always" />
+                </div>
+
+                <div class="form-group col-md-6">
+                    <SfButton CssClass="e-inherit" IconCss="oi oi-clock" OnClick="() => CalculateBusinessDate()">Calculate Business Date</SfButton>
                 </div>
 
                 <div class="form-group col-md-6">
