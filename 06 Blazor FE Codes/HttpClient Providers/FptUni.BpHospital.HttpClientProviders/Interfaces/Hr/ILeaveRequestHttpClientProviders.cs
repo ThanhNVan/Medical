@@ -12,6 +12,8 @@ public interface ILeaveRequestHttpClientProviders : IBaseProvider<LeaveRequest>
     Task<IList<LeaveRequest>> GetListByUserIdAsync(GetByUserIdFromAndEndDateModel model);
 
     Task<IList<LeaveRequest>> GetListProcessingStateAsync();
+
+    Task<IList<LeaveRequest>> GetListByUserIdAsync(string userId);
     #endregion
 
     #region [ Methods - Update ]

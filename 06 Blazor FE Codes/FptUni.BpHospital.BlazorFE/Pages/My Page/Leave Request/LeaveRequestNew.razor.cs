@@ -8,6 +8,7 @@ using Microsoft.JSInterop;
 using FptUni.BpHospital.Common;
 using System.Linq;
 using Microsoft.AspNetCore.Components.Authorization;
+using Syncfusion.Blazor.Calendars;
 
 namespace FptUni.BpHospital.BlazorFE;
 
@@ -38,6 +39,7 @@ public partial class LeaveRequestNew
     public List<KeyIntValueStringModel> LeaveTypeOptions {  get; set; }
 
     public int SelectedLeaveType { get; set; }
+    public int TotalDay { get; set; }
     #endregion
 
     #region [ Methods - Override ]
@@ -76,7 +78,7 @@ public partial class LeaveRequestNew
         payload.UserId = userId.Value;
 
         var result = await HttpClientContext.LeaveRequest.AddAsync(payload);
-        var aa = 1;
+
         if (result)
         {
             await JSRuntime.InvokeVoidAsync("alert", "Added");

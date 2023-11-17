@@ -59,6 +59,24 @@ public class LeaveRequestRepository : BaseRepository<LeaveRequest, HrDbContext>,
             return result;
         }
     }
+
+    public async Task<IList<LeaveRequest>> GetListByUserIdAsync(string userId)
+    {
+        var result = default(List<LeaveRequest>);
+        try
+        {
+            using var dbContext = await this.GetContextAsync();
+
+            result = await (from dbLeaveRequest in dbContext.LeaveRequests
+                            where dbLeaveRequest.UserId == userId
+                            select dbLeaveRequest).ToListAsync();
+            return result;
+        } catch (Exception ex)
+        {
+            this._logger.LogError(ex.Message);
+            return result;
+        }
+    }
     #endregion
 
     #region [ Methods - Update ]

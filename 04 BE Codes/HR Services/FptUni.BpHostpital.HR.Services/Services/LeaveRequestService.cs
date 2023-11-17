@@ -37,6 +37,16 @@ public class LeaveRequestService : BaseServices<LeaveRequest, ILeaveRequestRepos
     {
         return await this._repository.GetListProcessingStateAsync();
     }
+
+    public async Task<IList<LeaveRequest>> GetListByUserIdAsync(string userId)
+    {
+        if (string.IsNullOrEmpty(userId))
+        {
+            return null;
+        }
+
+        return await this._repository.GetListByUserIdAsync(userId);
+    }
     #endregion
 
     #region [ Methods - Update ]

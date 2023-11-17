@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using ShareLibrary.WebApiProviders;
+using Microsoft.AspNetCore.Authorization;
 
 namespace FptUni.BpHostpital.HR.WebApiHost;
 
@@ -50,6 +51,32 @@ public class LeaveRequestController : BaseWebApiController<LeaveRequest, ILeaveR
         try
         {
             var result = await this._service.GetListProcessingStateAsync();
+
+            if (result is null || result.Count == 0)
+            {
+                return NotFound();
+            }
+
+            return Ok(result);
+
+        } catch (ArgumentNullException ex)
+        {
+            this._logger.LogError(ex.Message);
+            return BadRequest();
+        } catch (Exception ex)
+        {
+            this._logger.LogError(ex.Message);
+            return new StatusCodeResult(StatusCodes.Status500InternalServerError);
+        }
+    }
+
+    [Authorize]
+    [HttpGet(nameof(UrlConstant.GetListByUserId) + "/{userId}")]
+    public virtual async Task<IActionResult> GetListByUserIdAsync(string userId)
+    {
+        try
+        {
+            var result = await this._service.GetListByUserIdAsync(userId);
 
             if (result is null || result.Count == 0)
             {

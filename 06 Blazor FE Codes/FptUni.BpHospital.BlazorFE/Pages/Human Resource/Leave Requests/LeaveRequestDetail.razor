@@ -6,8 +6,8 @@
 <PageTitle>Details</PageTitle>
 
 
-<SfButton CssClass="e-inherit" IconCss="e-icons e-tick" OnClick="async () => await ApproveAsync()">Approve this request</SfButton>
-<SfButton CssClass="e-inherit" IconCss="e-icons e-close" OnClick="async () => await DenyAsync()">Deny this request</SfButton>
+<SfButton CssClass="e-inherit" IconCss="oi oi-circle-check" OnClick="async () => await ApproveAsync()">Approve this request</SfButton>
+<SfButton CssClass="e-inherit" IconCss="oi oi-circle-x" OnClick="async () => await DenyAsync()">Deny this request</SfButton>
 <div class="col-lg-12">
     <EditForm Model="@WorkItem">
         <div style="padding-top: 20px;">

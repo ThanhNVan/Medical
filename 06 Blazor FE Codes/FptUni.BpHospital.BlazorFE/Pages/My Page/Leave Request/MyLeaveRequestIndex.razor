@@ -1,0 +1,60 @@
+﻿@page "/MyPage/LeaveRequest/"
+@namespace FptUni.BpHospital.BlazorFE
+
+@attribute [Authorize]
+
+<PageTitle> My Leave Requests</PageTitle>
+
+
+<SfButton CssClass="e-inherit" IconCss="oi oi-plus" OnClick="() => NewLeaveRequest()">New Leave Request</SfButton>
+
+<SfGrid DataSource="@WorkItemList" AllowPaging="true" AllowSorting="true" Height="520" AllowFiltering="true">
+    <GridColumns>
+        <GridColumn TextAlign="TextAlign.Center" HeaderText="Start Date">
+            <Template>
+                @{
+                    var leaveRequest = context as LeaveRequest;
+                    <span>@leaveRequest.StartDate.ToShortDateString()</span>
+                }
+            </Template>
+        </GridColumn>
+
+        <GridColumn TextAlign="TextAlign.Center" HeaderText="End Date">
+            <Template>
+                @{
+                    var leaveRequest = context as LeaveRequest;
+                    <span>@leaveRequest.CreatedAt.ToShortDateString()</span>
+                }
+            </Template>
+        </GridColumn>
+
+        <GridColumn Field="@nameof(LeaveRequest.TotalDay)" HeaderText="Total" HeaderTextAlign="TextAlign.Center" TextAlign="TextAlign.Center" Width="8%"/>
+
+        <GridColumn TextAlign="TextAlign.Center" HeaderText="Leave State" HeaderTextAlign="TextAlign.Center">
+            <Template>
+                @{
+                    var leaveRequest = context as LeaveRequest;
+                    <span>@leaveRequest.LeaveState.ToString()</span>
+                }
+            </Template>
+        </GridColumn>
+        
+        <GridColumn TextAlign="TextAlign.Center" HeaderText="Leave Type" HeaderTextAlign="TextAlign.Center">
+            <Template>
+                @{
+                    var leaveRequest = context as LeaveRequest;
+                    <span>@leaveRequest.LeaveType.ToString()</span>
+                }
+            </Template>
+        </GridColumn>
+        
+        <GridColumn TextAlign="TextAlign.Right" Width="8%" HeaderText="Info">
+            <Template>
+                @{
+                    var leaveRequest = context as LeaveRequest;
+                    <SfButton CssClass="e-inherit" IconCss="e-icons e-circle-info" OnClick="() => ViewDetail(leaveRequest.Id)"></SfButton>
+                }
+            </Template>
+        </GridColumn>
+    </GridColumns>
+</SfGrid>
