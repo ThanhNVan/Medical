@@ -45,7 +45,7 @@ public class LeaveRequestController : BaseWebApiController<LeaveRequest, ILeaveR
     }
 
     [HttpGet(nameof(UrlConstant.GetListProcessingState))]
-    public virtual async Task<IActionResult> GetListProcessingStateAsync([FromBody] GetByUserIdFromAndEndDateModel model)
+    public virtual async Task<IActionResult> GetListProcessingStateAsync()
     {
         try
         {

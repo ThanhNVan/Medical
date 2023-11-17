@@ -50,6 +50,6 @@ public class Profile : BaseEntity
     [JsonIgnore]
     [ForeignKey(nameof(UserId))]
     [InverseProperty("Profile")]
-    public User User { get; set; }
+    public User? User { get; set; }
     #endregion
 }

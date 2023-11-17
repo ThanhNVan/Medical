@@ -67,6 +67,6 @@ public class ContactPerson : BaseEntity
     [JsonIgnore]
     [ForeignKey(nameof(UserId))]
     [InverseProperty("ContactPersons")]
-    public User User { get; set; }
+    public User? User { get; set; }
     #endregion
 }

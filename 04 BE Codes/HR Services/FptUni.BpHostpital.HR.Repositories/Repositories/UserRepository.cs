@@ -61,4 +61,29 @@ public class UserRepository : BaseRepository<User, HrDbContext>, IUserRepository
         }
     }
     #endregion
+
+
+    #region [ Methods - Single ]
+    public async Task<string> GetUserIdByEmailAsync(string email) 
+    {
+        var result = string.Empty;
+        try
+        {
+            using var dbContext = await this.GetContextAsync();
+
+            var dbEntity = await dbContext.Users.FirstOrDefaultAsync(x => x.EmailAddress == email);
+
+            if (dbEntity != null)
+            {
+                result = dbEntity.Id;
+            }
+
+            return result;
+        } catch (Exception ex)
+        {
+            this._logger.LogError(ex.Message);
+            return result;
+        }
+    }
+    #endregion
 }

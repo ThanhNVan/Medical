@@ -62,4 +62,26 @@ public class UserHttpClientProviders : BaseHrHttpClientProviders<User>, IUserHtt
         return result;
     }
     #endregion
+
+    #region [ Methods - Single ]
+    public async Task<KeyIntValueStringModel> GetUserIdByEmailAsync(string email)
+    {
+        var result = default(KeyIntValueStringModel);
+        try
+        {
+            var httpClient = await base.GetHrClientAsync();
+            var url = this._entityUrl + UrlConstant.GetUserIdByEmail + email;
+            var response = await httpClient.GetAsync(url);
+            if (response.IsSuccessStatusCode)
+            {
+                result = JsonConvert.DeserializeObject<KeyIntValueStringModel>(await response.Content.ReadAsStringAsync());
+            }
+
+        } catch (Exception ex)
+        {
+            this._logger.LogError(ex.Message);
+        }
+        return result;
+    }
+    #endregion
 }

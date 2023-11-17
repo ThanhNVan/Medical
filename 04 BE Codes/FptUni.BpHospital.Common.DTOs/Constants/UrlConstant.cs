@@ -10,5 +10,6 @@ public static class UrlConstant
     public const string Approve = "/Approve/";
     public const string Deny = "/Deny/";
     public const string GetListProcessingState = "/GetListProcessingState/";
+    public const string GetUserIdByEmail = "/GetUserIdByEmail/";
     #endregion
 }

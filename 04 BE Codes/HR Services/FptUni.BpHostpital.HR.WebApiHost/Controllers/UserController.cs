@@ -20,6 +20,8 @@ public class UserController : BaseWebApiController<User, IUserService, HrDbConte
     }
     #endregion
 
+    #region [ Methods - List ]
+
     [HttpGet(nameof(UrlConstant.GetListByOccupationId) + "/{occupationId}")]
     public async Task<IActionResult> GetListByOccupationIdAsync(string occupationId)
     {
@@ -59,4 +61,28 @@ public class UserController : BaseWebApiController<User, IUserService, HrDbConte
             return BadRequest();
         }
     }
+    #endregion
+
+
+    #region [ Methods - Single ]
+    [HttpGet(nameof(UrlConstant.GetUserIdByEmail) + "/{email}")]
+    public async Task<IActionResult> GetUserIdByEmailAsync(string email)
+    {
+        try
+        {
+            var result = await this._service.GetUserIdByEmailAsync(email);
+            if (string.IsNullOrEmpty(email))
+            {
+                return NotFound();
+            }
+
+            return Ok(new KeyIntValueStringModel { Key =  1, Value = result }) ;
+
+        } catch (Exception ex)
+        {
+            this._logger.LogWarning(ex.Message);
+            return BadRequest();
+        }
+    }
+    #endregion
 }

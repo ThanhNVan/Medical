@@ -44,3 +44,6 @@
         this.user = authState.User;
     }
 }
+
+ this.LeaveTypeOptions = Enum.GetValues(typeof(LeaveType)).Cast<LeaveType>()
+           .Select(x => new KeyIntValueStringModel { Key = (int)x, Value = x.ToString() }).ToList();

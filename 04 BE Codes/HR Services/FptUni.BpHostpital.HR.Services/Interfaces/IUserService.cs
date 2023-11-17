@@ -12,4 +12,8 @@ public interface IUserService : IBaseService<User>
 
     Task<IList<User>> GetListByDepartmentIdAsync(string departmentId);
     #endregion
+
+    #region [ Methods - Single ]
+    Task<string> GetUserIdByEmailAsync(string email);
+    #endregion
 }

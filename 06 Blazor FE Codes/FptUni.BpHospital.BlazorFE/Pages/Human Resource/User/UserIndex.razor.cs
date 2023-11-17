@@ -39,6 +39,11 @@ public partial class UserIndex
     public async Task LoadDataAsync()
     {
         this.WorkItemList = await HttpClientContext.User.GetListIsNotDeletedAsync();
+        if (this.WorkItemList is null || this.WorkItemList.Count == 0)
+        {
+            return;
+        }
+
         this.OccupationList = await HttpClientContext.Occupation.GetListAllAsync();
         foreach (var item in this.WorkItemList)
         {

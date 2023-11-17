@@ -37,4 +37,16 @@ public class UserService : BaseServices<User, IUserRepository, HrDbContext>, IUs
         return await this._repository.GetListByDepartmentIdAsync(departmentId);
     }
     #endregion
+
+    #region [ Methods - Single ]
+    public async Task<string> GetUserIdByEmailAsync(string email)
+    {
+        if (string.IsNullOrEmpty(email))
+        {
+            return string.Empty;
+        }
+
+        return await this._repository.GetUserIdByEmailAsync(email);
+    }
+    #endregion
 }

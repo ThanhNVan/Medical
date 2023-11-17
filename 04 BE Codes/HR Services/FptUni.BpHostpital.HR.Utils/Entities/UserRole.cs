@@ -27,7 +27,7 @@ public class UserRole : BaseEntity
     [JsonIgnore]
     [ForeignKey(nameof(RoleId))]
     [InverseProperty("UserRoles")]
-    public Role Role { get; set; }
+    public Role? Role { get; set; }
     
     [Required]
     [DataType(DataType.Text)]
@@ -36,6 +36,6 @@ public class UserRole : BaseEntity
     [JsonIgnore]
     [ForeignKey(nameof(UserId))]
     [InverseProperty("UserRoles")]
-    public User User { get; set; }
+    public User? User { get; set; }
     #endregion
 }

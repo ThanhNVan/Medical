@@ -27,6 +27,6 @@ public class Attendance : BaseEntity
     [JsonIgnore]
     [ForeignKey(nameof(UserId))]
     [InverseProperty("Attendances")]
-    public User User { get; set; }
+    public User? User { get; set; }
     #endregion
 }

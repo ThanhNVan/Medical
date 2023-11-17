@@ -37,6 +37,6 @@ public class LeaveRequest : BaseEntity
     [JsonIgnore]
     [ForeignKey(nameof(UserId))]
     [InverseProperty("LeaveRequests")]
-    public User User { get; set; }
+    public User? User { get; set; }
     #endregion
 }
