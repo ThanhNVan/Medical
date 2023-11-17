@@ -5,4 +5,34 @@
 
 <PageTitle>Details</PageTitle>
 
-<h3>Department Detail</h3>
+<h4>@($"{WorkItem.Name} Department")</h4>
+
+<SfGrid DataSource="@Users" AllowPaging="true" AllowSorting="true" Height="520" AllowFiltering="true">
+    <GridColumns>
+        <GridColumn Field="@nameof(User.Fullname)" HeaderTextAlign="TextAlign.Center" />
+        <GridColumn Field="@nameof(User.PhoneNumber1)" HeaderText="Phone Number" HeaderTextAlign="TextAlign.Center" />
+        <GridColumn Field="@nameof(User.EmailAddress)" HeaderText="Email Address" HeaderTextAlign="TextAlign.Center" />
+        <GridColumn HeaderText="Position" HeaderTextAlign="TextAlign.Center">
+            <Template>
+                @{
+                    var user = context as User;
+                    @if (user is not null)
+                    {
+                        <span>@user.Occupation.Name</span>
+                    } else
+                    {
+                        <span>@user.OccupationId</span>
+                    }
+                }
+            </Template>
+        </GridColumn>
+        <GridColumn TextAlign="TextAlign.Right" Width="8%">
+            <Template>
+                @{
+                    var user = context as User;
+                    <SfButton CssClass="e-inherit" IconCss="e-icons e-circle-info" OnClick="() => ViewUserDetail(user.Id)"></SfButton>
+                }
+            </Template>
+        </GridColumn>
+    </GridColumns>
+</SfGrid>

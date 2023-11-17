@@ -42,4 +42,11 @@ public partial class DepartmentIndex
         this.StateHasChanged();
     }
     #endregion
+
+    #region [ Methods -  ]
+    public void ViewDetail(string departmentId)
+    {
+        this.NavigationManager.NavigateTo($"/Hr/Department/{departmentId}");
+    }
+    #endregion
 }

@@ -26,9 +26,33 @@ public class UserRepository : BaseRepository<User, HrDbContext>, IUserRepository
         {
             using var dbContext = await this.GetContextAsync();
 
-            result = await (from dbAttendance in dbContext.Users
-                            where dbAttendance.OccupationId == occupationId
-                            select dbAttendance).ToListAsync();
+            result = await (from dbUser in dbContext.Users
+                            where dbUser.OccupationId == occupationId
+                            && dbUser.IsDeleted == false
+                            select dbUser).ToListAsync();
+            return result;
+        } catch (Exception ex)
+        {
+            this._logger.LogError(ex.Message);
+            return result;
+        }
+    }
+    
+    public async Task<IList<User>> GetListByDepartmentIdAsync(string departmentId)
+    {
+        var result = default(List<User>);
+        try
+        {
+            using var dbContext = await this.GetContextAsync();
+
+            result = await (from dbUser in dbContext.Users
+                            where dbUser.IsDeleted == false
+                            join dbUserRole in dbContext.UserRoles
+                            on dbUser.Id equals dbUserRole.UserId
+                            join dbDepartment in dbContext.Departments
+                            on dbUserRole.DepartmentId equals dbDepartment.Id
+                            where departmentId == dbDepartment.Id
+                            select dbUser).ToListAsync();
             return result;
         } catch (Exception ex)
         {

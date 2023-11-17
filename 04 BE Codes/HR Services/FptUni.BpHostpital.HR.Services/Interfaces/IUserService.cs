@@ -9,5 +9,7 @@ public interface IUserService : IBaseService<User>
 {
     #region [ Methods - List ]
     Task<IList<User>> GetListByOccupationIdAsync(string occupationId);
+
+    Task<IList<User>> GetListByDepartmentIdAsync(string departmentId);
     #endregion
 }

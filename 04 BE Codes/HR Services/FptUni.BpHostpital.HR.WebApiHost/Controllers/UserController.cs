@@ -39,4 +39,24 @@ public class UserController : BaseWebApiController<User, IUserService, HrDbConte
             return BadRequest();
         }
     }
+    
+    [HttpGet(nameof(UrlConstant.GetListByDepartmentId) + "/{departmentId}")]
+    public async Task<IActionResult> GetListByDepartmentIdAsync(string departmentId)
+    {
+        try
+        {
+            var result = await this._service.GetListByDepartmentIdAsync(departmentId);
+            if (result is null || result.Count == 0)
+            {
+                return NotFound();
+            }
+
+            return Ok(result);
+
+        } catch (Exception ex)
+        {
+            this._logger.LogWarning(ex.Message);
+            return BadRequest();
+        }
+    }
 }

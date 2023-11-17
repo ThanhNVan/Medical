@@ -41,5 +41,25 @@ public class UserHttpClientProviders : BaseHrHttpClientProviders<User>, IUserHtt
         }
         return result;
     }
+
+    public async Task<IList<User>> GetListByDepartmentIdAsync(string departmentId)
+    {
+        var result = default(List<User>);
+        try
+        {
+            var httpClient = await base.GetHrClientAsync();
+            var url = this._entityUrl + UrlConstant.GetListByDepartmentId + departmentId;
+            var response = await httpClient.GetAsync(url);
+            if (response.IsSuccessStatusCode)
+            {
+                result = JsonConvert.DeserializeObject<List<User>>(await response.Content.ReadAsStringAsync());
+            }
+
+        } catch (Exception ex)
+        {
+            this._logger.LogError(ex.Message);
+        }
+        return result;
+    }
     #endregion
 }

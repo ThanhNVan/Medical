@@ -6,4 +6,15 @@
 <PageTitle>Departments</PageTitle>
 
 <SfGrid DataSource="@WorkItemList" AllowPaging="true" AllowSorting="true" Height="520" AllowFiltering="true">
+    <GridColumns>
+        <GridColumn Field="@nameof(Department.Name)" HeaderTextAlign="TextAlign.Center" />
+        <GridColumn TextAlign="TextAlign.Right" Width="8%" HeaderText="Info">
+            <Template>
+                @{
+                    var item = context as Department;
+                    <SfButton CssClass="e-inherit" IconCss="e-icons e-circle-info" OnClick="() => ViewDetail(item.Id)"></SfButton>
+                }
+            </Template>
+        </GridColumn>
+    </GridColumns>
 </SfGrid>
